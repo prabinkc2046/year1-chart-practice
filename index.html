@@ -428,7 +428,7 @@
         );
       }
       .bar-number {
-        display: none;
+        display: none; /* hide the bar number completely */
       }
       .x-labels {
         grid-column: 2;
@@ -1667,6 +1667,7 @@
     <script>
       /* =========================================================
        LEVEL DATA — 5 levels, 10 questions each
+       Now with a chartTitle for each level.
     ========================================================= */
       const levels = [
         {
@@ -2046,40 +2047,6 @@
           ],
         },
       ];
-
-      /* =========================================================
-       AUDIO CACHE — preload all audio files on first load
-    ========================================================= */
-      const audioCache = {};
-      let audioPreloadComplete = false;
-
-      function preloadAllAudio() {
-        // Preload all question audio files
-        levels.forEach((level, levelIndex) => {
-          level.questions.forEach((q, qIndex) => {
-            const filename = `l${levelIndex + 1}-q${qIndex + 1}.mp3`;
-            const audio = new Audio(`gameAudio/${filename}`);
-            audio.preload = "auto";
-            audio.load();
-            audioCache[filename] = audio;
-          });
-        });
-
-        // Preload feedback files
-        ["correct.mp3", "tryagain.mp3"].forEach((fname) => {
-          const audio = new Audio(`gameAudio/${fname}`);
-          audio.preload = "auto";
-          audio.load();
-          audioCache[fname] = audio;
-        });
-
-        audioPreloadComplete = true;
-        console.log("🎵 All audio files preloaded!");
-      }
-
-      // Start preloading immediately (non-blocking)
-      setTimeout(preloadAllAudio, 100);
-
       /* =========================================================
        APPLICATION STATE
     ========================================================= */
@@ -2108,7 +2075,7 @@
       const chartQuestion = document.getElementById("chartQuestion");
 
       /* =========================================================
-       AUDIO — plays from cache
+       AUDIO — per‑question files (muted by default)
     ========================================================= */
       let voiceEnabled = false;
       let currentAudio = null;
@@ -2124,34 +2091,19 @@
       function playAudioFile(filename) {
         if (!voiceEnabled) return;
         stopAudio();
-
-        // Use cached audio if available, otherwise create a new one (fallback)
-        let audio = audioCache[filename];
-        if (!audio) {
-          audio = new Audio(`gameAudio/${filename}`);
-          audioCache[filename] = audio;
-        }
-
-        // Reset and play
-        audio.currentTime = 0;
-        audio.play().catch(() => {});
+        const audio = new Audio("gameAudio/" + filename);
         currentAudio = audio;
-
-        // Clean up event listener when done
-        const onEnd = function () {
-          if (currentAudio === audio) {
-            currentAudio = null;
-          }
-          audio.removeEventListener("ended", onEnd);
-        };
-        audio.addEventListener("ended", onEnd);
+        audio.play().catch(() => {});
+        audio.addEventListener("ended", function () {
+          if (currentAudio === audio) currentAudio = null;
+        });
       }
 
       function speakQuestion() {
         if (!voiceEnabled) return;
         const levelNum = currentLevel + 1;
         const qNum = currentQuestion + 1;
-        playAudioFile(`l${levelNum}-q${qNum}.mp3`);
+        playAudioFile("l" + levelNum + "-q" + qNum + ".mp3");
       }
 
       function speakFeedback(type) {
@@ -2179,6 +2131,7 @@
     ========================================================= */
       startButton.addEventListener("click", function () {
         introOverlay.style.display = "none";
+        // Load the first level's first question
         loadLevel();
       });
 
@@ -2315,6 +2268,7 @@
     ========================================================= */
       function renderChart() {
         const level = levels[currentLevel];
+        // Set the chart title
         chartQuestion.textContent = level.chartTitle;
 
         const bars = document.getElementById("bars");
@@ -2328,6 +2282,7 @@
           bar.className = "bar " + item.className;
           bar.style.height = (item.value / 8) * 100 + "%";
           bar.style.animationDelay = index * 0.08 + "s";
+          // Removed the number label from the bar
           group.appendChild(bar);
           bars.appendChild(group);
           const label = document.createElement("div");
@@ -2396,6 +2351,7 @@
         learningScreen.style.display = "flex";
         gameScreen.style.display = "none";
         levelComplete.style.display = "none";
+        // Ensure question display is visible
         document.getElementById("questionDisplay").style.display = "block";
       }
 
@@ -2906,17 +2862,25 @@
         });
 
       /* =========================================================
-       INITIALISE
+       INITIALISE — voice is OFF by default
     ========================================================= */
       voiceToggle.textContent = "🔇";
       voiceToggle.setAttribute("aria-label", "Voice off");
+      // Ensure question display is visible from start
       document.getElementById("questionDisplay").style.display = "block";
+      // Pre‑render the chart with level 1 data (but no question yet)
       renderChart();
+      // Load level 1 question (but screen is hidden until start)
+      // We'll call loadLevel when start is clicked.
+      // But to have initial chart ready, we'll set up level 0 data and show it
+      // Actually we can load the first level immediately, but keep learning screen hidden behind overlay.
+      // We'll call loadLevel on start.
+      // For now, just set the level label.
       document.getElementById("levelLabel").textContent =
         "⭐ " + levels[0].name;
 
       console.log(
-        "📊 Chart Quest ready. Voice is OFF by default. All audio preloaded.",
+        "📊 Chart Quest ready. Voice is OFF by default. 5 levels with 10 questions each.",
       );
     </script>
   </body>
