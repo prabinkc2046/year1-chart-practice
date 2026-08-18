@@ -10,8 +10,8 @@
 
     <style>
       /* =========================================================
-       RESET & BASE
-    ========================================================= */
+           RESET & BASE
+        ========================================================= */
       * {
         box-sizing: border-box;
         -webkit-tap-highlight-color: transparent;
@@ -27,14 +27,15 @@
       body {
         font-family: "Arial Rounded MT Bold", "Trebuchet MS", Arial, sans-serif;
         color: #403277;
+        background: #62c6ee;
       }
       button {
         font-family: inherit;
       }
 
       /* =========================================================
-       INTRO OVERLAY
-    ========================================================= */
+           INTRO OVERLAY
+        ========================================================= */
       #introOverlay {
         position: fixed;
         inset: 0;
@@ -46,6 +47,7 @@
         backdrop-filter: blur(6px);
         -webkit-backdrop-filter: blur(6px);
         animation: introFadeIn 0.8s ease-out;
+        padding: 16px;
       }
       @keyframes introFadeIn {
         from {
@@ -64,7 +66,7 @@
         background: linear-gradient(145deg, #fff8e0, #ffefc9);
         border: 5px solid #f0a348;
         border-radius: 38px;
-        padding: clamp(20px, 4vh, 40px) clamp(18px, 3vw, 36px);
+        padding: clamp(16px, 3vh, 40px) clamp(14px, 2.5vw, 36px);
         text-align: center;
         box-shadow:
           0 12px 0 #d99549,
@@ -72,27 +74,27 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
       }
       .intro-card .intro-image {
         width: 100%;
-        max-height: 200px;
+        max-height: 160px;
         object-fit: cover;
         border-radius: 20px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        margin-bottom: 4px;
+        margin-bottom: 2px;
       }
       .intro-card h1 {
         margin: 0;
         color: #40327d;
-        font-size: clamp(32px, 6vh, 52px);
+        font-size: clamp(28px, 5vh, 52px);
         font-weight: 900;
         letter-spacing: -0.5px;
       }
       .intro-card .intro-sub {
         margin: 0;
         color: #76529b;
-        font-size: clamp(16px, 2.4vh, 24px);
+        font-size: clamp(14px, 2vh, 24px);
         font-weight: 800;
       }
       .intro-card .intro-badge {
@@ -100,8 +102,8 @@
         background: linear-gradient(135deg, #ffb83f, #f0a348);
         border: 3px solid #c9862e;
         border-radius: 30px;
-        padding: 6px 20px 6px 16px;
-        font-size: clamp(14px, 1.8vh, 20px);
+        padding: 5px 16px 5px 12px;
+        font-size: clamp(12px, 1.6vh, 20px);
         font-weight: 900;
         color: #40327d;
         box-shadow:
@@ -113,15 +115,15 @@
         margin-top: 2px;
       }
       .intro-card .intro-badge span {
-        font-size: clamp(16px, 2vh, 24px);
+        font-size: clamp(14px, 1.8vh, 24px);
       }
       .start-button {
         border: none;
         border-radius: 20px;
         background: linear-gradient(135deg, #ffb83f, #f09c2e);
         color: #40327d;
-        padding: 14px 42px;
-        font-size: clamp(22px, 3.2vh, 32px);
+        padding: 14px 36px;
+        font-size: clamp(20px, 3vh, 32px);
         font-weight: 900;
         cursor: pointer;
         box-shadow:
@@ -131,7 +133,9 @@
           transform 0.12s,
           box-shadow 0.12s;
         touch-action: manipulation;
-        margin-top: 2px;
+        margin-top: 4px;
+        width: 100%;
+        max-width: 320px;
       }
       .start-button:hover {
         transform: translateY(-2px);
@@ -147,15 +151,15 @@
       }
 
       /* =========================================================
-       LEARNING BACKGROUND
-    ========================================================= */
+           LEARNING BACKGROUND
+        ========================================================= */
       #learningScreen {
         position: fixed;
         inset: 0;
         width: 100vw;
         height: 100vh;
         overflow: hidden;
-        padding: clamp(10px, 1.5vh, 18px) clamp(14px, 2vw, 30px);
+        padding: clamp(6px, 1.2vh, 18px) clamp(10px, 1.5vw, 30px);
         display: flex;
         flex-direction: column;
         background: linear-gradient(
@@ -168,13 +172,13 @@
       }
 
       /* =========================================================
-       DECORATIVE SKY
-    ========================================================= */
+           DECORATIVE SKY
+        ========================================================= */
       .sky-star {
         position: absolute;
         z-index: 0;
         color: #fff2a8;
-        font-size: clamp(25px, 3.2vw, 48px);
+        font-size: clamp(20px, 2.8vw, 48px);
         pointer-events: none;
       }
       .star-one {
@@ -195,8 +199,8 @@
       }
       .sky-dot {
         position: absolute;
-        width: clamp(13px, 1.5vw, 22px);
-        height: clamp(13px, 1.5vw, 22px);
+        width: clamp(10px, 1.2vw, 22px);
+        height: clamp(10px, 1.2vw, 22px);
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.7);
         pointer-events: none;
@@ -215,8 +219,8 @@
       }
 
       /* =========================================================
-       HEADER
-    ========================================================= */
+           HEADER
+        ========================================================= */
       .header {
         position: relative;
         z-index: 5;
@@ -225,21 +229,21 @@
         text-align: center;
         background: #fff3c9;
         border: 4px solid #f0a348;
-        border-radius: clamp(20px, 2.2vw, 32px);
+        border-radius: clamp(16px, 2vw, 32px);
         box-shadow: 0 7px 0 #e49a48;
-        padding: clamp(7px, 1.1vh, 14px) 20px clamp(8px, 1.2vh, 15px);
-        margin-bottom: clamp(10px, 1.5vh, 17px);
+        padding: clamp(6px, 1vh, 14px) 16px clamp(6px, 1vh, 15px);
+        margin-bottom: clamp(8px, 1.2vh, 17px);
       }
       .year1-badge {
         position: absolute;
-        right: clamp(8px, 1vw, 18px);
+        right: clamp(6px, 0.8vw, 18px);
         top: 50%;
         transform: translateY(-50%);
         background: linear-gradient(135deg, #ffb83f, #f0a348);
         border: 3px solid #c9862e;
         border-radius: 30px;
-        padding: 4px 14px 4px 12px;
-        font-size: clamp(9px, 1.2vh, 14px);
+        padding: 3px 10px 3px 8px;
+        font-size: clamp(8px, 1vh, 14px);
         font-weight: 900;
         color: #40327d;
         box-shadow:
@@ -251,7 +255,7 @@
         white-space: nowrap;
       }
       .year1-badge span {
-        font-size: clamp(12px, 1.6vh, 18px);
+        font-size: clamp(10px, 1.4vh, 18px);
       }
       .ice-creams {
         display: none;
@@ -259,22 +263,22 @@
       .title {
         margin: 0;
         color: #403080;
-        font-size: clamp(27px, 5vh, 52px);
+        font-size: clamp(22px, 4.5vh, 52px);
         line-height: 1;
         font-weight: 900;
         letter-spacing: -0.5px;
       }
       .subtitle {
-        margin: clamp(4px, 0.6vh, 7px) 0 0;
+        margin: clamp(2px, 0.4vh, 7px) 0 0;
         color: #76529b;
-        font-size: clamp(12px, 2vh, 20px);
+        font-size: clamp(10px, 1.6vh, 20px);
         font-weight: 800;
         line-height: 1;
       }
 
       /* =========================================================
-       MAIN CONTENT
-    ========================================================= */
+           MAIN CONTENT
+        ========================================================= */
       .main-content {
         position: relative;
         z-index: 5;
@@ -283,10 +287,11 @@
         min-width: 0;
         width: 100%;
         display: grid;
-        grid-template-columns: minmax(0, 1.55fr) minmax(300px, 0.85fr);
-        gap: clamp(12px, 1.6vw, 22px);
+        grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.85fr);
+        gap: clamp(10px, 1.4vw, 22px);
         align-items: stretch;
         overflow: hidden;
+        max-height: 100%;
       }
       .chart-card,
       .question-panel {
@@ -294,36 +299,36 @@
         min-height: 0;
         background: rgba(255, 253, 245, 0.98);
         border: 4px solid rgba(255, 255, 255, 0.95);
-        border-radius: clamp(20px, 2vw, 30px);
+        border-radius: clamp(16px, 1.8vw, 30px);
         box-shadow: 0 5px 0 rgba(100, 79, 71, 0.15);
         overflow: hidden;
       }
 
       /* =========================================================
-       CHART
-    ========================================================= */
+           CHART
+        ========================================================= */
       .chart-card {
         display: flex;
         flex-direction: column;
-        padding: clamp(10px, 1.5vh, 18px) clamp(12px, 1.6vw, 22px)
-          clamp(8px, 1.1vh, 13px);
+        padding: clamp(8px, 1.2vh, 18px) clamp(10px, 1.4vw, 22px)
+          clamp(6px, 0.8vh, 13px);
       }
       .chart-question {
         flex: 0 0 auto;
         text-align: center;
         color: #4a3784;
-        font-size: clamp(17px, 2.8vh, 29px);
+        font-size: clamp(15px, 2.4vh, 29px);
         font-weight: 900;
         line-height: 1.1;
-        margin: 0 0 clamp(15px, 2.4vh, 25px);
+        margin: 0 0 clamp(10px, 1.8vh, 25px);
       }
       .graph-wrapper {
         flex: 1 1 auto;
         min-height: 0;
         min-width: 0;
         display: grid;
-        grid-template-columns: clamp(28px, 3vw, 43px) minmax(0, 1fr);
-        grid-template-rows: minmax(0, 1fr) clamp(55px, 7vh, 75px);
+        grid-template-columns: clamp(24px, 2.6vw, 43px) minmax(0, 1fr);
+        grid-template-rows: minmax(0, 1fr) clamp(45px, 6vh, 75px);
         overflow: visible;
       }
       .y-axis {
@@ -332,9 +337,9 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding-right: 7px;
+        padding-right: 5px;
         color: #443681;
-        font-size: clamp(10px, 1.6vh, 16px);
+        font-size: clamp(8px, 1.3vh, 16px);
         font-weight: 800;
         text-align: right;
       }
@@ -361,7 +366,7 @@
         display: flex;
         align-items: flex-end;
         justify-content: space-evenly;
-        padding: 0 clamp(12px, 3vw, 40px);
+        padding: 0 clamp(8px, 2vw, 40px);
       }
       .bar-group {
         position: relative;
@@ -374,7 +379,7 @@
       }
       .bar {
         position: relative;
-        width: clamp(28px, 4vw, 58px);
+        width: clamp(24px, 3.6vw, 58px);
         min-height: 2px;
         border-radius: 12px 12px 3px 3px;
         border: 3px solid rgba(90, 70, 70, 0.25);
@@ -428,7 +433,7 @@
         );
       }
       .bar-number {
-        display: none; /* hide the bar number completely */
+        display: none;
       }
       .x-labels {
         grid-column: 2;
@@ -436,21 +441,21 @@
         display: flex;
         justify-content: space-evenly;
         align-items: flex-start;
-        padding: 5px clamp(12px, 3vw, 40px) 0;
+        padding: 5px clamp(8px, 2vw, 40px) 0;
       }
       .x-label {
         width: 18%;
         max-width: 100px;
         text-align: center;
         color: #4b3c82;
-        font-size: clamp(9px, 1.55vh, 16px);
+        font-size: clamp(7px, 1.2vh, 16px);
         font-weight: 900;
         line-height: 1.05;
       }
       .x-label span {
         display: block;
-        margin-bottom: 3px;
-        font-size: clamp(22px, 3.8vh, 38px);
+        margin-bottom: 2px;
+        font-size: clamp(18px, 3.2vh, 38px);
         line-height: 0.9;
       }
       .x-label:nth-child(1) {
@@ -467,11 +472,11 @@
       }
 
       /* =========================================================
-       QUESTION PANEL
-    ========================================================= */
+           QUESTION PANEL
+        ========================================================= */
       .question-panel {
         position: relative;
-        padding: clamp(12px, 1.7vh, 22px) clamp(12px, 1.8vw, 25px);
+        padding: clamp(10px, 1.4vh, 22px) clamp(10px, 1.5vw, 25px);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -480,17 +485,18 @@
       }
       .voice-toggle-icon {
         position: absolute;
-        top: clamp(10px, 1.2vh, 16px);
-        right: clamp(10px, 1.2vw, 16px);
+        top: clamp(8px, 1vh, 16px);
+        right: clamp(8px, 1vw, 16px);
         z-index: 5;
         border: none;
         background: transparent;
-        font-size: clamp(22px, 3vh, 32px);
+        font-size: clamp(20px, 2.6vh, 32px);
         cursor: pointer;
-        padding: 4px;
+        padding: 4px 6px;
         border-radius: 50%;
         transition: background 0.2s;
         color: #4b3a7f;
+        touch-action: manipulation;
       }
       .voice-toggle-icon:hover {
         background: rgba(200, 180, 230, 0.3);
@@ -505,28 +511,28 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding-top: clamp(8px, 1vh, 14px);
-        padding-bottom: clamp(8px, 1vh, 14px);
+        padding-top: clamp(4px, 0.6vh, 14px);
+        padding-bottom: clamp(4px, 0.6vh, 14px);
         min-height: 0;
       }
 
       .battery-progress {
         flex: 0 0 auto;
         width: 100%;
-        padding: 6px 0 14px 0;
+        padding: 4px 0 10px 0;
         display: flex;
         flex-direction: column;
         align-items: center;
       }
       .battery-row {
         display: flex;
-        gap: clamp(2px, 0.4vw, 5px);
+        gap: clamp(2px, 0.3vw, 5px);
         justify-content: center;
         flex-wrap: wrap;
       }
       .battery-cell {
-        width: clamp(14px, 2vw, 22px);
-        height: clamp(20px, 2.8vh, 30px);
+        width: clamp(12px, 1.6vw, 22px);
+        height: clamp(16px, 2.2vh, 30px);
         border-radius: 3px 3px 6px 6px;
         border: 2px solid #d4c0e8;
         background: rgba(240, 235, 250, 0.35);
@@ -541,7 +547,7 @@
         top: -4px;
         left: 50%;
         transform: translateX(-50%);
-        width: clamp(5px, 0.7vw, 8px);
+        width: clamp(4px, 0.6vw, 8px);
         height: 4px;
         border-radius: 2px 2px 0 0;
         border: 2px solid #d4c0e8;
@@ -592,9 +598,9 @@
       .level {
         flex: 0 0 auto;
         color: #7a5ca7;
-        font-size: clamp(13px, 1.8vh, 18px);
+        font-size: clamp(11px, 1.5vh, 18px);
         font-weight: 900;
-        margin-bottom: clamp(2px, 0.4vh, 5px);
+        margin-bottom: clamp(2px, 0.3vh, 5px);
         margin-top: 2px;
       }
       .progress {
@@ -605,22 +611,22 @@
         width: 100%;
         background: #f0e4ff;
         border: 3px solid #d4b8f3;
-        border-radius: 22px;
-        padding: clamp(13px, 2vh, 22px) clamp(10px, 1.3vw, 18px);
-        margin-bottom: clamp(10px, 1.5vh, 16px);
+        border-radius: 18px;
+        padding: clamp(10px, 1.6vh, 22px) clamp(8px, 1vw, 18px);
+        margin-bottom: clamp(6px, 1vh, 16px);
         flex: 0 0 auto;
       }
       .question-panel h2 {
         margin: 0;
         color: #403278;
-        font-size: clamp(18px, 2.7vh, 29px);
+        font-size: clamp(16px, 2.4vh, 29px);
         font-weight: 900;
         line-height: 1.15;
       }
       .look-hint {
-        margin: 0 0 clamp(9px, 1.4vh, 14px);
+        margin: 0 0 clamp(6px, 1vh, 14px);
         color: #3a9447;
-        font-size: clamp(11px, 1.7vh, 17px);
+        font-size: clamp(10px, 1.4vh, 17px);
         font-weight: 800;
         flex: 0 0 auto;
       }
@@ -629,25 +635,27 @@
         flex: 0 0 auto;
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: clamp(7px, 1vh, 11px);
+        gap: clamp(6px, 0.8vh, 11px);
       }
       .answer-button {
         min-width: 0;
-        min-height: clamp(43px, 6vh, 63px);
+        min-height: clamp(44px, 5.5vh, 63px);
         border: 3px solid #d6c2ee;
         border-radius: 15px;
         background: #ffffff;
         color: #4b3a7f;
-        font-size: clamp(12px, 1.75vh, 18px);
+        font-size: clamp(12px, 1.6vh, 18px);
         font-weight: 900;
         line-height: 1.05;
-        padding: 7px;
+        padding: 8px 6px;
         cursor: pointer;
         box-shadow: 0 3px 0 rgba(110, 82, 140, 0.12);
         transition:
           transform 0.12s,
           background 0.12s,
           border-color 0.12s;
+        touch-action: manipulation;
+        -webkit-touch-callout: none;
       }
       .answer-button:hover {
         background: #f3ebff;
@@ -682,18 +690,197 @@
       }
 
       #feedback {
-        min-height: clamp(24px, 4vh, 38px);
-        margin-top: clamp(7px, 1vh, 11px);
+        min-height: clamp(20px, 3vh, 38px);
+        margin-top: clamp(4px, 0.7vh, 11px);
         color: #2e9a4a;
-        font-size: clamp(12px, 1.7vh, 17px);
+        font-size: clamp(11px, 1.4vh, 17px);
         font-weight: 900;
         line-height: 1.15;
         position: relative;
       }
 
       /* =========================================================
-       STAR BURST
-    ========================================================= */
+           COIN SUMMARY (level complete) — SIDE‑VIEW STACK
+        ========================================================= */
+      .level-statistics {
+        margin: 8px 0 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .coin-summary-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(4px, 1vw, 12px);
+        flex-wrap: wrap;
+      }
+
+      .coin-item {
+        padding: 4px 12px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.7);
+        border: 2px solid transparent;
+        min-width: 44px;
+        font-size: clamp(16px, 2.4vh, 28px);
+        font-weight: 900;
+        display: inline-flex;
+        align-items: center;
+        gap: 2px;
+      }
+      .coin-item.correct {
+        color: #2e9a4a;
+        border-color: #66bd7a;
+        background: #e6f7e6;
+      }
+      .coin-item.wrong {
+        color: #c86666;
+        border-color: #dc8585;
+        background: #fce8e8;
+      }
+      .coin-operator {
+        color: #40327d;
+        font-size: clamp(20px, 3vh, 34px);
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      /* ---- Coin stack (side view) ---- */
+      .coin-stack-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 60px;
+      }
+      .coin-stack-container {
+        position: relative;
+        width: 60px;
+        height: 70px;
+        overflow: visible;
+      }
+      .coin-stack-container .coin-standalone {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 10px;
+        border-radius: 3px;
+        background: linear-gradient(to bottom, #f7d94e, #d4a017 40%, #b8860b);
+        border: 1px solid #a67c0e;
+        box-shadow:
+          inset 0 2px 4px rgba(255, 255, 255, 0.6),
+          inset 0 -2px 4px rgba(0, 0, 0, 0.25),
+          0 2px 4px rgba(0, 0, 0, 0.15);
+        will-change: top, opacity, transform;
+        pointer-events: none;
+        transition: none;
+      }
+      .coin-stack-container .coin-standalone::after {
+        content: "";
+        position: absolute;
+        top: 1px;
+        left: 15%;
+        width: 70%;
+        height: 30%;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      /* dropping animation */
+      .coin-stack-container .coin-standalone.dropping {
+        animation: coinDropBounce 0.55s cubic-bezier(0.34, 1.4, 0.64, 1)
+          forwards;
+      }
+      @keyframes coinDropBounce {
+        0% {
+          top: -40px;
+          opacity: 0;
+          transform: translateX(-50%) scale(0.6) rotate(-8deg);
+        }
+        40% {
+          opacity: 1;
+          transform: translateX(-50%) scale(1.1) rotate(2deg);
+        }
+        65% {
+          transform: translateX(-50%) scale(0.95) rotate(-1deg);
+        }
+        85% {
+          transform: translateX(-50%) scale(1.02) rotate(0.5deg);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(-50%) scale(1) rotate(0deg);
+          top: var(--final-top, 0px);
+        }
+      }
+
+      .coin-sparkle {
+        position: absolute;
+        pointer-events: none;
+        font-size: 14px;
+        animation: sparkleFade 0.5s ease-out forwards;
+        z-index: 2;
+      }
+      @keyframes sparkleFade {
+        0% {
+          opacity: 1;
+          transform: scale(0.5) rotate(0deg);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(1.8) rotate(180deg) translateY(-20px);
+        }
+      }
+
+      .coin-total {
+        font-size: clamp(18px, 2.6vh, 30px);
+        font-weight: 900;
+        color: #40327d;
+        margin-top: 2px;
+        background: rgba(255, 215, 0, 0.2);
+        padding: 0 10px;
+        border-radius: 12px;
+        min-width: 32px;
+        text-align: center;
+        transition: all 0.2s;
+      }
+      .coin-total.pop {
+        animation: totalPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      @keyframes totalPop {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.35);
+          color: #d4a017;
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .bonus-info {
+        font-size: clamp(14px, 2vh, 20px);
+        font-weight: 800;
+        color: #40327d;
+        margin-top: 2px;
+      }
+      .bonus-info span {
+        color: #d4a017;
+        font-size: clamp(18px, 2.4vh, 26px);
+      }
+
+      /* =========================================================
+           STAR BURST
+        ========================================================= */
       .star-burst {
         position: fixed;
         top: 0;
@@ -724,8 +911,8 @@
       }
 
       /* =========================================================
-       LEVEL COMPLETE
-    ========================================================= */
+           LEVEL COMPLETE
+        ========================================================= */
       #levelComplete {
         position: fixed;
         inset: 0;
@@ -735,69 +922,53 @@
         justify-content: center;
         background: rgba(69, 48, 108, 0.25);
         backdrop-filter: blur(3px);
+        padding: 16px;
       }
       .level-complete-card {
-        width: min(90vw, 520px);
+        width: min(92vw, 520px);
         max-height: 90vh;
         overflow-y: auto;
         background: #fff4cb;
         border: 5px solid #f0a348;
         border-radius: 28px;
-        padding: 25px;
+        padding: 20px 22px 22px;
         text-align: center;
         box-shadow: 0 8px 0 #d99549;
       }
       .level-complete-card h2 {
-        margin: 0 0 10px;
+        margin: 0 0 4px;
         color: #40327d;
-        font-size: clamp(26px, 4vh, 40px);
+        font-size: clamp(22px, 3.5vh, 40px);
       }
       .level-complete-card p {
-        margin: 0 0 12px;
+        margin: 0 0 6px;
         color: #695479;
-        font-size: clamp(14px, 2vh, 20px);
+        font-size: clamp(12px, 1.6vh, 20px);
         font-weight: 700;
       }
-      .level-statistics {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-        margin-top: 12px;
-      }
-      .stat-box {
-        background: rgba(255, 255, 255, 0.7);
-        border: 2px solid #ead4a6;
-        border-radius: 14px;
-        padding: 9px 6px;
-      }
-      .stat-number {
-        display: block;
-        color: #40327d;
-        font-size: clamp(18px, 2.7vh, 28px);
-        font-weight: 900;
-      }
-      .stat-label {
-        display: block;
-        color: #765b78;
-        font-size: clamp(9px, 1.4vh, 13px);
-        font-weight: 800;
-      }
       .summary-button {
-        margin-top: 16px;
+        margin-top: 12px;
         border: none;
         border-radius: 14px;
         background: #ffb83f;
         color: #40327d;
         padding: 10px 20px;
-        font-size: clamp(13px, 1.8vh, 18px);
+        font-size: clamp(12px, 1.6vh, 18px);
         font-weight: 900;
         cursor: pointer;
         box-shadow: 0 4px 0 #dd9634;
+        touch-action: manipulation;
+        width: 100%;
+        max-width: 200px;
+      }
+      .summary-button:active {
+        transform: translateY(3px);
+        box-shadow: 0 1px 0 #dd9634;
       }
 
       /* =========================================================
-       FINAL SUMMARY
-    ========================================================= */
+           FINAL SUMMARY
+        ========================================================= */
       #finalSummary {
         position: fixed;
         inset: 0;
@@ -807,6 +978,7 @@
         justify-content: center;
         background: rgba(69, 48, 108, 0.35);
         backdrop-filter: blur(4px);
+        padding: 16px;
       }
       .final-summary-card {
         width: min(92vw, 500px);
@@ -815,25 +987,25 @@
         background: #fff4cb;
         border: 5px solid #f0a348;
         border-radius: 30px;
-        padding: clamp(20px, 4vw, 34px);
+        padding: clamp(16px, 3vw, 34px);
         text-align: center;
         box-shadow: 0 9px 0 #d99549;
       }
       .final-summary-card h2 {
-        margin: 0 0 8px;
+        margin: 0 0 6px;
         color: #40327d;
-        font-size: clamp(28px, 5vh, 46px);
+        font-size: clamp(24px, 4vh, 46px);
       }
       .final-summary-card .summary-intro {
-        margin: 0 0 18px;
+        margin: 0 0 14px;
         color: #695479;
-        font-size: clamp(13px, 2vh, 19px);
+        font-size: clamp(12px, 1.6vh, 19px);
         font-weight: 700;
       }
       .final-statistics {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 9px;
+        gap: 8px;
         max-width: 320px;
         margin: 0 auto;
       }
@@ -841,36 +1013,43 @@
         background: #ffffff;
         border: 2px solid #e5cda3;
         border-radius: 15px;
-        padding: 11px;
+        padding: 10px;
       }
       .final-stat strong {
         display: block;
         color: #40327d;
-        font-size: clamp(20px, 3vh, 31px);
+        font-size: clamp(18px, 2.6vh, 31px);
       }
       .final-stat span {
         display: block;
         margin-top: 2px;
         color: #765b78;
-        font-size: clamp(10px, 1.5vh, 14px);
+        font-size: clamp(9px, 1.2vh, 14px);
         font-weight: 800;
       }
       .restart-button {
-        margin-top: 18px;
+        margin-top: 16px;
         border: none;
         border-radius: 15px;
         background: #ffb83f;
         color: #40327d;
-        padding: 11px 25px;
-        font-size: clamp(14px, 2vh, 20px);
+        padding: 10px 22px;
+        font-size: clamp(13px, 1.6vh, 20px);
         font-weight: 900;
         cursor: pointer;
         box-shadow: 0 5px 0 #dd9634;
+        touch-action: manipulation;
+        width: 100%;
+        max-width: 200px;
+      }
+      .restart-button:active {
+        transform: translateY(3px);
+        box-shadow: 0 2px 0 #dd9634;
       }
 
       /* =========================================================
-       GAME SCREEN
-    ========================================================= */
+           GAME SCREEN
+        ========================================================= */
       #gameScreen {
         position: fixed;
         inset: 0;
@@ -891,14 +1070,14 @@
       }
       .game-header {
         position: absolute;
-        top: clamp(9px, 1.5vh, 18px);
-        left: clamp(10px, 1.5vw, 22px);
-        right: clamp(10px, 1.5vw, 22px);
+        top: clamp(6px, 1.2vh, 18px);
+        left: clamp(6px, 1vw, 22px);
+        right: clamp(6px, 1vw, 22px);
         z-index: 30;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 10px;
+        gap: 6px;
         pointer-events: none;
       }
       .game-title,
@@ -906,30 +1085,35 @@
       .game-skip {
         background: #fff4cc;
         border: 3px solid #f0a348;
-        border-radius: 18px;
-        padding: 7px 14px;
+        border-radius: 16px;
+        padding: 5px 10px;
         box-shadow: 0 4px 0 rgba(120, 80, 60, 0.15);
         font-weight: 900;
+        pointer-events: auto;
       }
       .game-title {
         color: #40327d;
-        font-size: clamp(13px, 2vh, 21px);
+        font-size: clamp(11px, 1.6vh, 21px);
+        padding: 4px 10px;
       }
       .game-center-hud {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 7px;
+        gap: 8px;
+        pointer-events: auto;
       }
       .game-stat {
         color: #40327d;
-        font-size: clamp(12px, 1.8vh, 18px);
-        min-width: 72px;
+        font-size: clamp(10px, 1.4vh, 18px);
+        min-width: 45px;
         text-align: center;
+        padding: 4px 8px;
       }
       .game-timer {
         color: #d85678;
-        font-size: clamp(17px, 2.7vh, 27px);
+        font-size: clamp(14px, 2.2vh, 27px);
+        min-width: 40px;
       }
       .game-skip {
         color: #40327d;
@@ -937,9 +1121,10 @@
         border-color: #e49a48;
         cursor: pointer;
         pointer-events: auto;
-        font-size: clamp(11px, 1.7vh, 17px);
+        font-size: clamp(9px, 1.3vh, 17px);
         box-shadow: 0 4px 0 #dd9634;
         white-space: nowrap;
+        padding: 4px 10px;
       }
       .game-skip:active {
         transform: translateY(3px);
@@ -947,20 +1132,22 @@
       }
       .game-instruction {
         position: absolute;
-        top: clamp(62px, 8vh, 78px);
+        top: clamp(52px, 7vh, 78px);
         left: 50%;
         transform: translateX(-50%);
         z-index: 30;
         background: #fff4cc;
         border: 3px solid #f0a348;
-        border-radius: 16px;
-        padding: 6px 14px;
+        border-radius: 14px;
+        padding: 4px 12px;
         color: #4b3a7f;
-        font-size: clamp(10px, 1.5vh, 15px);
+        font-size: clamp(8px, 1.2vh, 15px);
         font-weight: 800;
         white-space: nowrap;
         box-shadow: 0 3px 0 rgba(120, 80, 60, 0.12);
+        pointer-events: none;
       }
+
       .game-world {
         position: absolute;
         inset: 0;
@@ -1029,7 +1216,7 @@
       .ground-decoration {
         position: absolute;
         bottom: 39%;
-        font-size: 28px;
+        font-size: 24px;
         opacity: 0.85;
       }
       .flower1 {
@@ -1053,15 +1240,15 @@
 
       #player {
         position: fixed;
-        left: clamp(70px, 15vw, 180px);
+        left: clamp(50px, 12vw, 180px);
         bottom: 42%;
-        width: 75px;
-        height: 82px;
+        width: 65px;
+        height: 72px;
         z-index: 20;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 62px;
+        font-size: 52px;
         pointer-events: none;
         will-change: bottom, transform;
         transition:
@@ -1076,11 +1263,12 @@
         filter: drop-shadow(0 8px 3px rgba(70, 90, 70, 0.15));
       }
 
+      /* ----- dynamic obstacles ----- */
       .obstacle {
         position: absolute;
         bottom: 42%;
-        width: 52px;
-        height: 58px;
+        width: 44px;
+        height: 50px;
         border-radius: 10px 10px 4px 4px;
         box-shadow: inset 0 -7px rgba(0, 0, 0, 0.08);
       }
@@ -1100,22 +1288,22 @@
         background: #4fc3f7;
       }
       .obstacle.small {
-        width: 44px;
-        height: 42px;
+        width: 38px;
+        height: 36px;
       }
       .obstacle.tall {
-        height: 75px;
+        height: 65px;
       }
       .obstacle::before {
         content: "";
         position: absolute;
-        width: 11px;
-        height: 11px;
+        width: 9px;
+        height: 9px;
         background: rgba(255, 255, 255, 0.5);
         border-radius: 50%;
-        top: 10px;
-        left: 9px;
-        box-shadow: 18px 7px rgba(255, 255, 255, 0.5);
+        top: 8px;
+        left: 7px;
+        box-shadow: 16px 6px rgba(255, 255, 255, 0.5);
       }
       .obstacle.ice {
         background: #efc65a;
@@ -1123,7 +1311,7 @@
       }
       .obstacle.ice::before {
         background: rgba(255, 255, 255, 0.7);
-        box-shadow: 18px 7px rgba(255, 255, 255, 0.7);
+        box-shadow: 16px 6px rgba(255, 255, 255, 0.7);
       }
       .obstacle.cactus {
         background: #6db35a;
@@ -1132,30 +1320,30 @@
       .obstacle.cactus::before {
         content: "";
         position: absolute;
-        width: 14px;
-        height: 20px;
+        width: 12px;
+        height: 17px;
         background: #6db35a;
         border-radius: 50% 50% 4px 4px;
-        top: -12px;
-        left: -6px;
+        top: -10px;
+        left: -5px;
         transform: rotate(-20deg);
       }
       .obstacle.cactus::after {
         content: "";
         position: absolute;
-        width: 12px;
-        height: 18px;
+        width: 10px;
+        height: 15px;
         background: #6db35a;
         border-radius: 50% 50% 4px 4px;
-        top: -10px;
-        right: -5px;
+        top: -8px;
+        right: -4px;
         transform: rotate(20deg);
       }
       .obstacle.rock {
         background: #b0a8a0;
         border-radius: 50% 50% 40% 40%;
-        width: 44px;
-        height: 38px;
+        width: 38px;
+        height: 32px;
       }
       .obstacle.rock::before {
         display: none;
@@ -1170,7 +1358,7 @@
       }
       .game-particle {
         position: absolute;
-        font-size: 22px;
+        font-size: 18px;
         animation: particleFly 0.9s ease-out forwards;
         pointer-events: none;
       }
@@ -1187,20 +1375,21 @@
 
       #jumpButton {
         position: absolute;
-        right: 18px;
-        bottom: 18px;
+        right: 16px;
+        bottom: 16px;
         z-index: 40;
-        width: 82px;
-        height: 82px;
+        width: 78px;
+        height: 78px;
         border-radius: 50%;
         border: 4px solid #e49a48;
         background: #ffb83f;
         color: #40327d;
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 900;
         box-shadow: 0 6px 0 #dd9634;
         cursor: pointer;
         touch-action: manipulation;
+        -webkit-touch-callout: none;
       }
       #jumpButton:active {
         transform: translateY(4px);
@@ -1216,32 +1405,33 @@
         justify-content: center;
         background: rgba(69, 48, 108, 0.25);
         backdrop-filter: blur(3px);
+        padding: 16px;
       }
       .game-over-card {
         width: min(88vw, 500px);
         background: #fff4cc;
         border: 5px solid #f0a348;
         border-radius: 28px;
-        padding: 28px;
+        padding: 22px;
         text-align: center;
         box-shadow: 0 8px 0 #d99549;
       }
       .game-over-card h2 {
-        margin: 0 0 10px;
+        margin: 0 0 8px;
         color: #40327d;
-        font-size: clamp(25px, 4vh, 40px);
+        font-size: clamp(22px, 3.5vh, 40px);
       }
       .game-over-card p {
-        margin: 0 0 20px;
+        margin: 0 0 16px;
         color: #665477;
-        font-size: clamp(14px, 2vh, 20px);
+        font-size: clamp(12px, 1.6vh, 20px);
         font-weight: 700;
       }
       .game-over-stats {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
-        margin-bottom: 18px;
+        margin-bottom: 16px;
       }
       .game-over-stat {
         background: white;
@@ -1252,11 +1442,11 @@
       .game-over-stat strong {
         display: block;
         color: #40327d;
-        font-size: 24px;
+        font-size: 20px;
       }
       .game-over-stat span {
         color: #765b78;
-        font-size: 11px;
+        font-size: 10px;
         font-weight: 800;
       }
       .continue-button {
@@ -1264,11 +1454,14 @@
         border-radius: 15px;
         background: #ffb83f;
         color: #40327d;
-        padding: 11px 25px;
-        font-size: clamp(15px, 2vh, 20px);
+        padding: 10px 22px;
+        font-size: clamp(13px, 1.6vh, 20px);
         font-weight: 900;
         cursor: pointer;
         box-shadow: 0 5px 0 #dd9634;
+        touch-action: manipulation;
+        width: 100%;
+        max-width: 200px;
       }
       .continue-button:active {
         transform: translateY(3px);
@@ -1276,193 +1469,483 @@
       }
 
       /* =========================================================
-       RESPONSIVE
-    ========================================================= */
-      @media (max-width: 900px) {
-        .main-content {
-          grid-template-columns: minmax(0, 1.35fr) minmax(270px, 0.9fr);
+           BONUS BANNER INSIDE GAME
+        ========================================================= */
+      .bonus-banner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 215, 0, 0.9);
+        border: 4px solid #f0a348;
+        border-radius: 40px;
+        padding: 12px 30px;
+        font-size: clamp(20px, 4vh, 36px);
+        font-weight: 900;
+        color: #40327d;
+        box-shadow: 0 8px 0 #c9862e;
+        z-index: 60;
+        pointer-events: none;
+        animation:
+          bonusBannerIn 0.6s ease-out,
+          bonusBannerOut 0.6s ease-in 2s forwards;
+        white-space: nowrap;
+      }
+      @keyframes bonusBannerIn {
+        0% {
+          transform: translate(-50%, -50%) scale(0.3) rotate(-5deg);
+          opacity: 0;
+        }
+        60% {
+          transform: translate(-50%, -50%) scale(1.1) rotate(1deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1) rotate(0deg);
+          opacity: 1;
         }
       }
-      @media (max-width: 700px) {
-        #learningScreen {
-          padding: 7px;
+      @keyframes bonusBannerOut {
+        to {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.8) translateY(-30px);
+        }
+      }
+
+      /* =========================================================
+           MOBILE RESPONSIVE
+        ========================================================= */
+      @media (max-width: 600px) {
+        .year1-badge {
+          display: none !important;
         }
         .main-content {
-          grid-template-columns: minmax(0, 1.2fr) minmax(200px, 0.9fr);
-          gap: 7px;
+          grid-template-columns: 1fr;
+          grid-template-rows: minmax(0, 1.1fr) minmax(0, 0.9fr);
+          gap: 8px;
         }
-        .chart-card,
+        .chart-card {
+          padding: 8px 10px 6px;
+        }
         .question-panel {
-          border-width: 3px;
-          border-radius: 18px;
+          padding: 8px 10px 10px;
         }
         .chart-question {
-          margin-bottom: 17px;
+          font-size: clamp(14px, 2.2vh, 19px);
+          margin-bottom: 8px;
+        }
+        .bar {
+          width: clamp(30px, 5vw, 44px);
+          border-width: 2px;
+        }
+        .x-label {
+          font-size: clamp(8px, 1.4vh, 12px);
+        }
+        .x-label span {
+          font-size: clamp(20px, 3.6vh, 30px);
+        }
+        .y-axis {
+          font-size: clamp(9px, 1.4vh, 13px);
+          padding-right: 3px;
+        }
+        .graph-wrapper {
+          grid-template-columns: clamp(22px, 3.2vw, 34px) minmax(0, 1fr);
+          grid-template-rows: minmax(0, 1fr) clamp(40px, 5.5vh, 60px);
+        }
+        .answer-button {
+          min-height: 52px;
+          font-size: clamp(14px, 2vh, 18px);
+          padding: 10px 8px;
+          border-radius: 16px;
+          border-width: 3px;
+        }
+        .answers {
+          gap: 8px;
         }
         .question-box {
-          border-radius: 15px;
-          padding: 9px;
+          padding: 10px 8px;
+          border-radius: 16px;
+          margin-bottom: 6px;
+        }
+        .question-panel h2 {
+          font-size: clamp(17px, 2.6vh, 23px);
+        }
+        .level {
+          font-size: clamp(12px, 1.6vh, 16px);
+        }
+        .look-hint {
+          font-size: clamp(11px, 1.5vh, 15px);
+          margin-bottom: 6px;
+        }
+        #feedback {
+          font-size: clamp(12px, 1.6vh, 16px);
+          min-height: 24px;
+        }
+        .battery-cell {
+          width: clamp(14px, 2.2vw, 20px);
+          height: clamp(18px, 2.6vh, 26px);
+          border-width: 1.5px;
+          border-radius: 3px 3px 5px 5px;
+        }
+        .battery-cell::after {
+          width: clamp(4px, 0.6vw, 6px);
+          height: 3px;
+          top: -3px;
+          border-width: 1.5px;
+        }
+        .battery-row {
+          gap: 3px;
+        }
+        .battery-progress {
+          padding: 3px 0 6px 0;
+        }
+        .voice-toggle-icon {
+          font-size: clamp(20px, 2.8vh, 26px);
+          top: 6px;
+          right: 8px;
+          padding: 2px 4px;
+        }
+        #jumpButton {
+          width: 82px;
+          height: 82px;
+          font-size: 15px;
+          right: 14px;
+          bottom: 14px;
+        }
+        #player {
+          width: 56px;
+          height: 62px;
+          font-size: 44px;
+          left: clamp(30px, 8vw, 60px);
+        }
+        .game-title {
+          font-size: clamp(10px, 1.4vh, 15px);
+          padding: 3px 8px;
+        }
+        .game-stat {
+          font-size: clamp(9px, 1.2vh, 14px);
+          min-width: 38px;
+          padding: 3px 6px;
+        }
+        .game-timer {
+          font-size: clamp(13px, 2vh, 20px);
+          min-width: 32px;
+        }
+        .game-skip {
+          font-size: clamp(8px, 1.1vh, 13px);
+          padding: 3px 8px;
+        }
+        .game-instruction {
+          font-size: clamp(8px, 1.1vh, 12px);
+          top: clamp(44px, 6vh, 58px);
+          padding: 3px 10px;
+        }
+        .obstacle {
+          width: 36px;
+          height: 42px;
+        }
+        .obstacle.small {
+          width: 32px;
+          height: 30px;
+        }
+        .obstacle.tall {
+          height: 54px;
+        }
+        .obstacle.rock {
+          width: 32px;
+          height: 28px;
+        }
+        .obstacle::before {
+          width: 7px;
+          height: 7px;
+          top: 6px;
+          left: 6px;
+          box-shadow: 13px 5px rgba(255, 255, 255, 0.5);
+        }
+        .obstacle.cactus::before {
+          width: 10px;
+          height: 14px;
+          top: -8px;
+          left: -4px;
+        }
+        .obstacle.cactus::after {
+          width: 8px;
+          height: 12px;
+          top: -6px;
+          right: -3px;
+        }
+        .ground-decoration {
+          font-size: 18px;
+        }
+        .intro-card {
+          padding: 18px 16px;
+          border-radius: 30px;
+          border-width: 4px;
+        }
+        .intro-card .intro-image {
+          max-height: 120px;
+        }
+        .start-button {
+          padding: 12px 24px;
+          font-size: clamp(18px, 2.8vh, 26px);
+          max-width: 280px;
+        }
+        .level-complete-card,
+        .final-summary-card,
+        .game-over-card {
+          padding: 18px 16px;
+          border-width: 4px;
+        }
+        .coin-item {
+          padding: 2px 8px;
+          font-size: clamp(14px, 2.2vh, 20px);
+          min-width: 36px;
+        }
+        .coin-operator {
+          font-size: clamp(16px, 2.4vh, 24px);
+        }
+        .bonus-info {
+          font-size: clamp(12px, 1.6vh, 16px);
+        }
+        .coin-stack-container {
+          width: 44px;
+          height: 56px;
+        }
+        .coin-stack-container .coin-standalone {
+          width: 32px;
+          height: 8px;
+          border-radius: 2px;
+        }
+        .coin-total {
+          font-size: clamp(16px, 2.2vh, 22px);
+        }
+        .coin-summary-row {
+          gap: 4px;
+        }
+      }
+      @media (max-width: 400px) {
+        .main-content {
+          gap: 5px;
+        }
+        .chart-card {
+          padding: 5px 6px 4px;
+        }
+        .question-panel {
+          padding: 5px 6px 6px;
+        }
+        .answer-button {
+          min-height: 44px;
+          font-size: clamp(12px, 1.8vh, 15px);
+          padding: 6px 4px;
+          border-width: 2px;
         }
         .answers {
           gap: 5px;
         }
-        .answer-button {
-          min-height: 40px;
-          padding: 5px 4px;
-          font-size: 10px;
-        }
-        .bar {
-          width: 27px;
-        }
-        .x-label {
-          font-size: 8px;
-        }
-        .x-label span {
-          font-size: 20px;
-        }
-        .game-header {
-          gap: 4px;
-        }
-        .game-title {
-          padding: 5px 7px;
-        }
-        .game-stat {
-          min-width: 55px;
-          padding: 5px 6px;
-        }
-        .game-skip {
-          padding: 5px 7px;
-          font-size: 9px;
-        }
-        .game-instruction {
-          top: 58px;
-          font-size: 9px;
-        }
-        .battery-cell {
-          width: clamp(11px, 1.8vw, 16px);
-          height: clamp(16px, 2.4vh, 22px);
-          border-width: 1.5px;
-        }
-        .battery-cell::after {
-          width: clamp(4px, 0.5vw, 6px);
-          height: 3px;
-          top: -3px;
-        }
-        .battery-row {
-          gap: clamp(1px, 0.2vw, 3px);
-        }
-        .voice-toggle-icon {
-          font-size: clamp(18px, 2.5vh, 24px);
-        }
-      }
-      @media (max-height: 650px) {
-        .header {
-          padding-top: 5px;
-          padding-bottom: 7px;
-          margin-bottom: 9px;
-        }
-        .title {
-          font-size: 29px;
-        }
-        .subtitle {
-          font-size: 11px;
-        }
-        .chart-question {
-          font-size: 18px;
-          margin-bottom: 15px;
-        }
         .question-box {
-          padding: 9px;
-          margin-bottom: 6px;
+          padding: 6px 5px;
+          margin-bottom: 4px;
         }
         .question-panel h2 {
-          font-size: 17px;
-        }
-        .look-hint {
-          margin-bottom: 6px;
-        }
-        .answer-button {
-          min-height: 37px;
-        }
-        #feedback {
-          min-height: 20px;
-          margin-top: 4px;
-        }
-        #jumpButton {
-          width: 65px;
-          height: 65px;
-          font-size: 12px;
-        }
-        .battery-progress {
-          padding: 4px 0 10px 0;
-        }
-        .battery-cell {
-          width: clamp(12px, 1.8vw, 18px);
-          height: clamp(16px, 2.4vh, 24px);
-        }
-        .battery-cell::after {
-          display: none;
-        }
-        .voice-toggle-icon {
-          font-size: clamp(18px, 2.2vh, 22px);
-        }
-      }
-      @media (max-height: 500px) {
-        .ice-creams {
-          display: none;
-        }
-        .header {
-          padding: 5px;
-        }
-        .title {
-          font-size: 25px;
-        }
-        .subtitle {
-          display: none;
-        }
-        .main-content {
-          gap: 5px;
-        }
-        .chart-card,
-        .question-panel {
-          height: auto;
-        }
-        .chart-question {
-          display: none;
-        }
-        .question-panel h2 {
-          font-size: 14px;
+          font-size: clamp(14px, 2.2vh, 18px);
         }
         .level {
-          margin-bottom: 3px;
+          font-size: 10px;
         }
         .look-hint {
-          display: none;
-        }
-        .answer-button {
-          min-height: 32px;
           font-size: 9px;
+          margin-bottom: 4px;
         }
-        .game-instruction {
-          display: none;
+        #feedback {
+          font-size: 10px;
+          min-height: 18px;
+          margin-top: 3px;
+        }
+        .bar {
+          width: clamp(20px, 4vw, 30px);
+          border-width: 2px;
+          border-radius: 8px 8px 2px 2px;
+        }
+        .x-label {
+          font-size: 7px;
+        }
+        .x-label span {
+          font-size: 16px;
+        }
+        .y-axis {
+          font-size: 7px;
+          padding-right: 2px;
+        }
+        .graph-wrapper {
+          grid-template-columns: clamp(16px, 2.8vw, 24px) minmax(0, 1fr);
+          grid-template-rows: minmax(0, 1fr) clamp(30px, 4.5vh, 44px);
+        }
+        .chart-question {
+          font-size: 12px;
+          margin-bottom: 5px;
         }
         .battery-cell {
-          width: clamp(10px, 1.5vw, 14px);
-          height: clamp(14px, 2vh, 18px);
+          width: 10px;
+          height: 14px;
           border-width: 1px;
-          border-radius: 2px 2px 4px 4px;
         }
         .battery-cell::after {
           display: none;
         }
         .battery-row {
-          gap: 1px;
+          gap: 2px;
         }
         .battery-progress {
-          padding: 2px 0 6px 0;
+          padding: 2px 0 4px 0;
         }
         .voice-toggle-icon {
-          font-size: clamp(16px, 2vh, 20px);
+          font-size: 16px;
+          top: 4px;
+          right: 4px;
+        }
+        #jumpButton {
+          width: 64px;
+          height: 64px;
+          font-size: 11px;
+          right: 10px;
+          bottom: 10px;
+          border-width: 3px;
+        }
+        #player {
+          width: 44px;
+          height: 50px;
+          font-size: 34px;
+          left: clamp(20px, 6vw, 40px);
+        }
+        .game-title {
+          font-size: 8px;
+          padding: 2px 6px;
+        }
+        .game-stat {
+          font-size: 7px;
+          min-width: 30px;
+          padding: 2px 4px;
+        }
+        .game-timer {
+          font-size: 10px;
+          min-width: 24px;
+        }
+        .game-skip {
+          font-size: 7px;
+          padding: 2px 6px;
+        }
+        .game-instruction {
+          display: none;
+        }
+        .obstacle {
+          width: 28px;
+          height: 34px;
+        }
+        .obstacle.small {
+          width: 24px;
+          height: 24px;
+        }
+        .obstacle.tall {
+          height: 44px;
+        }
+        .obstacle.rock {
+          width: 26px;
+          height: 22px;
+        }
+        .obstacle::before {
+          display: none;
+        }
+        .obstacle.cactus::before,
+        .obstacle.cactus::after {
+          display: none;
+        }
+        .ground-decoration {
+          font-size: 14px;
+        }
+        .intro-card .intro-image {
+          max-height: 80px;
+        }
+        .intro-card h1 {
+          font-size: 22px;
+        }
+        .intro-card .intro-sub {
+          font-size: 12px;
+        }
+        .start-button {
+          padding: 10px 16px;
+          font-size: 16px;
+          max-width: 200px;
+        }
+        .coin-item {
+          padding: 2px 6px;
+          font-size: 12px;
+          min-width: 30px;
+        }
+        .coin-operator {
+          font-size: 14px;
+        }
+        .coin-stack-container {
+          width: 36px;
+          height: 44px;
+        }
+        .coin-stack-container .coin-standalone {
+          width: 26px;
+          height: 7px;
+          border-radius: 2px;
+        }
+        .coin-total {
+          font-size: 14px;
+          min-width: 24px;
+        }
+        .coin-summary-row {
+          gap: 3px;
+        }
+        .bonus-info {
+          font-size: 10px;
+        }
+      }
+      @media (min-width: 601px) and (max-width: 1024px) {
+        .year1-badge {
+          display: flex !important;
+          font-size: clamp(9px, 1.2vh, 13px);
+          padding: 3px 10px 3px 8px;
+        }
+        .year1-badge span {
+          font-size: clamp(11px, 1.4vh, 16px);
+        }
+        .main-content {
+          grid-template-columns: minmax(0, 1.4fr) minmax(250px, 0.9fr);
+          gap: 12px;
+        }
+        .answer-button {
+          min-height: 48px;
+          font-size: clamp(13px, 1.8vh, 17px);
+          padding: 8px 6px;
+        }
+        .bar {
+          width: clamp(30px, 4vw, 48px);
+        }
+        .chart-question {
+          font-size: clamp(17px, 2.6vh, 24px);
+        }
+        #jumpButton {
+          width: 74px;
+          height: 74px;
+          font-size: 14px;
+        }
+        #player {
+          width: 62px;
+          height: 70px;
+          font-size: 48px;
+        }
+      }
+      @media (min-width: 1025px) {
+        .year1-badge {
+          display: flex !important;
+        }
+        .answer-button {
+          min-height: 56px;
+          font-size: clamp(15px, 1.8vh, 20px);
         }
       }
     </style>
@@ -1470,8 +1953,8 @@
 
   <body>
     <!-- =========================================================
-  INTRO OVERLAY
-  ========================================================= -->
+    INTRO OVERLAY
+    ========================================================= -->
     <div id="introOverlay">
       <div class="intro-card">
         <img
@@ -1487,8 +1970,8 @@
     </div>
 
     <!-- =========================================================
-  DECORATIVE SKY
-  ========================================================= -->
+    DECORATIVE SKY
+    ========================================================= -->
     <div class="sky-star star-one">✦</div>
     <div class="sky-star star-two">✦</div>
     <div class="sky-star star-three">✦</div>
@@ -1498,8 +1981,8 @@
     <div class="sky-dot dot-three"></div>
 
     <!-- =========================================================
-  LEARNING SCREEN
-  ========================================================= -->
+    LEARNING SCREEN
+    ========================================================= -->
     <div id="learningScreen">
       <div class="header">
         <div class="ice-creams"></div>
@@ -1532,7 +2015,6 @@
 
         <!-- QUESTIONS -->
         <div class="question-panel">
-          <!-- Voice toggle icon -->
           <button
             class="voice-toggle-icon"
             id="voiceToggle"
@@ -1577,14 +2059,13 @@
     </div>
 
     <!-- =========================================================
-  GAME SCREEN
-  ========================================================= -->
+    GAME SCREEN
+    ========================================================= -->
     <div id="gameScreen">
       <div class="game-header">
         <div class="game-title">🐰 Rabbit Run!</div>
         <div class="game-center-hud">
           <div class="game-stat game-timer" id="timer">30</div>
-          <div class="game-stat" id="scoreDisplay">⭐ 0</div>
           <div class="game-stat" id="livesDisplay">❤️❤️❤️</div>
         </div>
         <button class="game-skip" id="skipGameButton" type="button">
@@ -1611,21 +2092,8 @@
           <div class="ground-decoration flower5">🌼</div>
           <div class="ground-decoration flower6">🌸</div>
 
-          <div class="obstacle type-1" style="left: 700px"></div>
-          <div class="obstacle small type-2 ice" style="left: 1100px"></div>
-          <div class="obstacle tall type-3 cactus" style="left: 1500px"></div>
-          <div class="obstacle type-4" style="left: 1900px"></div>
-          <div class="obstacle small type-5 rock" style="left: 2350px"></div>
-          <div class="obstacle tall type-2" style="left: 2800px"></div>
-          <div class="obstacle type-3 cactus" style="left: 3250px"></div>
-          <div class="obstacle small type-4 ice" style="left: 3700px"></div>
-          <div class="obstacle tall type-1" style="left: 4150px"></div>
-          <div class="obstacle type-5 rock" style="left: 4600px"></div>
-          <div class="obstacle small type-3" style="left: 5050px"></div>
-          <div class="obstacle tall type-2 ice" style="left: 5500px"></div>
-          <div class="obstacle type-4" style="left: 6000px"></div>
-          <div class="obstacle small type-1" style="left: 6500px"></div>
-          <div class="obstacle tall type-5 cactus" style="left: 6900px"></div>
+          <!-- obstacles injected here -->
+          <div id="obstacleContainer"></div>
 
           <div class="ground"></div>
         </div>
@@ -1649,8 +2117,8 @@
     </div>
 
     <!-- =========================================================
-  FINAL SUMMARY
-  ========================================================= -->
+    FINAL SUMMARY
+    ========================================================= -->
     <div id="finalSummary">
       <div class="final-summary-card">
         <h2>🏆 Chart Quest Complete!</h2>
@@ -1666,9 +2134,8 @@
 
     <script>
       /* =========================================================
-       LEVEL DATA — 5 levels, 10 questions each
-       Now with a chartTitle for each level.
-    ========================================================= */
+           LEVEL DATA — 5 levels, 10 questions each
+        ========================================================= */
       const levels = [
         {
           name: "LEVEL 1 – Fruits",
@@ -2047,15 +2514,23 @@
           ],
         },
       ];
+
       /* =========================================================
-       APPLICATION STATE
-    ========================================================= */
+           APPLICATION STATE
+        ========================================================= */
       let currentLevel = 0;
       let currentQuestion = 0;
-
       let totalWrongAttempts = 0;
       let totalCorrectAnswers = 0;
       let totalQuestionsAnswered = 0;
+
+      // Coin tracking for the current level
+      let correctCoins = 0;
+      let wrongCoins = 0;
+      let bonusSeconds = 0; // net coins = bonus seconds
+
+      // Global lives (persistent across levels)
+      let globalLives = 3;
 
       const levelStats = levels.map(() => ({
         wrongAttempts: 0,
@@ -2063,8 +2538,8 @@
       }));
 
       /* =========================================================
-       DOM
-    ========================================================= */
+           DOM
+        ========================================================= */
       const learningScreen = document.getElementById("learningScreen");
       const gameScreen = document.getElementById("gameScreen");
       const levelComplete = document.getElementById("levelComplete");
@@ -2075,8 +2550,8 @@
       const chartQuestion = document.getElementById("chartQuestion");
 
       /* =========================================================
-       AUDIO — per‑question files (muted by default)
-    ========================================================= */
+           AUDIO
+        ========================================================= */
       let voiceEnabled = false;
       let currentAudio = null;
 
@@ -2127,17 +2602,21 @@
       });
 
       /* =========================================================
-       START — no intro audio, show question immediately
-    ========================================================= */
+           START
+        ========================================================= */
       startButton.addEventListener("click", function () {
         introOverlay.style.display = "none";
-        // Load the first level's first question
+        // reset coins and lives
+        correctCoins = 0;
+        wrongCoins = 0;
+        bonusSeconds = 0;
+        globalLives = 3; // start fresh
         loadLevel();
       });
 
       /* =========================================================
-       AUDIO — musical tones
-    ========================================================= */
+           AUDIO — musical tones
+        ========================================================= */
       let audioContext = null;
 
       function getAudioContext() {
@@ -2186,9 +2665,26 @@
         osc.stop(now + 0.3);
       }
 
+      function playCoinSound() {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(880, now);
+        osc.frequency.exponentialRampToValueAtTime(1200, now + 0.08);
+        gain.gain.setValueAtTime(0.0001, now);
+        gain.gain.exponentialRampToValueAtTime(0.15, now + 0.01);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.15);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.15);
+      }
+
       /* =========================================================
-       GAME MUSIC
-    ========================================================= */
+           GAME MUSIC
+        ========================================================= */
       let musicEnabled = true;
       let musicInterval = null;
       let musicStep = 0;
@@ -2232,17 +2728,15 @@
       }
 
       /* =========================================================
-       BATTERY PROGRESS
-    ========================================================= */
+           BATTERY PROGRESS
+        ========================================================= */
       function renderBattery() {
         const level = levels[currentLevel];
         const total = level.questions.length;
         const answered = currentQuestion;
         const current = currentQuestion;
-
         const row = document.getElementById("batteryRow");
         row.innerHTML = "";
-
         for (let i = 0; i < total; i++) {
           const cell = document.createElement("div");
           cell.className = "battery-cell";
@@ -2264,13 +2758,11 @@
       }
 
       /* =========================================================
-       RENDER CHART
-    ========================================================= */
+           RENDER CHART
+        ========================================================= */
       function renderChart() {
         const level = levels[currentLevel];
-        // Set the chart title
         chartQuestion.textContent = level.chartTitle;
-
         const bars = document.getElementById("bars");
         const labels = document.getElementById("xLabels");
         bars.innerHTML = "";
@@ -2282,7 +2774,6 @@
           bar.className = "bar " + item.className;
           bar.style.height = (item.value / 8) * 100 + "%";
           bar.style.animationDelay = index * 0.08 + "s";
-          // Removed the number label from the bar
           group.appendChild(bar);
           bars.appendChild(group);
           const label = document.createElement("div");
@@ -2294,23 +2785,18 @@
       }
 
       /* =========================================================
-       RENDER QUESTION
-    ========================================================= */
+           RENDER QUESTION
+        ========================================================= */
       function renderQuestion() {
         stopAudio();
-
         const level = levels[currentLevel];
         const question = level.questions[currentQuestion];
-
         document.getElementById("levelLabel").textContent = "⭐ " + level.name;
         document.getElementById("questionText").textContent = question.text;
-
         const feedback = document.getElementById("feedback");
         feedback.textContent = "";
-
         const answers = document.getElementById("answers");
         answers.innerHTML = "";
-
         question.answers.forEach((answer, index) => {
           const button = document.createElement("button");
           button.className = "answer-button";
@@ -2325,9 +2811,7 @@
           button.addEventListener("click", () => checkAnswer(answer, button));
           answers.appendChild(button);
         });
-
         renderBattery();
-
         if (voiceEnabled) {
           setTimeout(function () {
             if (
@@ -2342,22 +2826,25 @@
       }
 
       /* =========================================================
-       LOAD LEVEL
-    ========================================================= */
+           LOAD LEVEL
+        ========================================================= */
       function loadLevel() {
         currentQuestion = 0;
+        // Reset coins for the level
+        correctCoins = 0;
+        wrongCoins = 0;
+        bonusSeconds = 0;
         renderChart();
         renderQuestion();
         learningScreen.style.display = "flex";
         gameScreen.style.display = "none";
         levelComplete.style.display = "none";
-        // Ensure question display is visible
         document.getElementById("questionDisplay").style.display = "block";
       }
 
       /* =========================================================
-       STAR BURST
-    ========================================================= */
+           STAR BURST
+        ========================================================= */
       function createStarBurst() {
         const old = document.querySelector(".star-burst");
         if (old) old.remove();
@@ -2387,20 +2874,20 @@
       }
 
       /* =========================================================
-       ANSWER CHECKING
-    ========================================================= */
+           ANSWER CHECKING
+        ========================================================= */
       function checkAnswer(answer, clickedButton) {
         const question = levels[currentLevel].questions[currentQuestion];
         const feedback = document.getElementById("feedback");
-
         stopAudio();
-
         if (answer === question.correct) {
           totalCorrectAnswers++;
           totalQuestionsAnswered++;
           levelStats[currentLevel].correctAnswers++;
+          correctCoins++; // +1 coin for correct
           playCorrectSound();
           createStarBurst();
+
           feedback.textContent = "🎉 " + question.success;
           feedback.style.color = "#319447";
           speakFeedback("correct");
@@ -2416,21 +2903,18 @@
         } else {
           totalWrongAttempts++;
           levelStats[currentLevel].wrongAttempts++;
+          wrongCoins++; // +1 wrong coin (debt)
           playWrongSound();
           clickedButton.classList.add("wrong-answer");
           feedback.textContent = "🤔 Try again.";
           feedback.style.color = "#c86666";
           speakFeedback("tryagain");
-
           setTimeout(() => {
             clickedButton.classList.remove("wrong-answer");
           }, 400);
         }
       }
 
-      /* =========================================================
-       NEXT QUESTION
-    ========================================================= */
       function nextQuestion() {
         currentQuestion++;
         const level = levels[currentLevel];
@@ -2442,21 +2926,32 @@
       }
 
       /* =========================================================
-       LEVEL COMPLETE
-    ========================================================= */
+           COMPLETE LEVEL — GAMEY COIN STACK (side‑view)
+        ========================================================= */
       function completeLevel() {
         stopAudio();
-        const stats = levelStats[currentLevel];
-        document.getElementById("levelStatistics").innerHTML = `
-        <div class="stat-box">
-          <span class="stat-number">${stats.correctAnswers}</span>
-          <span class="stat-label">Correct Answers</span>
-        </div>
-        <div class="stat-box">
-          <span class="stat-number">${stats.wrongAttempts}</span>
-          <span class="stat-label">Wrong Attempts</span>
-        </div>
-      `;
+        const correct = correctCoins;
+        const wrong = wrongCoins;
+        const net = Math.max(0, correct - wrong);
+        bonusSeconds = net;
+
+        // Build the stats HTML with coin stack area
+        const statsDiv = document.getElementById("levelStatistics");
+        statsDiv.innerHTML = `
+                <div class="coin-summary-row">
+                    <div class="coin-item correct">🪙 +${correct}</div>
+                    <span class="coin-operator">−</span>
+                    <div class="coin-item wrong">🪙 ${wrong}</div>
+                    <span class="coin-operator">=</span>
+                    <div class="coin-stack-wrapper">
+                        <div class="coin-stack-container" id="coinStackContainer"></div>
+                        <div class="coin-total" id="netCoinsDisplay">0</div>
+                    </div>
+                </div>
+                <div class="bonus-info">Bonus: <span id="bonusSecondsDisplay">${net}</span> extra second${net !== 1 ? "s" : ""}!</div>
+            `;
+
+        // Update title and text
         document.getElementById("levelCompleteTitle").textContent =
           "🎉 " + levels[currentLevel].name + " Complete!";
         if (currentLevel < levels.length - 1) {
@@ -2467,11 +2962,189 @@
             "Excellent! One last Rabbit Run to finish your quest.";
         }
         levelComplete.style.display = "flex";
+
+        // --- Animate coins dropping from above (side‑view stack) ---
+        const container = document.getElementById("coinStackContainer");
+        const totalDisplay = document.getElementById("netCoinsDisplay");
+        const bonusDisplay = document.getElementById("bonusSecondsDisplay");
+
+        if (net <= 0) {
+          totalDisplay.textContent = "0";
+          bonusDisplay.textContent = "0";
+          return;
+        }
+
+        const COIN_HEIGHT = 10; // px
+        const SPACING = 2; // gap between coins
+        const CONTAINER_HEIGHT = 70;
+        const DROP_INTERVAL_MS = 130;
+
+        let dropped = 0;
+
+        function dropNextCoin() {
+          if (dropped >= net) {
+            // All coins dropped — final celebration
+            if (net > 0) {
+              playCoinSound();
+              createStarBurst();
+              // Pop the total
+              totalDisplay.classList.remove("pop");
+              void totalDisplay.offsetWidth;
+              totalDisplay.classList.add("pop");
+            }
+            return;
+          }
+
+          const idx = dropped;
+          // Calculate vertical position from bottom of stack
+          const finalTop = Math.max(
+            0,
+            CONTAINER_HEIGHT - (idx + 1) * (COIN_HEIGHT + SPACING),
+          );
+
+          const coin = document.createElement("div");
+          coin.className = "coin-standalone";
+          // We don't use text content, just styling
+          coin.style.setProperty("--final-top", finalTop + "px");
+          coin.style.top = "-40px";
+          coin.style.opacity = "0";
+          coin.style.transform = "translateX(-50%) scale(0.6) rotate(-8deg)";
+          container.appendChild(coin);
+
+          // Trigger the drop animation
+          requestAnimationFrame(() => {
+            coin.classList.add("dropping");
+            // Play sound when coin lands (after animation duration)
+            setTimeout(() => {
+              playCoinSound();
+              // small sparkle
+              const sparkle = document.createElement("div");
+              sparkle.className = "coin-sparkle";
+              sparkle.textContent = "✦";
+              sparkle.style.left = "50%";
+              sparkle.style.top = finalTop + "px";
+              sparkle.style.transform = "translateX(-50%)";
+              container.appendChild(sparkle);
+              setTimeout(() => {
+                if (sparkle.parentNode) sparkle.remove();
+              }, 500);
+            }, 450);
+          });
+
+          // Update counter
+          dropped++;
+          const currentTotal = dropped;
+          totalDisplay.textContent = currentTotal;
+          bonusDisplay.textContent = currentTotal;
+          // Pop effect on total
+          totalDisplay.classList.remove("pop");
+          void totalDisplay.offsetWidth;
+          totalDisplay.classList.add("pop");
+
+          // Schedule next coin
+          setTimeout(dropNextCoin, DROP_INTERVAL_MS);
+        }
+
+        // Start the drop sequence
+        dropNextCoin();
       }
 
       /* =========================================================
-       GAME STATE
-    ========================================================= */
+           DYNAMIC OBSTACLE SYSTEM
+        ========================================================= */
+      let obstacles = [];
+      let nextObstacleX = 0;
+      const OBSTACLE_BASE_GAP = 480;
+      const OBSTACLE_GAP_PER_SPEED = 0.65;
+      const OBSTACLE_TYPES = ["type-1", "type-2", "type-3", "type-4", "type-5"];
+      const OBSTACLE_VARIANTS = ["", "ice", "cactus", "rock"];
+      const OBSTACLE_SIZES = ["", "small", "tall"];
+
+      function getObstacleGap(speed) {
+        return OBSTACLE_BASE_GAP + speed * OBSTACLE_GAP_PER_SPEED;
+      }
+
+      function generateObstacle(x) {
+        const type =
+          OBSTACLE_TYPES[Math.floor(Math.random() * OBSTACLE_TYPES.length)];
+        const variant =
+          OBSTACLE_VARIANTS[
+            Math.floor(Math.random() * OBSTACLE_VARIANTS.length)
+          ];
+        const size =
+          OBSTACLE_SIZES[Math.floor(Math.random() * OBSTACLE_SIZES.length)];
+
+        const el = document.createElement("div");
+        el.className = "obstacle " + type;
+        if (variant) el.classList.add(variant);
+        if (size) el.classList.add(size);
+        el.style.left = x + "px";
+        el.dataset.x = x;
+        return el;
+      }
+
+      function spawnObstacles(count, startX, speed) {
+        let x = startX || 600;
+        const gap = getObstacleGap(speed || 220);
+        for (let i = 0; i < count; i++) {
+          const el = generateObstacle(x);
+          document.getElementById("obstacleContainer").appendChild(el);
+          obstacles.push({ el, x });
+          x += gap + 20 + Math.random() * 60;
+          nextObstacleX = x;
+        }
+      }
+
+      function replenishObstacles(speed) {
+        const container = document.getElementById("obstacleContainer");
+        let maxX = 0;
+        obstacles.forEach((o) => {
+          if (o.x > maxX) maxX = o.x;
+        });
+        if (maxX < 200) maxX = 200;
+
+        const gap = getObstacleGap(speed);
+        const viewportWidth = window.innerWidth || 600;
+        const horizon = worldX + viewportWidth + 400;
+
+        let lastX = maxX;
+        let spawned = 0;
+        while (lastX < horizon + 800 && spawned < 20) {
+          const newX = lastX + gap + 20 + Math.random() * 60;
+          const el = generateObstacle(newX);
+          container.appendChild(el);
+          obstacles.push({ el, x: newX });
+          lastX = newX;
+          spawned++;
+          nextObstacleX = lastX;
+        }
+      }
+
+      function removePassedObstacles() {
+        const container = document.getElementById("obstacleContainer");
+        const toRemove = [];
+        obstacles.forEach((o) => {
+          if (o.x < worldX - 200) {
+            toRemove.push(o);
+          }
+        });
+        toRemove.forEach((o) => {
+          if (o.el.parentNode) o.el.parentNode.removeChild(o.el);
+          const idx = obstacles.indexOf(o);
+          if (idx !== -1) obstacles.splice(idx, 1);
+        });
+      }
+
+      function clearObstacles() {
+        const container = document.getElementById("obstacleContainer");
+        container.innerHTML = "";
+        obstacles = [];
+        nextObstacleX = 600;
+      }
+
+      /* =========================================================
+           GAME STATE — lives are persistent
+        ========================================================= */
       let gameRunning = false;
       let gameAnimation = null;
       let gameTimer = null;
@@ -2484,21 +3157,19 @@
       let gameStartTime = 0;
       let rabbitScale = 1;
       const MIN_SCALE = 0.55;
-      let gameScore = 0;
-      let gameLives = 3;
       let lastHitTime = 0;
       const HIT_COOLDOWN = 800;
 
       const player = document.getElementById("player");
       const world = document.getElementById("world");
       const timer = document.getElementById("timer");
-      const scoreDisplay = document.getElementById("scoreDisplay");
       const livesDisplay = document.getElementById("livesDisplay");
       const gameOver = document.getElementById("gameOver");
       const continueButton = document.getElementById("continueButton");
       const skipGameButton = document.getElementById("skipGameButton");
       const jumpButton = document.getElementById("jumpButton");
       const gameParticles = document.getElementById("gameParticles");
+      const obstacleContainer = document.getElementById("obstacleContainer");
 
       function resetGameState() {
         gameRunning = false;
@@ -2515,8 +3186,6 @@
         lastTime = 0;
         gameStartTime = 0;
         rabbitScale = 1;
-        gameScore = 0;
-        gameLives = 3;
         lastHitTime = 0;
         player.style.transform = "scale(1)";
         player.style.opacity = "1";
@@ -2525,16 +3194,22 @@
         player.style.bottom = "42%";
         world.style.transform = "translateX(0px)";
         timer.textContent = "30";
-        scoreDisplay.textContent = "⭐ 0";
-        livesDisplay.textContent = "❤️❤️❤️";
+        updateLivesDisplay();
         gameOver.style.display = "none";
         gameParticles.innerHTML = "";
+        clearObstacles();
+        const oldBanner = document.querySelector(".bonus-banner");
+        if (oldBanner) oldBanner.remove();
+      }
+
+      function updateLivesDisplay() {
+        livesDisplay.textContent =
+          "❤️".repeat(Math.max(0, globalLives)) || "♡♡♡";
       }
 
       function updateGameHUD() {
         timer.textContent = timeLeft;
-        scoreDisplay.textContent = "⭐ " + gameScore;
-        livesDisplay.textContent = "❤️".repeat(Math.max(0, gameLives)) || "♡♡♡";
+        updateLivesDisplay();
       }
 
       function updateRabbitScale() {
@@ -2563,12 +3238,42 @@
         }
       }
 
+      function getCurrentSpeed(elapsed) {
+        const progress = Math.min(elapsed / 30, 1);
+        return 220 + progress * progress * 380;
+      }
+
       function startGame() {
         resetGameState();
+        // If lives are 0, reset to 3 (or we could show game over)
+        if (globalLives <= 0) {
+          globalLives = 3;
+          updateLivesDisplay();
+        }
         learningScreen.style.display = "none";
         gameScreen.style.display = "block";
+
+        // Apply bonus seconds: base 30 + bonusSeconds (net coins)
+        const totalTime = 30 + bonusSeconds;
+        timeLeft = totalTime;
+        timer.textContent = timeLeft;
+
+        if (bonusSeconds > 0) {
+          const banner = document.createElement("div");
+          banner.className = "bonus-banner";
+          banner.textContent = "🎁 Bonus: +" + bonusSeconds + "s!";
+          document.getElementById("gameScreen").appendChild(banner);
+          setTimeout(() => {
+            if (banner.parentNode) banner.remove();
+          }, 2600);
+        }
+
         gameRunning = true;
         gameStartTime = performance.now();
+
+        const initialSpeed = getCurrentSpeed(0);
+        spawnObstacles(8, 600, initialSpeed);
+
         updateRabbitScale();
         updatePlayer();
         updateGameHUD();
@@ -2604,17 +3309,29 @@
         const delta = Math.min((timestamp - lastTime) / 1000, 0.05);
         lastTime = timestamp;
         const elapsed = (timestamp - gameStartTime) / 1000;
-        const progress = Math.min(elapsed / 30, 1);
-        const speed = 220 + progress * progress * 380;
+        const speed = getCurrentSpeed(elapsed);
+
         worldX += speed * delta;
         world.style.transform = "translateX(" + -worldX + "px)";
+
+        replenishObstacles(speed);
+        removePassedObstacles();
+
         updatePlayerPhysics(delta);
         checkObstacles();
-        if (Math.floor(elapsed * 4) > gameScore) {
-          gameScore = Math.floor(elapsed * 4);
-          updateGameHUD();
+
+        if (worldX > 7000) {
+          const shift = -worldX + 200;
+          obstacles.forEach((o) => {
+            o.x += shift;
+            o.el.style.left = o.x + "px";
+          });
+          worldX = 200;
+          world.style.transform = "translateX(" + -worldX + "px)";
+          nextObstacleX += shift;
+          if (nextObstacleX < 500) nextObstacleX = 500;
         }
-        if (worldX > 6900) worldX = 0;
+
         gameAnimation = requestAnimationFrame(gameLoop);
       }
 
@@ -2640,8 +3357,6 @@
           jumping = true;
           velocityY = 700;
           player.classList.add("jumping");
-          gameScore += 1;
-          updateGameHUD();
           const rect = player.getBoundingClientRect();
           createGameParticles(
             rect.left + rect.width / 2,
@@ -2675,17 +3390,16 @@
         const now = performance.now();
         if (now - lastHitTime < HIT_COOLDOWN) return;
         const rabbitRect = player.getBoundingClientRect();
-        const obstacles = document.querySelectorAll(".obstacle");
-        for (const obstacle of obstacles) {
-          const obstacleWorldX = parseFloat(obstacle.style.left);
-          const obstacleScreenX = obstacleWorldX - worldX;
+
+        for (const obs of obstacles) {
+          const obstacleScreenX = obs.x - worldX;
           const obstacleLeft = obstacleScreenX;
-          const obstacleRight = obstacleScreenX + obstacle.offsetWidth;
+          const obstacleRight = obstacleScreenX + obs.el.offsetWidth;
           const rabbitLeft = rabbitRect.left + 14;
           const rabbitRight = rabbitRect.right - 14;
           const horizontalHit =
             rabbitRight > obstacleLeft && rabbitLeft < obstacleRight;
-          const obstacleHeight = obstacle.offsetHeight;
+          const obstacleHeight = obs.el.offsetHeight;
           const verticalHit = playerY < obstacleHeight - 8;
           if (horizontalHit && verticalHit) {
             hitObstacle();
@@ -2697,8 +3411,7 @@
       function hitObstacle() {
         lastHitTime = performance.now();
         playWrongSound();
-        gameLives--;
-        gameScore = Math.max(0, gameScore - 5);
+        globalLives--;
         updateGameHUD();
         const rect = player.getBoundingClientRect();
         createGameParticles(
@@ -2713,7 +3426,8 @@
         rabbitScale = Math.max(MIN_SCALE, rabbitScale - 0.15);
         updateRabbitScale();
         updatePlayer();
-        if (gameLives <= 0) {
+        if (globalLives <= 0) {
+          // Game over, no lives left
           setTimeout(() => {
             if (gameRunning) endGame(false);
           }, 450);
@@ -2728,52 +3442,64 @@
         cancelAnimationFrame(gameAnimation);
         gameAnimation = null;
         stopGameMusic();
-        if (!skip) {
-          if (gameLives > 0) {
-            playCorrectSound();
-            createGameParticles(
-              window.innerWidth / 2,
-              window.innerHeight / 2,
-              "star",
-            );
-          }
-        }
+
         if (skip) {
+          // Skip: just go to next level without showing game over
+          bonusSeconds = 0;
           finishGameFlow();
           return;
         }
+
+        // Check if lives are zero
+        if (globalLives <= 0) {
+          // Game over due to lives lost
+          const title = document.getElementById("gameOverTitle");
+          const text = document.getElementById("gameOverText");
+          const stats = document.getElementById("gameOverStats");
+          title.textContent = "💔 Try Again!";
+          text.textContent =
+            "You lost all your lives. But you can try again with 3 lives!";
+          stats.innerHTML = `
+                    <div class="game-over-stat"><strong>${globalLives}</strong><span>Lives Left</span></div>
+                `;
+          // Show a "Restart Level" button that resets lives to 3 and reloads the level
+          continueButton.textContent = "Restart Level";
+          continueButton.onclick = function () {
+            globalLives = 3;
+            updateLivesDisplay();
+            gameOver.style.display = "none";
+            // Restart the current level
+            loadLevel();
+          };
+          gameOver.style.display = "flex";
+          return;
+        }
+
+        // Normal end (time up, lives > 0)
         const title = document.getElementById("gameOverTitle");
         const text = document.getElementById("gameOverText");
         const stats = document.getElementById("gameOverStats");
-        if (gameLives <= 0) {
-          title.textContent = "🐰 Try Again!";
-          text.textContent =
-            "The rabbit ran out of lives. Your chart work is still safe!";
-        } else {
-          title.textContent = "🎉 Rabbit Run Complete!";
-          if (currentLevel < levels.length - 1) {
-            text.textContent =
-              "Great running! You are ready for the next chart level.";
-          } else {
-            text.textContent = "Amazing! You completed all five chart levels.";
-          }
-        }
+        title.textContent = "🎉 Time's Up!";
+        text.textContent = "Great running! You kept your lives.";
         stats.innerHTML = `
-        <div class="game-over-stat">
-          <strong>${gameScore}</strong>
-          <span>Stars</span>
-        </div>
-        <div class="game-over-stat">
-          <strong>${gameLives}</strong>
-          <span>Lives Left</span>
-        </div>
-      `;
+                <div class="game-over-stat"><strong>${globalLives}</strong><span>Lives Left</span></div>
+            `;
+        continueButton.textContent =
+          currentLevel < levels.length - 1
+            ? "Continue to Level " + (currentLevel + 2)
+            : "Finish";
+        continueButton.onclick = function () {
+          finishGameFlow();
+        };
         gameOver.style.display = "flex";
+        // Play a happy sound
+        playCorrectSound();
+        createGameParticles(
+          window.innerWidth / 2,
+          window.innerHeight / 2,
+          "star",
+        );
       }
-
-      continueButton.addEventListener("click", function () {
-        finishGameFlow();
-      });
 
       function finishGameFlow() {
         resetGameState();
@@ -2799,35 +3525,27 @@
       function finishEntireTest() {
         stopGameMusic();
         resetGameState();
+        bonusSeconds = 0;
         showFinalSummary();
       }
 
       /* =========================================================
-       FINAL SUMMARY
-    ========================================================= */
+           FINAL SUMMARY
+        ========================================================= */
       function showFinalSummary() {
         document.getElementById("finalStatistics").innerHTML = `
-        <div class="final-stat">
-          <strong>${totalCorrectAnswers}</strong>
-          <span>Correct Answers</span>
-        </div>
-        <div class="final-stat">
-          <strong>${totalWrongAttempts}</strong>
-          <span>Wrong Attempts</span>
-        </div>
-        <div class="final-stat">
-          <strong>${totalQuestionsAnswered}</strong>
-          <span>Questions</span>
-        </div>
-      `;
+            <div class="final-stat"><strong>${totalCorrectAnswers}</strong><span>Correct Answers</span></div>
+            <div class="final-stat"><strong>${totalWrongAttempts}</strong><span>Wrong Attempts</span></div>
+            <div class="final-stat"><strong>${totalQuestionsAnswered}</strong><span>Questions</span></div>
+          `;
         document.getElementById("finalSummaryIntro").textContent =
           "You completed all five chart levels. Well done!";
         finalSummary.style.display = "flex";
       }
 
       /* =========================================================
-       COMPLETE APPLICATION RESET
-    ========================================================= */
+           COMPLETE RESET
+        ========================================================= */
       function resetEntireTask() {
         stopAudio();
         stopGameMusic();
@@ -2841,6 +3559,10 @@
         totalWrongAttempts = 0;
         totalCorrectAnswers = 0;
         totalQuestionsAnswered = 0;
+        correctCoins = 0;
+        wrongCoins = 0;
+        bonusSeconds = 0;
+        globalLives = 3;
         levelStats.forEach((stats) => {
           stats.wrongAttempts = 0;
           stats.correctAnswers = 0;
@@ -2862,25 +3584,17 @@
         });
 
       /* =========================================================
-       INITIALISE — voice is OFF by default
-    ========================================================= */
+           INIT
+        ========================================================= */
       voiceToggle.textContent = "🔇";
       voiceToggle.setAttribute("aria-label", "Voice off");
-      // Ensure question display is visible from start
       document.getElementById("questionDisplay").style.display = "block";
-      // Pre‑render the chart with level 1 data (but no question yet)
       renderChart();
-      // Load level 1 question (but screen is hidden until start)
-      // We'll call loadLevel when start is clicked.
-      // But to have initial chart ready, we'll set up level 0 data and show it
-      // Actually we can load the first level immediately, but keep learning screen hidden behind overlay.
-      // We'll call loadLevel on start.
-      // For now, just set the level label.
       document.getElementById("levelLabel").textContent =
         "⭐ " + levels[0].name;
 
       console.log(
-        "📊 Chart Quest ready. Voice is OFF by default. 5 levels with 10 questions each.",
+        "📊 Chart Quest ready. Coins now appear as a realistic side‑view stack!",
       );
     </script>
   </body>
