@@ -508,7 +508,7 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: flex-start; /* mobile default, overridden for tablet+desktop */
         padding-top: clamp(2px, 0.3vh, 8px);
         padding-bottom: clamp(2px, 0.3vh, 8px);
         min-height: 0;
@@ -1502,111 +1502,199 @@
       }
 
       /* =========================================================
-                   MOBILE RESPONSIVE
-                ========================================================= */
+                   MOBILE RESPONSIVE — readability-first
+                   Keeps the same overall screen height, but gives
+                   the chart and question controls more breathing room.
+                 ========================================================= */
       @media (max-width: 600px) {
         .year1-badge {
           display: none !important;
         }
+
+        /* Keep the existing overall height split. */
         .main-content {
           grid-template-columns: 1fr;
           grid-template-rows: minmax(0, 0.75fr) minmax(0, 1fr);
-          gap: 4px;
+          gap: 5px;
         }
+
+        /* ---------------- CHART ---------------- */
         .chart-card {
-          padding: 4px 6px 4px;
+          padding: 5px 7px 5px;
           max-height: 44vh;
           overflow: hidden;
         }
+
+        .chart-question {
+          font-size: clamp(14px, 1.9vh, 18px);
+          line-height: 1.1;
+          margin: 0 0 6px;
+        }
+
+        .graph-wrapper {
+          grid-template-columns: clamp(25px, 7vw, 32px) minmax(0, 1fr);
+          grid-template-rows: minmax(0, 1fr) clamp(46px, 6.2vh, 62px);
+        }
+
+        /* Bigger, darker Y-axis numbers so children can read the scale. */
+        .y-axis {
+          font-size: clamp(10px, 1.35vh, 14px);
+          font-weight: 900;
+          color: #30245f;
+          padding-right: 5px;
+        }
+
+        .plot {
+          border-left-width: 3px;
+          border-bottom-width: 3px;
+          background-image: linear-gradient(
+            to bottom,
+            rgba(70, 65, 85, 0.2) 1px,
+            transparent 1px
+          );
+        }
+
+        .bars {
+          padding: 0 clamp(5px, 2vw, 18px);
+        }
+
+        .bar-group {
+          width: 20%;
+          max-width: 70px;
+        }
+
+        .bar {
+          width: clamp(26px, 7vw, 38px);
+          border-width: 2px;
+          border-radius: 9px 9px 2px 2px;
+        }
+
+        /* Make the fruit/category icon and label read as one strong unit. */
+        .x-labels {
+          padding: 5px clamp(5px, 2vw, 18px) 0;
+          align-items: flex-start;
+        }
+
+        .x-label {
+          width: 20%;
+          max-width: 90px;
+          color: #382c70;
+          font-size: clamp(11px, 1.35vh, 15px) !important;
+          font-weight: 900;
+          line-height: 1.05;
+          text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+
+        .x-label span {
+          margin-bottom: 3px;
+          font-size: clamp(22px, 3.4vh, 32px);
+          line-height: 0.95;
+          display: block;
+        }
+
+        .x-label:nth-child(1) {
+          color: #d83f65;
+        }
+        .x-label:nth-child(2) {
+          color: #79401f;
+        }
+        .x-label:nth-child(3) {
+          color: #b37b00;
+        }
+        .x-label:nth-child(4) {
+          color: #087f86;
+        }
+
+        /* ---------------- QUESTION PANEL ---------------- */
         .question-panel {
-          padding: 4px 6px 6px;
+          padding: 6px 8px 7px;
           max-height: 56vh;
           overflow: hidden;
         }
-        .chart-question {
-          font-size: clamp(12px, 1.6vh, 16px);
-          margin-bottom: 4px;
-        }
-        .bar {
-          width: clamp(20px, 3.5vw, 32px);
-          border-width: 2px;
-        }
-        .x-label {
-          font-size: clamp(8px, 1vh, 12px) !important;
-          font-weight: 900;
-        }
-        .x-label span {
-          font-size: clamp(16px, 2.6vh, 24px);
-        }
-        .y-axis {
-          font-size: clamp(6px, 0.8vh, 10px);
-          padding-right: 2px;
-        }
-        .graph-wrapper {
-          grid-template-columns: clamp(14px, 2vw, 22px) minmax(0, 1fr);
-          grid-template-rows: minmax(0, 1fr) clamp(24px, 3.6vh, 40px);
-        }
+
         .question-content {
           padding-top: 0 !important;
           padding-bottom: 0 !important;
-          justify-content: flex-start;
+          justify-content: flex-start !important;
         }
+
         .battery-progress {
-          padding: 2px 0 2px 0;
+          padding: 2px 0 4px;
         }
-        .level {
-          font-size: clamp(9px, 1.1vh, 13px);
-          margin-bottom: 2px;
-          margin-top: 1px;
+
+        .battery-row {
+          gap: 3px;
         }
-        .question-box {
-          padding: 5px 5px;
-          border-radius: 12px;
-          margin-bottom: 3px;
-        }
-        .question-panel h2 {
-          font-size: clamp(14px, 1.9vh, 19px);
-        }
-        .look-hint {
-          font-size: clamp(9px, 1vh, 13px);
-          margin-bottom: 3px;
-        }
-        .answers {
-          gap: 4px;
-        }
-        .answer-button {
-          min-height: 44px !important;
-          font-size: clamp(13px, 1.6vh, 17px) !important;
-          padding: 6px 4px;
-          border-radius: 12px;
-          border-width: 2px;
-        }
-        #feedback {
-          font-size: clamp(9px, 1.1vh, 13px);
-          min-height: 16px;
-          margin-top: 3px;
-        }
+
         .battery-cell {
-          width: clamp(10px, 1.4vw, 16px);
-          height: clamp(12px, 1.6vh, 20px);
+          width: clamp(12px, 1.8vw, 17px);
+          height: clamp(13px, 1.8vh, 21px);
           border-width: 1.5px;
           border-radius: 2px 2px 4px 4px;
         }
+
         .battery-cell::after {
-          width: clamp(3px, 0.4vw, 5px);
+          width: clamp(4px, 0.5vw, 6px);
           height: 2px;
           top: -2px;
           border-width: 1.5px;
         }
-        .battery-row {
-          gap: 2px;
+
+        /* More visual separation between LEVEL and the question. */
+        .level {
+          font-size: clamp(12px, 1.45vh, 16px);
+          line-height: 1.1;
+          margin-top: 3px;
+          margin-bottom: 8px !important;
+          color: #674b98;
         }
+
+        .question-box {
+          padding: 8px 9px;
+          border-radius: 14px;
+          margin-bottom: 8px !important;
+          border-width: 3px;
+        }
+
+        .question-panel h2 {
+          font-size: clamp(17px, 2.25vh, 22px);
+          line-height: 1.18;
+        }
+
+        .look-hint {
+          font-size: clamp(11px, 1.3vh, 15px);
+          line-height: 1.1;
+          margin: 0 0 8px !important;
+        }
+
+        /* Wider buttons with a real gap between touch targets. */
+        .answers {
+          gap: 10px !important;
+        }
+
+        .answer-button {
+          min-height: clamp(48px, 6vh, 58px) !important;
+          padding: 7px 6px;
+          border-radius: 14px;
+          border-width: 2px;
+          font-size: clamp(14px, 1.75vh, 18px) !important;
+          line-height: 1.08;
+        }
+
+        #feedback {
+          font-size: clamp(10px, 1.2vh, 14px);
+          min-height: 17px;
+          margin-top: 4px;
+        }
+
         .voice-toggle-icon {
-          font-size: clamp(16px, 2vh, 22px);
+          font-size: clamp(17px, 2.1vh, 23px);
           top: 4px;
-          right: 4px;
-          padding: 2px 4px;
+          right: 5px;
+          padding: 3px 5px;
         }
+
+        /* Keep game UI mobile sizing from changing. */
         #jumpButton {
           width: 64px;
           height: 64px;
@@ -1615,34 +1703,41 @@
           bottom: 10px;
           border-width: 3px;
         }
+
         #player {
           width: 48px;
           height: 54px;
           font-size: 38px;
           left: clamp(24px, 6vw, 48px);
         }
+
         .game-title {
           font-size: clamp(8px, 1vh, 13px);
           padding: 2px 6px;
         }
+
         .game-stat {
           font-size: clamp(7px, 0.8vh, 12px);
           min-width: 30px;
           padding: 2px 5px;
         }
+
         .game-timer {
           font-size: clamp(10px, 1.4vh, 18px);
           min-width: 26px;
         }
+
         .game-skip {
           font-size: clamp(6px, 0.7vh, 11px);
           padding: 2px 6px;
         }
+
         .game-instruction {
           font-size: clamp(6px, 0.7vh, 10px);
           top: clamp(32px, 4vh, 48px);
           padding: 2px 8px;
         }
+
         .obstacle {
           width: 32px;
           height: 38px;
@@ -1658,6 +1753,7 @@
           width: 28px;
           height: 24px;
         }
+
         .obstacle::before {
           width: 6px;
           height: 6px;
@@ -1665,163 +1761,195 @@
           left: 5px;
           box-shadow: 11px 4px rgba(255, 255, 255, 0.5);
         }
+
         .obstacle.cactus::before {
           width: 8px;
           height: 12px;
           top: -6px;
           left: -3px;
         }
+
         .obstacle.cactus::after {
           width: 7px;
           height: 10px;
           top: -5px;
           right: -3px;
         }
+
         .ground-decoration {
           font-size: 16px;
         }
+
         .intro-card {
           padding: 14px 12px;
           border-radius: 26px;
           border-width: 4px;
         }
+
         .intro-card .intro-image {
           max-height: 100px;
         }
+
         .start-button {
           padding: 10px 20px;
           font-size: clamp(16px, 2.2vh, 22px);
           max-width: 220px;
         }
+
         .level-complete-card,
         .final-summary-card,
         .game-over-card {
           padding: 14px 12px;
           border-width: 4px;
         }
+
         .coin-item {
           padding: 2px 6px;
           font-size: clamp(10px, 1.4vh, 16px);
           min-width: 28px;
         }
+
         .coin-operator {
           font-size: clamp(12px, 1.6vh, 20px);
         }
         .bonus-info {
           font-size: clamp(9px, 1vh, 13px);
         }
+
         .coin-stack-container {
           width: 40px;
         }
+
         .coin-stack-container .coin-standalone {
           width: 28px;
           height: 8px;
           border-radius: 2px;
         }
+
         .coin-total {
           font-size: clamp(12px, 1.4vh, 18px);
           min-width: 22px;
         }
+
         .coin-summary-row {
           gap: 3px;
         }
       }
+
+      /* Extra-small phones: preserve height while avoiding cramped controls. */
       @media (max-width: 400px) {
         .main-content {
-          gap: 3px;
+          gap: 4px;
         }
+
         .chart-card {
-          padding: 3px 4px 3px;
+          padding: 4px 5px 4px;
           max-height: 40vh;
         }
+
         .question-panel {
-          padding: 3px 4px 4px;
+          padding: 4px 6px 5px;
           max-height: 60vh;
         }
-        .answer-button {
-          min-height: 40px !important;
-          font-size: clamp(12px, 1.4vh, 15px) !important;
-          padding: 4px 3px;
+
+        .chart-question {
+          font-size: 13px;
+          margin-bottom: 5px;
+        }
+
+        .graph-wrapper {
+          grid-template-columns: 25px minmax(0, 1fr);
+          grid-template-rows: minmax(0, 1fr) 47px;
+        }
+
+        .y-axis {
+          font-size: 9px;
+          padding-right: 4px;
+        }
+
+        .x-label {
+          font-size: 10px !important;
+        }
+
+        .x-label span {
+          font-size: 20px;
+        }
+
+        .bar {
+          width: clamp(23px, 7vw, 30px);
           border-width: 2px;
         }
-        .answers {
-          gap: 3px;
-        }
-        .question-box {
-          padding: 4px 4px;
-          margin-bottom: 2px;
-        }
-        .question-panel h2 {
-          font-size: clamp(12px, 1.6vh, 16px);
-        }
+
         .level {
-          font-size: 8px;
+          font-size: 11px;
+          margin-bottom: 7px !important;
         }
+
+        .question-box {
+          padding: 7px 7px;
+          margin-bottom: 7px !important;
+        }
+
+        .question-panel h2 {
+          font-size: 16px;
+          line-height: 1.16;
+        }
+
         .look-hint {
-          font-size: 8px;
-          margin-bottom: 2px;
-        }
-        #feedback {
-          font-size: 8px;
-          min-height: 14px;
-          margin-top: 2px;
-        }
-        .bar {
-          width: clamp(14px, 2.5vw, 20px);
-          border-width: 1.5px;
-          border-radius: 6px 6px 2px 2px;
-        }
-        .x-label {
-          font-size: clamp(7px, 0.9vh, 10px) !important;
-        }
-        .x-label span {
-          font-size: clamp(13px, 2.2vh, 18px);
-        }
-        .y-axis {
-          font-size: 5px;
-          padding-right: 1px;
-        }
-        .graph-wrapper {
-          grid-template-columns: clamp(10px, 1.8vw, 16px) minmax(0, 1fr);
-          grid-template-rows: minmax(0, 1fr) clamp(18px, 2.6vh, 28px);
-        }
-        .chart-question {
           font-size: 10px;
-          margin-bottom: 2px;
+          margin-bottom: 7px !important;
         }
+
+        .answers {
+          gap: 8px !important;
+        }
+
+        .answer-button {
+          min-height: 46px !important;
+          font-size: 13px !important;
+          padding: 6px 5px;
+        }
+
+        #feedback {
+          font-size: 9px;
+          min-height: 15px;
+        }
+
         .battery-cell {
-          width: 8px;
-          height: 10px;
+          width: 9px;
+          height: 11px;
           border-width: 1px;
         }
+
         .battery-cell::after {
           display: none;
         }
+
         .battery-row {
-          gap: 1.5px;
+          gap: 2px;
         }
-        .battery-progress {
-          padding: 1px 0 1px 0;
-        }
+
         .voice-toggle-icon {
-          font-size: 14px;
-          top: 2px;
-          right: 2px;
+          font-size: 15px;
+          top: 3px;
+          right: 3px;
         }
+
         #jumpButton {
           width: 54px;
           height: 54px;
           font-size: 9px;
           right: 8px;
           bottom: 8px;
-          border-width: 3px;
         }
+
         #player {
           width: 38px;
           height: 42px;
           font-size: 30px;
           left: clamp(16px, 5vw, 32px);
         }
+
         .game-title {
           font-size: 7px;
           padding: 2px 4px;
@@ -1842,6 +1970,7 @@
         .game-instruction {
           display: none;
         }
+
         .obstacle {
           width: 24px;
           height: 28px;
@@ -1867,6 +1996,7 @@
         .ground-decoration {
           font-size: 12px;
         }
+
         .intro-card .intro-image {
           max-height: 64px;
         }
@@ -1876,27 +2006,31 @@
         .intro-card .intro-sub {
           font-size: 10px;
         }
+
         .start-button {
           padding: 8px 14px;
           font-size: 14px;
           max-width: 160px;
         }
+
         .coin-item {
           padding: 1px 4px;
           font-size: 9px;
           min-width: 22px;
         }
+
         .coin-operator {
           font-size: 10px;
         }
         .coin-stack-container {
           width: 32px;
         }
+
         .coin-stack-container .coin-standalone {
           width: 22px;
           height: 6px;
-          border-radius: 2px;
         }
+
         .coin-total {
           font-size: 10px;
           min-width: 18px;
@@ -1909,9 +2043,26 @@
         }
       }
 
-      @media (min-width: 601px) and (max-width: 1024px) {
+      /* =========================================================
+                   TABLET & DESKTOP — centre the question content vertically
+                ========================================================= */
+      @media (min-width: 601px) {
+        .question-content {
+          justify-content: center !important;
+          padding-top: clamp(4px, 0.6vh, 12px);
+          padding-bottom: clamp(4px, 0.6vh, 12px);
+        }
         .year1-badge {
           display: flex !important;
+        }
+        .answer-button {
+          min-height: clamp(46px, 5.5vh, 60px);
+          font-size: clamp(13px, 1.6vh, 19px);
+        }
+      }
+
+      @media (min-width: 601px) and (max-width: 1024px) {
+        .year1-badge {
           font-size: clamp(9px, 1vh, 13px);
           padding: 3px 10px 3px 8px;
         }
@@ -1921,11 +2072,6 @@
         .main-content {
           grid-template-columns: minmax(0, 1.4fr) minmax(220px, 0.9fr);
           gap: 10px;
-        }
-        .answer-button {
-          min-height: 42px;
-          font-size: clamp(12px, 1.4vh, 16px);
-          padding: 6px 4px;
         }
         .bar {
           width: clamp(24px, 3.2vw, 42px);
@@ -1961,8 +2107,11 @@
           display: flex !important;
         }
         .answer-button {
-          min-height: 50px;
+          min-height: 54px;
           font-size: clamp(14px, 1.6vh, 20px);
+        }
+        #player {
+          bottom: calc(42% - 2px);
         }
       }
     </style>
@@ -2150,54 +2299,54 @@
               correct: "🍌 Bananas",
               success: "Correct! Bananas are the least popular.",
             },
-            //     {
-            //       text: "How many people like Apples?",
-            //       answers: ["3", "4", "5", "6"],
-            //       correct: "5",
-            //       success: "Correct! 5 people like Apples.",
-            //     },
-            //     {
-            //       text: "How many people like Bananas?",
-            //       answers: ["2", "3", "4", "5"],
-            //       correct: "3",
-            //       success: "Correct! 3 people like Bananas.",
-            //     },
-            //     {
-            //       text: "How many people like Oranges?",
-            //       answers: ["5", "6", "7", "8"],
-            //       correct: "7",
-            //       success: "Correct! 7 people like Oranges.",
-            //     },
-            //     {
-            //       text: "Which fruit has the tallest bar?",
-            //       answers: ["🍎 Apples", "🍌 Bananas", "🍊 Oranges", "🍇 Grapes"],
-            //       correct: "🍊 Oranges",
-            //       success: "Correct! Oranges have the tallest bar.",
-            //     },
-            //     {
-            //       text: "Which fruit has the shortest bar?",
-            //       answers: ["🍎 Apples", "🍌 Bananas", "🍊 Oranges", "🍇 Grapes"],
-            //       correct: "🍌 Bananas",
-            //       success: "Correct! Bananas have the shortest bar.",
-            //     },
-            //     {
-            //       text: "How many people like fruit altogether?",
-            //       answers: ["17", "18", "19", "20"],
-            //       correct: "19",
-            //       success: "Correct! 5 + 3 + 7 + 4 = 19 people in total.",
-            //     },
-            //     {
-            //       text: "Is the Apples bar taller than the Bananas bar?",
-            //       answers: ["Yes", "No"],
-            //       correct: "Yes",
-            //       success: "Correct! 5 is more than 3, so Apples is taller.",
-            //     },
-            //     {
-            //       text: "Is the Oranges bar taller than the Grapes bar?",
-            //       answers: ["Yes", "No"],
-            //       correct: "Yes",
-            //       success: "Correct! 7 is more than 4, so Oranges is taller.",
-            //     },
+            {
+              text: "How many people like Apples?",
+              answers: ["3", "4", "5", "6"],
+              correct: "5",
+              success: "Correct! 5 people like Apples.",
+            },
+            {
+              text: "How many people like Bananas?",
+              answers: ["2", "3", "4", "5"],
+              correct: "3",
+              success: "Correct! 3 people like Bananas.",
+            },
+            {
+              text: "How many people like Oranges?",
+              answers: ["5", "6", "7", "8"],
+              correct: "7",
+              success: "Correct! 7 people like Oranges.",
+            },
+            {
+              text: "Which fruit has the tallest bar?",
+              answers: ["🍎 Apples", "🍌 Bananas", "🍊 Oranges", "🍇 Grapes"],
+              correct: "🍊 Oranges",
+              success: "Correct! Oranges have the tallest bar.",
+            },
+            {
+              text: "Which fruit has the shortest bar?",
+              answers: ["🍎 Apples", "🍌 Bananas", "🍊 Oranges", "🍇 Grapes"],
+              correct: "🍌 Bananas",
+              success: "Correct! Bananas have the shortest bar.",
+            },
+            {
+              text: "How many people like fruit altogether?",
+              answers: ["17", "18", "19", "20"],
+              correct: "19",
+              success: "Correct! 5 + 3 + 7 + 4 = 19 people in total.",
+            },
+            {
+              text: "Is the Apples bar taller than the Bananas bar?",
+              answers: ["Yes", "No"],
+              correct: "Yes",
+              success: "Correct! 5 is more than 3, so Apples is taller.",
+            },
+            {
+              text: "Is the Oranges bar taller than the Grapes bar?",
+              answers: ["Yes", "No"],
+              correct: "Yes",
+              success: "Correct! 7 is more than 4, so Oranges is taller.",
+            },
           ],
         },
         {
@@ -3528,7 +3677,9 @@
       document.getElementById("levelLabel").textContent =
         "⭐ " + levels[0].name;
 
-      console.log("📊 Chart Quest ready with improved physics and coin stack.");
+      console.log(
+        "📊 Chart Quest ready with improved mobile spacing and chart label visibility.",
+      );
     </script>
   </body>
 </html>
