@@ -818,190 +818,252 @@
       }
 
       /* =============================================================
-               🎯  COMPONENT: COIN SUMMARY (level completion)
+               🎯  COMPONENT: GAME-LIKE LEVEL STATS (super lively)
                ============================================================= */
       .level-statistics {
         margin: 6px 0 4px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 6px;
+        gap: 10px;
+        width: 100%;
       }
 
-      .coin-summary-row {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: clamp(4px, 1vw, 12px);
-        flex-wrap: wrap;
-      }
-
-      .coin-item {
-        padding: 3px 10px;
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.7);
-        border: 2px solid transparent;
-        min-width: 40px;
-        font-size: clamp(14px, 2vh, 26px);
-        font-weight: 900;
-        display: inline-flex;
-        align-items: center;
-        gap: 2px;
-      }
-
-      .coin-item.correct {
-        color: #2e9a4a;
-        border-color: #66bd7a;
-        background: #e6f7e6;
-      }
-
-      .coin-item.wrong {
-        color: #c86666;
-        border-color: #dc8585;
-        background: #fce8e8;
-      }
-
-      .coin-operator {
-        color: #40327d;
-        font-size: clamp(18px, 2.6vh, 32px);
-        font-weight: 900;
-        line-height: 1;
-      }
-
-      .coin-stack-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-width: 50px;
-      }
-
-      .coin-stack-container {
-        position: relative;
-        width: 50px;
-        overflow: visible;
-      }
-
-      .coin-stack-container .coin-standalone {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 34px;
-        height: 9px;
-        border-radius: 3px;
-        background: linear-gradient(to bottom, #f7d94e, #d4a017 40%, #b8860b);
-        border: 1px solid #a67c0e;
+      .stat-reward-banner {
+        width: 100%;
+        background: linear-gradient(135deg, #fff8e0, #ffefc9);
+        border-radius: 28px;
+        padding: 18px 14px 16px;
+        border: 5px solid #f0a348;
         box-shadow:
-          inset 0 2px 4px rgba(255, 255, 255, 0.6),
-          inset 0 -2px 4px rgba(0, 0, 0, 0.25),
-          0 2px 4px rgba(0, 0, 0, 0.15);
-        will-change: top, opacity, transform;
-        pointer-events: none;
-        transition: none;
+          0 0 40px rgba(255, 215, 0, 0.2),
+          inset 0 0 60px rgba(255, 215, 0, 0.08);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
       }
 
-      .coin-stack-container .coin-standalone::after {
+      .stat-reward-banner::before {
         content: "";
         position: absolute;
-        top: 1px;
-        left: 15%;
-        width: 70%;
-        height: 30%;
-        background: linear-gradient(
-          to bottom,
-          rgba(255, 255, 255, 0.4),
-          transparent
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle at 30% 40%,
+          rgba(255, 215, 0, 0.08),
+          transparent 60%
         );
-        border-radius: 50%;
+        animation: shimmerGlow 3s ease-in-out infinite alternate;
         pointer-events: none;
       }
 
-      .coin-stack-container .coin-standalone.dropping {
-        animation: coinDropBounce 0.55s cubic-bezier(0.34, 1.4, 0.64, 1)
-          forwards;
-      }
-
-      @keyframes coinDropBounce {
+      @keyframes shimmerGlow {
         0% {
-          top: -40px;
-          opacity: 0;
-          transform: translateX(-50%) scale(0.6) rotate(-8deg);
-        }
-        40% {
-          opacity: 1;
-          transform: translateX(-50%) scale(1.1) rotate(2deg);
-        }
-        65% {
-          transform: translateX(-50%) scale(0.95) rotate(-1deg);
-        }
-        85% {
-          transform: translateX(-50%) scale(1.02) rotate(0.5deg);
+          transform: translate(0, 0) scale(1);
         }
         100% {
-          opacity: 1;
-          transform: translateX(-50%) scale(1) rotate(0deg);
-          top: var(--final-top, 0px);
+          transform: translate(10%, 10%) scale(1.2);
         }
       }
 
-      .coin-sparkle {
-        position: absolute;
-        pointer-events: none;
-        font-size: 13px;
-        animation: sparkleFade 0.5s ease-out forwards;
-        z-index: 2;
-      }
-
-      @keyframes sparkleFade {
-        0% {
-          opacity: 1;
-          transform: scale(0.5) rotate(0deg);
-        }
-        100% {
-          opacity: 0;
-          transform: scale(1.8) rotate(180deg) translateY(-20px);
-        }
-      }
-
-      .coin-total {
+      .stat-reward-banner .reward-title {
         font-size: clamp(16px, 2.2vh, 26px);
         font-weight: 900;
         color: #40327d;
-        margin-top: 4px;
-        background: rgba(255, 215, 0, 0.2);
-        padding: 0 10px;
-        border-radius: 12px;
-        min-width: 28px;
-        text-align: center;
-        transition: all 0.2s;
+        margin-bottom: 6px;
+        letter-spacing: 1px;
+        position: relative;
+        text-shadow: 0 2px 0 rgba(255, 215, 0, 0.2);
       }
 
-      .coin-total.pop {
-        animation: totalPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      .stat-lives-big {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        margin: 6px 0 4px;
+        position: relative;
       }
 
-      @keyframes totalPop {
+      .stat-lives-big .lives-number {
+        font-size: clamp(48px, 7vh, 80px);
+        font-weight: 1000;
+        color: #40327d;
+        line-height: 1;
+        animation: lifePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        text-shadow:
+          0 4px 0 rgba(240, 163, 72, 0.25),
+          0 8px 25px rgba(240, 163, 72, 0.15);
+        position: relative;
+      }
+
+      @keyframes lifePop {
         0% {
-          transform: scale(1);
+          transform: scale(0.2) rotate(-12deg);
+          opacity: 0;
         }
-        50% {
-          transform: scale(1.3);
-          color: #d4a017;
+        55% {
+          transform: scale(1.2) rotate(3deg);
+          opacity: 1;
+        }
+        80% {
+          transform: scale(0.95) rotate(-1deg);
+        }
+        100% {
+          transform: scale(1) rotate(0deg);
+        }
+      }
+
+      .stat-lives-big .lives-label {
+        font-size: clamp(16px, 2vh, 24px);
+        font-weight: 800;
+        color: #76529b;
+        background: rgba(255, 255, 255, 0.5);
+        padding: 2px 14px;
+        border-radius: 30px;
+        border: 2px solid #f0a348;
+      }
+
+      .stat-coins-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(8px, 1.2vw, 18px);
+        flex-wrap: wrap;
+        margin-top: 6px;
+        position: relative;
+      }
+
+      .stat-coin-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 18px 6px 14px;
+        border-radius: 40px;
+        font-size: clamp(14px, 1.8vh, 22px);
+        font-weight: 900;
+        border: 3px solid transparent;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+        transition: transform 0.2s;
+        animation: pillPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      }
+
+      .stat-coin-pill:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      .stat-coin-pill:nth-child(2) {
+        animation-delay: 0.12s;
+      }
+      .stat-coin-pill:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+
+      @keyframes pillPop {
+        0% {
+          transform: scale(0.5);
+          opacity: 0;
         }
         100% {
           transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .stat-coin-pill.good {
+        border-color: #66bd7a;
+        background: #e6f7e6;
+        color: #2e9a4a;
+      }
+      .stat-coin-pill.bad {
+        border-color: #dc8585;
+        background: #fce8e8;
+        color: #c86666;
+      }
+      .stat-coin-pill.net {
+        border-color: #f0a348;
+        background: #fff2cc;
+        color: #40327d;
+        font-size: clamp(16px, 2.2vh, 26px);
+        padding: 6px 22px 6px 18px;
+        box-shadow: 0 3px 20px rgba(240, 163, 72, 0.2);
+      }
+      .stat-coin-pill .coin-icon {
+        font-size: clamp(18px, 2.2vh, 26px);
+      }
+
+      .stat-celebration-badge {
+        display: inline-block;
+        background: linear-gradient(135deg, #ff6f91, #ffb83f);
+        border-radius: 40px;
+        padding: 6px 24px 6px 18px;
+        font-size: clamp(13px, 1.6vh, 20px);
+        font-weight: 900;
+        color: #fff;
+        text-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 20px rgba(255, 107, 107, 0.25);
+        animation: badgePulse 1.4s ease-in-out infinite;
+        margin-top: 4px;
+        position: relative;
+      }
+
+      @keyframes badgePulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      .stat-confetti-container {
+        position: relative;
+        width: 100%;
+        height: 28px;
+        overflow: visible;
+        pointer-events: none;
+      }
+
+      .stat-confetti-piece {
+        position: absolute;
+        font-size: 18px;
+        animation: confettiFloat 2.2s ease-out forwards;
+        opacity: 0;
+      }
+
+      @keyframes confettiFloat {
+        0% {
+          opacity: 1;
+          transform: translateY(0) rotate(0deg) scale(0.5);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-55px) rotate(420deg) scale(1.3);
         }
       }
 
       .bonus-info {
-        font-size: clamp(12px, 1.6vh, 18px);
+        font-size: clamp(14px, 1.8vh, 22px);
         font-weight: 800;
         color: #40327d;
-        margin-top: 2px;
+        margin-top: 4px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 215, 0, 0.2),
+          rgba(255, 200, 100, 0.15)
+        );
+        padding: 4px 22px;
+        border-radius: 30px;
+        display: inline-block;
+        border: 2px solid #f0a348;
+        position: relative;
       }
 
       .bonus-info span {
         color: #d4a017;
-        font-size: clamp(16px, 2.2vh, 24px);
+        font-size: clamp(18px, 2.4vh, 28px);
       }
 
       /* =============================================================
@@ -1295,86 +1357,164 @@
         );
       }
 
+      /* =============================================================
+               🎯  COMPONENT: GAME HEADER (larger, more visible)
+               ============================================================= */
       .game-header {
         position: absolute;
-        top: clamp(4px, 0.8vh, 14px);
-        left: clamp(4px, 0.6vw, 16px);
-        right: clamp(4px, 0.6vw, 16px);
+        top: 0;
+        left: 0;
+        right: 0;
         z-index: 30;
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        gap: 4px;
+        justify-content: space-between;
+        padding: clamp(10px, 1.6vh, 22px) clamp(14px, 2vw, 28px);
+        background: linear-gradient(
+          180deg,
+          rgba(97, 197, 237, 0.92),
+          transparent
+        );
         pointer-events: none;
-        min-height: 48px;
-      }
-
-      .game-title,
-      .game-stat,
-      .game-skip {
-        background: #fff4cc;
-        border: 3px solid #f0a348;
-        border-radius: 14px;
-        padding: 3px 8px;
-        box-shadow: 0 3px 0 rgba(120, 80, 60, 0.12);
-        font-weight: 900;
-        pointer-events: auto;
+        gap: 8px;
+        flex-wrap: wrap;
+        min-height: clamp(56px, 7vh, 84px);
       }
 
       .game-title {
+        background: #fff4cc;
+        border: 4px solid #f0a348;
+        border-radius: 18px;
+        padding: 6px 16px;
+        box-shadow: 0 4px 0 rgba(120, 80, 60, 0.15);
+        font-weight: 900;
+        pointer-events: auto;
         color: #40327d;
-        font-size: clamp(10px, 1.4vh, 18px);
-        padding: 4px 10px;
+        font-size: clamp(16px, 2.2vh, 28px);
+        white-space: nowrap;
+        flex-shrink: 0;
       }
 
       .game-center-hud {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 6px;
+        gap: clamp(12px, 1.8vw, 28px);
         pointer-events: auto;
+        flex-wrap: wrap;
+        flex: 1 1 auto;
+        min-width: 0;
       }
 
       .game-stat {
+        background: #fff4cc;
+        border: 4px solid #f0a348;
+        border-radius: 18px;
+        padding: 6px 16px;
+        box-shadow: 0 4px 0 rgba(120, 80, 60, 0.12);
+        font-weight: 900;
         color: #40327d;
-        font-size: clamp(10px, 1.2vh, 16px);
-        min-width: 36px;
+        font-size: clamp(16px, 2vh, 24px);
         text-align: center;
-        padding: 3px 8px;
+        white-space: nowrap;
+        pointer-events: auto;
+        min-width: 50px;
+      }
+
+      .game-stat.lives-stat {
+        background: #fff4f4;
+        border-color: #ff6b6b;
+        font-size: clamp(18px, 2.2vh, 28px);
+        padding: 6px 18px;
+        min-width: 72px;
+      }
+
+      .game-stat.lives-earned-stat {
+        background: #fff2aa;
+        border-color: #f0a348;
+        font-size: clamp(14px, 1.8vh, 22px);
+        padding: 6px 14px;
+        min-width: 60px;
+      }
+
+      .game-stat.timer-stat {
+        background: #e8f4ff;
+        border-color: #4fc3f7;
+        font-size: clamp(18px, 2.2vh, 28px);
+        padding: 6px 18px;
+        min-width: 72px;
+        color: #1a6b8a;
+        box-shadow: 0 4px 0 #4fc3f7;
+        animation: timerPulse 1s ease-in-out infinite;
+      }
+
+      @keyframes timerPulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.03);
+        }
+      }
+
+      .game-stat.timer-stat.warning {
+        background: #ffebee;
+        border-color: #ff6b6b;
+        color: #c62828;
+        box-shadow: 0 4px 0 #ff6b6b;
+        animation: timerWarning 0.6s ease-in-out infinite;
+      }
+
+      @keyframes timerWarning {
+        0%,
+        100% {
+          transform: scale(1);
+          background: #ffebee;
+        }
+        50% {
+          transform: scale(1.06);
+          background: #ffcdd2;
+        }
       }
 
       .game-skip {
-        color: #40327d;
         background: #ffb83f;
-        border-color: #e49a48;
+        border: 4px solid #e49a48;
+        border-radius: 18px;
+        padding: 6px 18px;
+        box-shadow: 0 4px 0 #dd9634;
+        font-weight: 900;
+        color: #40327d;
         cursor: pointer;
         pointer-events: auto;
-        font-size: clamp(8px, 1vh, 14px);
-        box-shadow: 0 3px 0 #dd9634;
+        font-size: clamp(12px, 1.4vh, 18px);
         white-space: nowrap;
-        padding: 3px 10px;
+        flex-shrink: 0;
+        touch-action: manipulation;
+        min-height: 42px;
       }
 
       .game-skip:active {
-        transform: translateY(3px);
+        transform: translateY(4px);
         box-shadow: 0 1px 0 #dd9634;
       }
 
       .game-instruction {
         position: absolute;
-        top: clamp(44px, 5.5vh, 70px);
+        top: clamp(60px, 7.5vh, 92px);
         left: 50%;
         transform: translateX(-50%);
         z-index: 30;
         background: #fff4cc;
         border: 3px solid #f0a348;
-        border-radius: 12px;
-        padding: 4px 12px;
+        border-radius: 16px;
+        padding: 6px 20px;
         color: #4b3a7f;
-        font-size: clamp(8px, 1vh, 14px);
+        font-size: clamp(11px, 1.4vh, 18px);
         font-weight: 800;
         white-space: nowrap;
-        box-shadow: 0 3px 0 rgba(120, 80, 60, 0.1);
+        box-shadow: 0 4px 0 rgba(120, 80, 60, 0.1);
         pointer-events: none;
       }
 
@@ -1631,26 +1771,35 @@
                ============================================================= */
       #jumpButton {
         position: absolute;
-        right: 14px;
-        bottom: 14px;
+        right: clamp(14px, 2.5vw, 32px);
+        bottom: clamp(14px, 2.5vh, 32px);
         z-index: 40;
-        width: 72px;
-        height: 72px;
+        width: clamp(72px, 10vh, 90px);
+        height: clamp(72px, 10vh, 90px);
         border-radius: 50%;
-        border: 4px solid #e49a48;
-        background: #ffb83f;
+        border: 5px solid #e49a48;
+        background: radial-gradient(circle at 30% 30%, #ffd966, #ffb83f);
         color: #40327d;
-        font-size: 13px;
+        font-size: clamp(14px, 1.8vh, 22px);
         font-weight: 900;
-        box-shadow: 0 5px 0 #dd9634;
+        box-shadow:
+          0 7px 0 #dd9634,
+          0 10px 30px rgba(240, 163, 72, 0.4);
         cursor: pointer;
         touch-action: manipulation;
         -webkit-touch-callout: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+        transition: transform 0.08s;
       }
 
       #jumpButton:active {
-        transform: translateY(4px);
-        box-shadow: 0 1px 0 #dd9634;
+        transform: translateY(6px);
+        box-shadow:
+          0 1px 0 #dd9634,
+          0 10px 30px rgba(240, 163, 72, 0.2);
       }
 
       /* =============================================================
@@ -1787,7 +1936,6 @@
                📱  RESPONSIVE: Mobile-first tweaks
                ============================================================= */
 
-      /* small screens */
       @media (max-width: 600px) {
         .year1-badge {
           display: none !important;
@@ -1953,42 +2101,81 @@
           padding: 3px 5px;
         }
 
-        #jumpButton {
-          width: 64px;
-          height: 64px;
-          font-size: 11px;
-          right: 10px;
-          bottom: 10px;
-          border-width: 3px;
-        }
-
-        #player {
-          width: 48px;
-          height: 54px;
-          font-size: 38px;
-          left: clamp(24px, 6vw, 48px);
+        /* Game header mobile - larger */
+        .game-header {
+          padding: 8px 10px !important;
+          gap: 6px !important;
+          min-height: 48px !important;
+          background: linear-gradient(
+            180deg,
+            rgba(97, 197, 237, 0.92),
+            transparent
+          ) !important;
         }
 
         .game-title {
-          font-size: clamp(8px, 1vh, 13px);
-          padding: 2px 6px;
+          font-size: 13px !important;
+          padding: 4px 10px !important;
+          border-width: 3px !important;
+          border-radius: 14px !important;
         }
 
         .game-stat {
-          font-size: clamp(7px, 0.8vh, 12px);
-          min-width: 30px;
-          padding: 2px 5px;
+          font-size: 13px !important;
+          padding: 4px 10px !important;
+          min-width: 38px !important;
+          border-width: 3px !important;
+          border-radius: 14px !important;
+        }
+
+        .game-stat.lives-stat {
+          font-size: 15px !important;
+          padding: 4px 12px !important;
+          min-width: 52px !important;
+        }
+
+        .game-stat.lives-earned-stat {
+          font-size: 11px !important;
+          padding: 4px 8px !important;
+          min-width: 44px !important;
+        }
+
+        .game-stat.timer-stat {
+          font-size: 15px !important;
+          padding: 4px 12px !important;
+          min-width: 52px !important;
         }
 
         .game-skip {
-          font-size: clamp(6px, 0.7vh, 11px);
-          padding: 2px 6px;
+          font-size: 10px !important;
+          padding: 4px 12px !important;
+          border-width: 3px !important;
+          border-radius: 14px !important;
+          box-shadow: 0 3px 0 #dd9634 !important;
+          min-height: 34px !important;
         }
 
         .game-instruction {
-          font-size: clamp(6px, 0.7vh, 10px);
-          top: clamp(32px, 4vh, 48px);
-          padding: 2px 8px;
+          font-size: 9px !important;
+          top: clamp(44px, 5vh, 60px) !important;
+          padding: 3px 12px !important;
+          border-width: 2px !important;
+        }
+
+        #jumpButton {
+          width: 64px !important;
+          height: 64px !important;
+          font-size: 12px !important;
+          right: 10px !important;
+          bottom: 10px !important;
+          border-width: 4px !important;
+        }
+
+        #player {
+          width: 44px;
+          height: 50px;
+          font-size: 36px;
+          left: clamp(20px, 6vw, 40px);
         }
 
         .obstacle {
@@ -2055,41 +2242,51 @@
           border-width: 4px;
         }
 
-        .coin-item {
-          padding: 2px 6px;
-          font-size: clamp(10px, 1.4vh, 16px);
-          min-width: 28px;
+        .stat-reward-banner {
+          padding: 12px 8px !important;
+          border-width: 4px !important;
         }
-
-        .coin-operator {
-          font-size: clamp(12px, 1.6vh, 20px);
+        .stat-lives-big .lives-number {
+          font-size: clamp(36px, 5.5vh, 52px) !important;
         }
-
+        .stat-lives-big .lives-label {
+          font-size: clamp(12px, 1.6vh, 18px) !important;
+          padding: 2px 10px !important;
+        }
+        .stat-coin-pill {
+          font-size: clamp(11px, 1.4vh, 16px) !important;
+          padding: 4px 12px 4px 10px !important;
+          border-width: 2px !important;
+        }
+        .stat-coin-pill .coin-icon {
+          font-size: clamp(13px, 1.6vh, 18px) !important;
+        }
+        .stat-coin-pill.net {
+          font-size: clamp(13px, 1.6vh, 18px) !important;
+          padding: 4px 14px 4px 12px !important;
+        }
+        .stat-celebration-badge {
+          font-size: clamp(11px, 1.4vh, 16px) !important;
+          padding: 4px 16px 4px 12px !important;
+        }
+        .stat-reward-banner .reward-title {
+          font-size: clamp(13px, 1.8vh, 20px) !important;
+        }
         .bonus-info {
-          font-size: clamp(9px, 1vh, 13px);
+          font-size: clamp(11px, 1.4vh, 16px) !important;
+          padding: 3px 14px !important;
         }
-
-        .coin-stack-container {
-          width: 40px;
+        .bonus-info span {
+          font-size: clamp(14px, 1.8vh, 20px) !important;
         }
-
-        .coin-stack-container .coin-standalone {
-          width: 28px;
-          height: 8px;
-          border-radius: 2px;
+        .stat-confetti-container {
+          height: 20px !important;
         }
-
-        .coin-total {
-          font-size: clamp(12px, 1.4vh, 18px);
-          min-width: 22px;
-        }
-
-        .coin-summary-row {
-          gap: 3px;
+        .stat-confetti-piece {
+          font-size: 14px !important;
         }
       }
 
-      /* extra-small phones */
       @media (max-width: 400px) {
         .main-content {
           gap: 4px;
@@ -2198,39 +2395,66 @@
           right: 3px;
         }
 
-        #jumpButton {
-          width: 54px;
-          height: 54px;
-          font-size: 9px;
-          right: 8px;
-          bottom: 8px;
-        }
-
-        #player {
-          width: 38px;
-          height: 42px;
-          font-size: 30px;
-          left: clamp(16px, 5vw, 32px);
+        .game-header {
+          padding: 4px 6px !important;
+          gap: 4px !important;
+          min-height: 40px !important;
         }
 
         .game-title {
-          font-size: 7px;
-          padding: 2px 4px;
+          font-size: 10px !important;
+          padding: 3px 8px !important;
+          border-width: 2px !important;
+          border-radius: 10px !important;
         }
 
         .game-stat {
-          font-size: 6px;
-          min-width: 24px;
-          padding: 1px 3px;
+          font-size: 10px !important;
+          padding: 3px 6px !important;
+          min-width: 30px !important;
+          border-width: 2px !important;
+          border-radius: 10px !important;
         }
-
+        .game-stat.lives-stat {
+          font-size: 12px !important;
+          padding: 3px 8px !important;
+          min-width: 40px !important;
+        }
+        .game-stat.lives-earned-stat {
+          font-size: 9px !important;
+          padding: 3px 6px !important;
+          min-width: 34px !important;
+        }
+        .game-stat.timer-stat {
+          font-size: 12px !important;
+          padding: 3px 8px !important;
+          min-width: 40px !important;
+        }
         .game-skip {
-          font-size: 6px;
-          padding: 1px 4px;
+          font-size: 8px !important;
+          padding: 3px 8px !important;
+          min-height: 28px !important;
+          border-width: 2px !important;
+          border-radius: 10px !important;
         }
-
         .game-instruction {
           display: none;
+        }
+
+        #jumpButton {
+          width: 54px !important;
+          height: 54px !important;
+          font-size: 10px !important;
+          right: 6px !important;
+          bottom: 6px !important;
+          border-width: 3px !important;
+        }
+
+        #player {
+          width: 36px;
+          height: 40px;
+          font-size: 28px;
+          left: clamp(14px, 4vw, 24px);
         }
 
         .obstacle {
@@ -2279,36 +2503,50 @@
           max-width: 160px;
         }
 
-        .coin-item {
-          padding: 1px 4px;
-          font-size: 9px;
-          min-width: 22px;
+        .stat-reward-banner {
+          padding: 8px 4px !important;
+          border-width: 3px !important;
+          border-radius: 18px !important;
         }
-
-        .coin-operator {
-          font-size: 10px;
+        .stat-lives-big .lives-number {
+          font-size: clamp(28px, 4.5vh, 38px) !important;
         }
-
-        .coin-stack-container {
-          width: 32px;
+        .stat-lives-big .lives-label {
+          font-size: 10px !important;
+          padding: 1px 8px !important;
         }
-
-        .coin-stack-container .coin-standalone {
-          width: 22px;
-          height: 6px;
+        .stat-coin-pill {
+          font-size: 9px !important;
+          padding: 2px 8px 2px 6px !important;
+          border-width: 2px !important;
+          border-radius: 30px !important;
         }
-
-        .coin-total {
-          font-size: 10px;
-          min-width: 18px;
+        .stat-coin-pill .coin-icon {
+          font-size: 10px !important;
         }
-
-        .coin-summary-row {
-          gap: 2px;
+        .stat-coin-pill.net {
+          font-size: 10px !important;
+          padding: 2px 10px 2px 8px !important;
         }
-
+        .stat-celebration-badge {
+          font-size: 9px !important;
+          padding: 2px 12px 2px 8px !important;
+        }
+        .stat-reward-banner .reward-title {
+          font-size: 11px !important;
+        }
         .bonus-info {
-          font-size: 8px;
+          font-size: 9px !important;
+          padding: 2px 10px !important;
+        }
+        .bonus-info span {
+          font-size: 11px !important;
+        }
+        .stat-confetti-container {
+          height: 16px !important;
+        }
+        .stat-confetti-piece {
+          font-size: 11px !important;
         }
       }
 
@@ -2461,9 +2699,9 @@
         }
 
         #jumpButton {
-          width: 68px;
-          height: 68px;
-          font-size: 12px;
+          width: 72px;
+          height: 72px;
+          font-size: 14px;
         }
 
         #player {
@@ -2473,12 +2711,27 @@
         }
 
         .game-title {
-          font-size: clamp(9px, 1.1vh, 15px);
+          font-size: clamp(14px, 1.6vh, 20px);
         }
-
         .game-stat {
-          font-size: clamp(8px, 1vh, 14px);
-          min-width: 34px;
+          font-size: clamp(14px, 1.6vh, 20px);
+          min-width: 44px;
+        }
+        .game-stat.lives-stat {
+          font-size: clamp(16px, 1.8vh, 24px);
+          min-width: 58px;
+        }
+        .game-stat.timer-stat {
+          font-size: clamp(16px, 1.8vh, 24px);
+          min-width: 58px;
+        }
+        .game-stat.lives-earned-stat {
+          font-size: clamp(12px, 1.4vh, 18px);
+          min-width: 50px;
+        }
+        .game-skip {
+          font-size: clamp(10px, 1.2vh, 16px);
+          padding: 4px 14px;
         }
       }
 
@@ -2503,6 +2756,16 @@
 
         #player {
           bottom: calc(42% - 2px);
+        }
+
+        .game-stat.lives-stat {
+          min-width: 80px;
+        }
+        .game-stat.timer-stat {
+          min-width: 80px;
+        }
+        .game-stat.lives-earned-stat {
+          min-width: 70px;
         }
       }
     </style>
@@ -2617,21 +2880,23 @@
     </div>
 
     <!-- =============================================================
-    🎯  COMPONENT: GAME SCREEN (Rabbit Run — no timer)
+    🎯  COMPONENT: GAME SCREEN (Rabbit Run with 30s timer)
     ============================================================= -->
     <div id="gameScreen">
       <div class="game-header">
         <div class="game-title">🐰 Rabbit Run!</div>
         <div class="game-center-hud">
-          <div class="game-stat" id="livesDisplay">❤️❤️❤️</div>
+          <div class="game-stat lives-stat" id="livesDisplay">❤️❤️❤️</div>
+          <div class="game-stat lives-earned-stat" id="livesEarnedDisplay">
+            ⭐ +0
+          </div>
+          <div class="game-stat timer-stat" id="timerDisplay">⏱️ 30</div>
         </div>
         <button class="game-skip" id="skipGameButton" type="button">
           Skip Game
         </button>
       </div>
-      <div class="game-instruction">
-        Press SPACEBAR to jump over the obstacles! 🐰
-      </div>
+      <div class="game-instruction">Press SPACEBAR or tap to jump! 🐰</div>
 
       <div class="game-world">
         <div class="world" id="world">
@@ -2653,13 +2918,13 @@
         <div id="player"></div>
       </div>
 
-      <button id="jumpButton" type="button" aria-label="Jump">JUMP</button>
+      <button id="jumpButton" type="button" aria-label="Jump">⬆ JUMP</button>
 
       <!-- GAME OVER -->
       <div id="gameOver">
         <div class="game-over-card">
-          <h2 id="gameOverTitle">💔 Game Over</h2>
-          <p id="gameOverText">You lost all your lives!</p>
+          <h2 id="gameOverTitle">⏰ Time's Up!</h2>
+          <p id="gameOverText">You survived the 30 seconds!</p>
           <div class="game-over-stats" id="gameOverStats"></div>
           <button class="continue-button" id="continueButton" type="button">
             Continue
@@ -3083,6 +3348,7 @@
       let wrongCoins = 0;
       let bonusSeconds = 0;
       let globalLives = 3;
+      let carriedOverLives = 1;
 
       const levelStats = levels.map(() => ({
         wrongAttempts: 0,
@@ -3100,6 +3366,7 @@
       const startButton = document.getElementById("startButton");
       const voiceToggle = document.getElementById("voiceToggle");
       const chartQuestion = document.getElementById("chartQuestion");
+      const timerDisplay = document.getElementById("timerDisplay");
 
       /* =============================================================
                🔊  AUDIO / VOICE
@@ -3188,6 +3455,7 @@
         wrongCoins = 0;
         bonusSeconds = 0;
         globalLives = 3;
+        carriedOverLives = 1;
         loadLevel();
       });
 
@@ -3248,10 +3516,288 @@
       }
 
       /* =============================================================
+               🎵  GAME WEB AUDIO (jump, hit, gameover, background music)
+               ============================================================= */
+      let bgMusicNodes = [];
+      let bgMusicInterval = null;
+      let bgMusicRunning = false;
+      let bgMusicStep = 0;
+
+      const bgMelody = [0, 2, 4, 5, 4, 2, 0, 7, 0, 2, 4, 5, 4, 2, 0, 5];
+      const bgBass = [0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 5];
+      const bgNotes = [
+        261.63, 293.66, 329.63, 349.23, 392.0, 440.0, 493.88, 523.25,
+      ];
+
+      function startBackgroundMusic() {
+        if (bgMusicRunning) return;
+        try {
+          const ctx = getAudioContext();
+          bgMusicRunning = true;
+          bgMusicStep = 0;
+
+          function playDrum(type) {
+            try {
+              const now = ctx.currentTime;
+              if (type === "kick") {
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = "sine";
+                osc.frequency.setValueAtTime(150, now);
+                osc.frequency.exponentialRampToValueAtTime(50, now + 0.08);
+                gain.gain.setValueAtTime(0.0001, now);
+                gain.gain.exponentialRampToValueAtTime(0.2, now + 0.01);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.08);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.08);
+              } else if (type === "snare") {
+                const bufferSize = ctx.sampleRate * 0.06;
+                const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+                const data = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                  data[i] =
+                    (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.3));
+                }
+                const noise = ctx.createBufferSource();
+                noise.buffer = buffer;
+                const gain = ctx.createGain();
+                gain.gain.setValueAtTime(0.0001, now);
+                gain.gain.exponentialRampToValueAtTime(0.15, now + 0.01);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.06);
+                noise.connect(gain);
+                gain.connect(ctx.destination);
+                noise.start(now);
+                noise.stop(now + 0.06);
+              } else if (type === "hihat") {
+                const bufferSize = ctx.sampleRate * 0.03;
+                const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+                const data = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                  data[i] =
+                    (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.2));
+                }
+                const noise = ctx.createBufferSource();
+                noise.buffer = buffer;
+                const gain = ctx.createGain();
+                gain.gain.setValueAtTime(0.0001, now);
+                gain.gain.exponentialRampToValueAtTime(0.08, now + 0.005);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.03);
+                noise.connect(gain);
+                gain.connect(ctx.destination);
+                noise.start(now);
+                noise.stop(now + 0.03);
+              }
+            } catch (_) {
+              /* ignore */
+            }
+          }
+
+          function playMelodyNote(step) {
+            try {
+              const idx = bgMelody[step % bgMelody.length];
+              const freq = bgNotes[idx] || 261.63;
+              const now = ctx.currentTime;
+              const osc = ctx.createOscillator();
+              const gain = ctx.createGain();
+              osc.type = "square";
+              osc.frequency.setValueAtTime(freq, now);
+              gain.gain.setValueAtTime(0.0001, now);
+              gain.gain.exponentialRampToValueAtTime(0.04, now + 0.02);
+              gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.12);
+              osc.connect(gain);
+              gain.connect(ctx.destination);
+              osc.start(now);
+              osc.stop(now + 0.12);
+            } catch (_) {
+              /* ignore */
+            }
+          }
+
+          function playBassNote(step) {
+            try {
+              const idx = bgBass[step % bgBass.length];
+              const freq = (bgNotes[idx] || 261.63) * 0.5;
+              const now = ctx.currentTime;
+              const osc = ctx.createOscillator();
+              const gain = ctx.createGain();
+              osc.type = "sawtooth";
+              osc.frequency.setValueAtTime(freq, now);
+              gain.gain.setValueAtTime(0.0001, now);
+              gain.gain.exponentialRampToValueAtTime(0.06, now + 0.02);
+              gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.15);
+              osc.connect(gain);
+              gain.connect(ctx.destination);
+              osc.start(now);
+              osc.stop(now + 0.15);
+            } catch (_) {
+              /* ignore */
+            }
+          }
+
+          bgMusicInterval = setInterval(() => {
+            if (!bgMusicRunning) {
+              clearInterval(bgMusicInterval);
+              return;
+            }
+            try {
+              const step = bgMusicStep;
+              playDrum("kick");
+              if (step % 8 === 4 || step % 8 === 12) {
+                playDrum("snare");
+              }
+              if (step % 2 === 0) {
+                playDrum("hihat");
+              }
+              playMelodyNote(step);
+              if (step % 4 === 0) {
+                playBassNote(step);
+              }
+              bgMusicStep = (bgMusicStep + 1) % 16;
+            } catch (_) {
+              /* ignore */
+            }
+          }, 140);
+
+          setTimeout(() => {
+            try {
+              const now = ctx.currentTime;
+              [523, 659, 784, 1047].forEach((freq, i) => {
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = "sine";
+                osc.frequency.setValueAtTime(freq, now + i * 0.08);
+                gain.gain.setValueAtTime(0.0001, now + i * 0.08);
+                gain.gain.exponentialRampToValueAtTime(
+                  0.1,
+                  now + i * 0.08 + 0.02,
+                );
+                gain.gain.exponentialRampToValueAtTime(
+                  0.0001,
+                  now + i * 0.08 + 0.2,
+                );
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start(now + i * 0.08);
+                osc.stop(now + i * 0.08 + 0.2);
+              });
+            } catch (_) {
+              /* ignore */
+            }
+          }, 80);
+        } catch (_) {
+          /* ignore */
+        }
+      }
+
+      function stopBackgroundMusic() {
+        bgMusicRunning = false;
+        if (bgMusicInterval) {
+          clearInterval(bgMusicInterval);
+          bgMusicInterval = null;
+        }
+        bgMusicStep = 0;
+      }
+
+      function playGameJumpSound() {
+        try {
+          const ctx = getAudioContext();
+          const now = ctx.currentTime;
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(300, now);
+          osc.frequency.exponentialRampToValueAtTime(600, now + 0.1);
+          gain.gain.setValueAtTime(0.0001, now);
+          gain.gain.exponentialRampToValueAtTime(0.12, now + 0.01);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.15);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.15);
+        } catch (_) {
+          /* ignore */
+        }
+      }
+
+      function playGameHitSound() {
+        try {
+          const ctx = getAudioContext();
+          const now = ctx.currentTime;
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = "sawtooth";
+          osc.frequency.setValueAtTime(200, now);
+          osc.frequency.exponentialRampToValueAtTime(60, now + 0.3);
+          gain.gain.setValueAtTime(0.0001, now);
+          gain.gain.exponentialRampToValueAtTime(0.18, now + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.35);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.35);
+        } catch (_) {
+          /* ignore */
+        }
+      }
+
+      function playGameOverSound() {
+        try {
+          const ctx = getAudioContext();
+          const now = ctx.currentTime;
+          const notes = [440, 349, 294, 220];
+          notes.forEach((freq, i) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(freq, now + i * 0.18);
+            gain.gain.setValueAtTime(0.0001, now + i * 0.18);
+            gain.gain.exponentialRampToValueAtTime(0.14, now + i * 0.18 + 0.02);
+            gain.gain.exponentialRampToValueAtTime(
+              0.0001,
+              now + i * 0.18 + 0.35,
+            );
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now + i * 0.18);
+            osc.stop(now + i * 0.18 + 0.35);
+          });
+        } catch (_) {
+          /* ignore */
+        }
+      }
+
+      function playTimerEndSound() {
+        try {
+          const ctx = getAudioContext();
+          const now = ctx.currentTime;
+          const notes = [523, 659, 784, 1047, 1319, 1568];
+          notes.forEach((freq, i) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(freq, now + i * 0.06);
+            gain.gain.setValueAtTime(0.0001, now + i * 0.06);
+            gain.gain.exponentialRampToValueAtTime(0.15, now + i * 0.06 + 0.02);
+            gain.gain.exponentialRampToValueAtTime(
+              0.0001,
+              now + i * 0.06 + 0.2,
+            );
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now + i * 0.06);
+            osc.stop(now + i * 0.06 + 0.2);
+          });
+        } catch (_) {
+          /* ignore */
+        }
+      }
+
+      /* =============================================================
                🎨  RENDER FUNCTIONS
                ============================================================= */
 
-      /** Render the battery progress bar (question tracker) */
       function renderBattery() {
         const level = levels[currentLevel];
         const total = level.questions.length;
@@ -3279,7 +3825,6 @@
         }
       }
 
-      /** Render the bar chart */
       function renderChart() {
         const level = levels[currentLevel];
         chartQuestion.textContent = level.chartTitle;
@@ -3305,7 +3850,6 @@
         });
       }
 
-      /** Render the current question and answers */
       function renderQuestion() {
         stopAudio();
         const level = levels[currentLevel];
@@ -3357,7 +3901,6 @@
         }
       }
 
-      /** Load a level (reset to first question) */
       function loadLevel() {
         currentQuestion = 0;
         correctCoins = 0;
@@ -3369,13 +3912,13 @@
         gameScreen.style.display = "none";
         levelComplete.style.display = "none";
         document.getElementById("questionDisplay").style.display = "block";
+        updateLivesDisplay();
       }
 
       /* =============================================================
                ✨  CELEBRATION EFFECTS
                ============================================================= */
 
-      /** Star burst for correct answers */
       function createStarBurst() {
         const old = document.querySelector(".star-burst");
         if (old) old.remove();
@@ -3404,7 +3947,6 @@
         }, 1500);
       }
 
-      /** Mega celebration for correct answers */
       function megaCelebrate() {
         const old = document.querySelector(".mega-celebration");
         if (old) old.remove();
@@ -3497,7 +4039,7 @@
       }
 
       /* =============================================================
-               🎯  LEVEL COMPLETE (with coin-stack animation)
+               🎯  LEVEL COMPLETE (with game-like stats)
                ============================================================= */
       function completeLevel() {
         stopAudio();
@@ -3506,107 +4048,73 @@
         const net = Math.max(0, correct - wrong);
         bonusSeconds = net;
 
+        const livesFromCoins = Math.ceil(net / 5);
+        const totalLivesForLevel = carriedOverLives + livesFromCoins;
+        const finalLives = Math.max(1, totalLivesForLevel);
+        globalLives = finalLives;
+        carriedOverLives = finalLives;
+
         const statsDiv = document.getElementById("levelStatistics");
+
+        let confettiHTML = "";
+        const emojis = ["🎉", "⭐", "✨", "🌟", "🎊", "💫"];
+        for (let i = 0; i < 14; i++) {
+          const left = 5 + Math.random() * 90;
+          const delay = Math.random() * 1.4;
+          const emoji = emojis[i % emojis.length];
+          confettiHTML += `<span class="stat-confetti-piece" style="left:${left}%;animation-delay:${delay}s;">${emoji}</span>`;
+        }
+
         statsDiv.innerHTML = `
-                        <div class="coin-summary-row">
-                            <div class="coin-item correct">🪙 +${correct}</div>
-                            <span class="coin-operator">−</span>
-                            <div class="coin-item wrong">🪙 ${wrong}</div>
-                            <span class="coin-operator">=</span>
-                            <div class="coin-stack-wrapper">
-                                <div class="coin-stack-container" id="coinStackContainer"></div>
-                                <div class="coin-total" id="netCoinsDisplay">0</div>
+                            <div class="stat-reward-banner">
+                                <div class="stat-confetti-container">${confettiHTML}</div>
+                                <div class="reward-title">🌟 LIVES EARNED</div>
+                                <div class="stat-lives-big">
+                                    <span class="lives-number">${finalLives}</span>
+                                    <span class="lives-label">❤️ life${finalLives > 1 ? "s" : ""}</span>
+                                </div>
+                                <div class="stat-coins-row">
+                                    <span class="stat-coin-pill good"><span class="coin-icon">🪙</span> +${correct}</span>
+                                    <span class="stat-coin-pill bad"><span class="coin-icon">💔</span> ${wrong}</span>
+                                    <span class="stat-coin-pill net"><span class="coin-icon">⭐</span> ${net}</span>
+                                </div>
+                                ${carriedOverLives > 1 ? `<div class="stat-celebration-badge">✨ carried over ${carriedOverLives} from last level</div>` : ""}
+                                <div class="bonus-info">🐰 <span>${finalLives}</span> life${finalLives > 1 ? "s" : ""} for the Rabbit Run!</div>
                             </div>
-                        </div>
-                        <div class="bonus-info">Bonus: <span id="bonusSecondsDisplay">${net}</span> extra second${net !== 1 ? "s" : ""}!</div>
-                    `;
+                        `;
 
         document.getElementById("levelCompleteTitle").textContent =
           "🎉 " + levels[currentLevel].name + " Complete!";
         if (currentLevel < levels.length - 1) {
           document.getElementById("levelCompleteText").textContent =
-            "Excellent chart work! Time for a Rabbit Run.";
+            `Amazing! You earned ${finalLives} life${finalLives > 1 ? "s" : ""} — time to run! 🐰`;
         } else {
           document.getElementById("levelCompleteText").textContent =
-            "Excellent! One last Rabbit Run to finish your quest.";
+            `Final level done! ${finalLives} life${finalLives > 1 ? "s" : ""} for the victory run! 🏆`;
         }
         levelComplete.style.display = "flex";
+        updateLivesDisplay();
 
-        const container = document.getElementById("coinStackContainer");
-        const totalDisplay = document.getElementById("netCoinsDisplay");
-        const bonusDisplay = document.getElementById("bonusSecondsDisplay");
-
-        if (net <= 0) {
-          totalDisplay.textContent = "0";
-          bonusDisplay.textContent = "0";
-          return;
-        }
-
-        const COIN_HEIGHT = 9;
-        const SPACING = 2;
-        const PADDING = 8;
-        const totalHeight = net * (COIN_HEIGHT + SPACING) + PADDING;
-        container.style.height = totalHeight + "px";
-
-        const DROP_INTERVAL_MS = 130;
-        let dropped = 0;
-
-        function dropNextCoin() {
-          if (dropped >= net) {
-            if (net > 0) {
-              playCoinSound();
-              createStarBurst();
-              totalDisplay.classList.remove("pop");
-              void totalDisplay.offsetWidth;
-              totalDisplay.classList.add("pop");
-            }
-            return;
+        setTimeout(() => {
+          const num = document.querySelector(".lives-number");
+          if (num) {
+            num.style.animation = "none";
+            void num.offsetWidth;
+            num.style.animation =
+              "lifePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both";
           }
+        }, 100);
 
-          const idx = dropped;
-          const finalTop = PADDING + idx * (COIN_HEIGHT + SPACING);
-
-          const coin = document.createElement("div");
-          coin.className = "coin-standalone";
-          coin.style.setProperty("--final-top", finalTop + "px");
-          coin.style.top = "-40px";
-          coin.style.opacity = "0";
-          coin.style.transform = "translateX(-50%) scale(0.6) rotate(-8deg)";
-          container.appendChild(coin);
-
-          requestAnimationFrame(() => {
-            coin.classList.add("dropping");
-            setTimeout(() => {
-              playCoinSound();
-              const sparkle = document.createElement("div");
-              sparkle.className = "coin-sparkle";
-              sparkle.textContent = "✦";
-              sparkle.style.left = "50%";
-              sparkle.style.top = finalTop + "px";
-              sparkle.style.transform = "translateX(-50%)";
-              container.appendChild(sparkle);
-              setTimeout(() => {
-                if (sparkle.parentNode) sparkle.remove();
-              }, 500);
-            }, 450);
-          });
-
-          dropped++;
-          const currentTotal = dropped;
-          totalDisplay.textContent = currentTotal;
-          bonusDisplay.textContent = currentTotal;
-          totalDisplay.classList.remove("pop");
-          void totalDisplay.offsetWidth;
-          totalDisplay.classList.add("pop");
-
-          setTimeout(dropNextCoin, DROP_INTERVAL_MS);
+        if (net > 0) {
+          setTimeout(() => {
+            playCoinSound();
+            createStarBurst();
+          }, 300);
         }
-
-        dropNextCoin();
       }
 
       /* =============================================================
-               🎮  RABBIT RUN GAME (no timer)
+               🎮  RABBIT RUN GAME (30 seconds)
                ============================================================= */
 
       let gameRunning = false;
@@ -3621,6 +4129,9 @@
       const MIN_SCALE = 0.55;
       let lastHitTime = 0;
       const HIT_COOLDOWN = 800;
+      let gameTimeRemaining = 30;
+      let gameTimerInterval = null;
+      let gameEnded = false;
 
       let obstacles = [];
       let nextObstacleX = 0;
@@ -3633,6 +4144,7 @@
       const player = document.getElementById("player");
       const world = document.getElementById("world");
       const livesDisplay = document.getElementById("livesDisplay");
+      const livesEarnedDisplay = document.getElementById("livesEarnedDisplay");
       const gameOver = document.getElementById("gameOver");
       const continueButton = document.getElementById("continueButton");
       const skipGameButton = document.getElementById("skipGameButton");
@@ -3720,8 +4232,24 @@
       }
 
       function updateLivesDisplay() {
-        livesDisplay.textContent =
-          "❤️".repeat(Math.max(0, globalLives)) || "♡♡♡";
+        const lives = Math.max(0, globalLives);
+        const hearts = "❤️".repeat(Math.min(lives, 6)) || "♡";
+        livesDisplay.textContent = hearts;
+        livesEarnedDisplay.textContent = "⭐ +" + Math.max(0, globalLives);
+        livesEarnedDisplay.style.background =
+          globalLives > 1 ? "#fff2aa" : "#ffe2e2";
+        livesEarnedDisplay.style.borderColor =
+          globalLives > 1 ? "#f0a348" : "#dc8585";
+      }
+
+      function updateTimerDisplay() {
+        const remaining = Math.max(0, Math.ceil(gameTimeRemaining));
+        timerDisplay.textContent = "⏱️ " + remaining;
+        if (remaining <= 5) {
+          timerDisplay.classList.add("warning");
+        } else {
+          timerDisplay.classList.remove("warning");
+        }
       }
 
       function updateRabbitScale() {
@@ -3752,8 +4280,15 @@
 
       function resetGameState() {
         gameRunning = false;
+        gameEnded = false;
         cancelAnimationFrame(gameAnimation);
         gameAnimation = null;
+        if (gameTimerInterval) {
+          clearInterval(gameTimerInterval);
+          gameTimerInterval = null;
+        }
+        gameTimeRemaining = 30;
+        updateTimerDisplay();
         playerY = 0;
         velocityY = 0;
         jumping = false;
@@ -3775,6 +4310,7 @@
         clearObstacles();
         const oldBanner = document.querySelector(".bonus-banner");
         if (oldBanner) oldBanner.remove();
+        stopBackgroundMusic();
       }
 
       function updatePlayer() {
@@ -3787,7 +4323,7 @@
       }
 
       function jump() {
-        if (!gameRunning) return;
+        if (!gameRunning || gameEnded) return;
         if (!jumping) {
           jumping = true;
           velocityY = 700;
@@ -3798,6 +4334,7 @@
             rect.top + rect.height / 2,
             "star",
           );
+          playGameJumpSound();
         }
       }
 
@@ -3816,6 +4353,7 @@
       function checkObstacles() {
         const now = performance.now();
         if (now - lastHitTime < HIT_COOLDOWN) return;
+        if (gameEnded) return;
         const rabbitRect = player.getBoundingClientRect();
 
         for (const obs of obstacles) {
@@ -3836,8 +4374,28 @@
       }
 
       function hitObstacle() {
+        if (gameEnded) return;
         lastHitTime = performance.now();
+        playGameHitSound();
         playWrongSound();
+
+        if (globalLives <= 1) {
+          globalLives = 1;
+          updateLivesDisplay();
+          const rect = player.getBoundingClientRect();
+          createGameParticles(
+            rect.left + rect.width / 2,
+            rect.top + rect.height / 2,
+            "hit",
+          );
+          playGameOverSound();
+          gameEnded = true;
+          setTimeout(() => {
+            if (gameRunning) endGame(true);
+          }, 300);
+          return;
+        }
+
         globalLives--;
         updateLivesDisplay();
         const rect = player.getBoundingClientRect();
@@ -3853,9 +4411,13 @@
         rabbitScale = Math.max(MIN_SCALE, rabbitScale - 0.15);
         updateRabbitScale();
         updatePlayer();
+
         if (globalLives <= 0) {
+          globalLives = 1;
+          updateLivesDisplay();
+          gameEnded = true;
           setTimeout(() => {
-            if (gameRunning) endGame(false);
+            if (gameRunning) endGame(true);
           }, 450);
         }
       }
@@ -3894,13 +4456,19 @@
       function startGame() {
         resetGameState();
         if (globalLives <= 0) {
-          globalLives = 3;
+          globalLives = 1;
           updateLivesDisplay();
         }
+        updateLivesDisplay();
+        gameTimeRemaining = 30;
+        updateTimerDisplay();
+        timerDisplay.classList.remove("warning");
+
         learningScreen.style.display = "none";
         gameScreen.style.display = "block";
 
         gameRunning = true;
+        gameEnded = false;
         gameStartTime = performance.now();
 
         const initialSpeed = getCurrentSpeed(0);
@@ -3919,69 +4487,116 @@
 
         lastTime = performance.now();
         gameAnimation = requestAnimationFrame(gameLoop);
+
+        // Timer interval
+        gameTimerInterval = setInterval(() => {
+          if (!gameRunning) {
+            clearInterval(gameTimerInterval);
+            return;
+          }
+          gameTimeRemaining -= 0.5;
+          updateTimerDisplay();
+          if (gameTimeRemaining <= 0 && !gameEnded) {
+            gameTimeRemaining = 0;
+            updateTimerDisplay();
+            // Time's up! End game successfully
+            gameEnded = true;
+            playTimerEndSound();
+            // Show game over as success
+            setTimeout(() => {
+              if (gameRunning) endGame(false);
+            }, 300);
+          }
+        }, 500);
+
+        // Start background music
+        startBackgroundMusic();
       }
 
       function endGame(skip) {
         if (!gameRunning) return;
         gameRunning = false;
+        gameEnded = true;
         cancelAnimationFrame(gameAnimation);
         gameAnimation = null;
+        if (gameTimerInterval) {
+          clearInterval(gameTimerInterval);
+          gameTimerInterval = null;
+        }
+        stopBackgroundMusic();
 
         if (skip) {
-          bonusSeconds = 0;
+          if (globalLives < 1) globalLives = 1;
+          carriedOverLives = globalLives;
           finishGameFlow();
           return;
         }
 
-        if (globalLives <= 0) {
+        // Check if timer ran out (success) or lost lives
+        const timerEnded = gameTimeRemaining <= 0;
+
+        if (timerEnded) {
+          // Success! Timer ran out
           const title = document.getElementById("gameOverTitle");
           const text = document.getElementById("gameOverText");
           const stats = document.getElementById("gameOverStats");
-          title.textContent = "💔 Try Again!";
-          text.textContent =
-            "You lost all your lives. But you can try again with 3 lives!";
+          title.textContent = "🎉 Time's Up!";
+          text.textContent = "You survived the 30 seconds! Great running!";
           stats.innerHTML = `
                             <div class="game-over-stat"><strong>${globalLives}</strong><span>Lives Left</span></div>
+                            <div class="game-over-stat"><strong>30</strong><span>Seconds Survived</span></div>
                         `;
-          continueButton.textContent = "Restart Level";
+          continueButton.textContent =
+            currentLevel < levels.length - 1
+              ? "Continue to Level " + (currentLevel + 2)
+              : "Finish";
           continueButton.onclick = function () {
-            globalLives = 3;
-            updateLivesDisplay();
-            gameOver.style.display = "none";
-            loadLevel();
+            // Carry over lives
+            carriedOverLives = Math.max(1, globalLives);
+            finishGameFlow();
           };
           gameOver.style.display = "flex";
+          playCorrectSound();
+          createStarBurst();
+          megaCelebrate();
           return;
         }
+
+        // Lost all lives or hit with 1 life
+        if (globalLives <= 0) {
+          globalLives = 1;
+          updateLivesDisplay();
+        }
+
+        carriedOverLives = Math.max(1, globalLives);
 
         const title = document.getElementById("gameOverTitle");
         const text = document.getElementById("gameOverText");
         const stats = document.getElementById("gameOverStats");
-        title.textContent = "🎉 Great Running!";
-        text.textContent = "You kept your lives — well done!";
+        title.textContent = "💔 Try Again!";
+        text.textContent =
+          "You lost your lives. But you still have 1 life to continue!";
         stats.innerHTML = `
-                        <div class="game-over-stat"><strong>${globalLives}</strong><span>Lives Left</span></div>
-                    `;
+                            <div class="game-over-stat"><strong>${globalLives}</strong><span>Lives Left</span></div>
+                            <div class="game-over-stat"><strong>${Math.round(30 - gameTimeRemaining)}</strong><span>Seconds Survived</span></div>
+                        `;
         continueButton.textContent =
           currentLevel < levels.length - 1
             ? "Continue to Level " + (currentLevel + 2)
             : "Finish";
         continueButton.onclick = function () {
+          carriedOverLives = Math.max(1, globalLives);
           finishGameFlow();
         };
         gameOver.style.display = "flex";
-        playCorrectSound();
-        createGameParticles(
-          window.innerWidth / 2,
-          window.innerHeight / 2,
-          "star",
-        );
+        playGameOverSound();
       }
 
       function finishGameFlow() {
         resetGameState();
         gameOver.style.display = "none";
         gameScreen.style.display = "none";
+        carriedOverLives = Math.max(1, globalLives || 1);
         if (currentLevel < levels.length - 1) {
           currentLevel++;
           learningScreen.style.display = "flex";
@@ -4036,10 +4651,10 @@
 
       function showFinalSummary() {
         document.getElementById("finalStatistics").innerHTML = `
-                        <div class="final-stat"><strong>${totalCorrectAnswers}</strong><span>Correct Answers</span></div>
-                        <div class="final-stat"><strong>${totalWrongAttempts}</strong><span>Wrong Attempts</span></div>
-                        <div class="final-stat"><strong>${totalQuestionsAnswered}</strong><span>Questions</span></div>
-                    `;
+                            <div class="final-stat"><strong>${totalCorrectAnswers}</strong><span>Correct Answers</span></div>
+                            <div class="final-stat"><strong>${totalWrongAttempts}</strong><span>Wrong Attempts</span></div>
+                            <div class="final-stat"><strong>${totalQuestionsAnswered}</strong><span>Questions</span></div>
+                        `;
         document.getElementById("finalSummaryIntro").textContent =
           "You completed all five chart levels. Well done!";
         finalSummary.style.display = "flex";
@@ -4047,9 +4662,15 @@
 
       function resetEntireTask() {
         stopAudio();
+        stopBackgroundMusic();
         gameRunning = false;
+        gameEnded = true;
         cancelAnimationFrame(gameAnimation);
         gameAnimation = null;
+        if (gameTimerInterval) {
+          clearInterval(gameTimerInterval);
+          gameTimerInterval = null;
+        }
         currentLevel = 0;
         currentQuestion = 0;
         totalWrongAttempts = 0;
@@ -4059,6 +4680,8 @@
         wrongCoins = 0;
         bonusSeconds = 0;
         globalLives = 3;
+        carriedOverLives = 1;
+        gameTimeRemaining = 30;
         levelStats.forEach((stats) => {
           stats.wrongAttempts = 0;
           stats.correctAnswers = 0;
@@ -4071,6 +4694,9 @@
         learningScreen.style.display = "flex";
         renderChart();
         renderQuestion();
+        updateLivesDisplay();
+        timerDisplay.textContent = "⏱️ 30";
+        timerDisplay.classList.remove("warning");
       }
 
       document
@@ -4088,8 +4714,12 @@
       renderChart();
       const initialLevelLabel = document.getElementById("levelLabel");
       initialLevelLabel.innerHTML = `<span class="level-character">⭐</span><span class="level-word">LEVEL 1</span>`;
+      updateLivesDisplay();
+      timerDisplay.textContent = "⏱️ 30";
 
-      console.log("📊 Chart Quest loaded — timers removed, ready to play!");
+      console.log(
+        "📊 Chart Quest loaded — 30s timer, big labels, lively stats!",
+      );
     </script>
   </body>
 </html>
