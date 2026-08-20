@@ -7,14 +7,16 @@
       content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
     />
     <title>Chart Quest</title>
+
     <style>
-      /* =========================================================
-                   RESET & BASE
-                ========================================================= */
+      /* =============================================================
+               🎯  COMPONENT: RESET & BASE
+               ============================================================= */
       * {
         box-sizing: border-box;
         -webkit-tap-highlight-color: transparent;
       }
+
       html,
       body {
         width: 100%;
@@ -24,18 +26,20 @@
         padding: 0;
         overflow: hidden;
       }
+
       body {
         font-family: "Arial Rounded MT Bold", "Trebuchet MS", Arial, sans-serif;
         color: #403277;
         background: #62c6ee;
       }
+
       button {
         font-family: inherit;
       }
 
-      /* =========================================================
-                   DECORATIVE SKY (fixed on body)
-                ========================================================= */
+      /* =============================================================
+               🎯  COMPONENT: DECORATIVE SKY (fixed on body)
+               ============================================================= */
       .sky-star {
         position: fixed;
         z-index: 1;
@@ -59,6 +63,7 @@
         bottom: 5%;
         right: 4%;
       }
+
       .sky-dot {
         position: fixed;
         width: clamp(10px, 1.2vw, 22px);
@@ -81,9 +86,9 @@
         left: 12%;
       }
 
-      /* =========================================================
-                   INTRO OVERLAY
-                ========================================================= */
+      /* =============================================================
+               🎯  COMPONENT: INTRO OVERLAY
+               ============================================================= */
       #introOverlay {
         position: fixed;
         inset: 0;
@@ -97,6 +102,7 @@
         animation: introFadeIn 0.8s ease-out;
         padding: 16px;
       }
+
       @keyframes introFadeIn {
         from {
           opacity: 0;
@@ -107,6 +113,7 @@
           transform: scale(1);
         }
       }
+
       .intro-card {
         width: min(92vw, 560px);
         max-height: 92vh;
@@ -124,6 +131,7 @@
         align-items: center;
         gap: 8px;
       }
+
       .intro-card .intro-image {
         width: 100%;
         max-height: 160px;
@@ -132,6 +140,7 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         margin-bottom: 2px;
       }
+
       .intro-card h1 {
         margin: 0;
         color: #40327d;
@@ -139,12 +148,14 @@
         font-weight: 900;
         letter-spacing: -0.5px;
       }
+
       .intro-card .intro-sub {
         margin: 0;
         color: #76529b;
         font-size: clamp(14px, 2vh, 24px);
         font-weight: 800;
       }
+
       .intro-card .intro-badge {
         display: inline-block;
         background: linear-gradient(135deg, #ffb83f, #f0a348);
@@ -162,9 +173,11 @@
         gap: 6px;
         margin-top: 2px;
       }
+
       .intro-card .intro-badge span {
         font-size: clamp(14px, 1.8vh, 24px);
       }
+
       .start-button {
         border: none;
         border-radius: 20px;
@@ -185,12 +198,14 @@
         width: 100%;
         max-width: 320px;
       }
+
       .start-button:hover {
         transform: translateY(-2px);
         box-shadow:
           0 9px 0 #c9862e,
           0 6px 28px rgba(240, 163, 72, 0.45);
       }
+
       .start-button:active {
         transform: translateY(5px);
         box-shadow:
@@ -198,9 +213,9 @@
           0 4px 16px rgba(240, 163, 72, 0.25);
       }
 
-      /* =========================================================
-                   LEARNING BACKGROUND — uses dvh for real mobile
-                ========================================================= */
+      /* =============================================================
+               🎯  COMPONENT: LEARNING SCREEN (main quiz UI)
+               ============================================================= */
       #learningScreen {
         position: fixed;
         inset: 0;
@@ -222,9 +237,9 @@
         z-index: 2;
       }
 
-      /* =========================================================
-                   HEADER
-                ========================================================= */
+      /* =============================================================
+               🎯  COMPONENT: HEADER
+               ============================================================= */
       .header {
         position: relative;
         z-index: 5;
@@ -240,6 +255,7 @@
         padding: clamp(10px, 1.2vh, 18px) 20px clamp(10px, 1.2vh, 18px);
         margin-bottom: clamp(6px, 0.8vh, 14px);
       }
+
       .year1-badge {
         position: absolute;
         right: clamp(8px, 1vw, 18px);
@@ -260,9 +276,11 @@
         gap: 4px;
         white-space: nowrap;
       }
+
       .year1-badge span {
         font-size: clamp(12px, 1.4vh, 18px);
       }
+
       .title {
         margin: 0;
         color: #403080;
@@ -274,6 +292,7 @@
           0 4px 0 #f3c45c,
           0 7px 15px rgba(64, 50, 125, 0.16);
       }
+
       .subtitle {
         margin: clamp(2px, 0.3vh, 6px) 0 0;
         color: #76529b;
@@ -282,9 +301,9 @@
         line-height: 1;
       }
 
-      /* =========================================================
-                   MAIN CONTENT
-                ========================================================= */
+      /* =============================================================
+               🎯  COMPONENT: MAIN CONTENT (chart + question panel)
+               ============================================================= */
       .main-content {
         position: relative;
         z-index: 5;
@@ -299,6 +318,7 @@
         overflow: hidden;
         max-height: 100%;
       }
+
       .chart-card,
       .question-panel {
         min-width: 0;
@@ -312,15 +332,16 @@
         overflow: hidden;
       }
 
-      /* =========================================================
-                   CHART
-                ========================================================= */
+      /* =============================================================
+               🎯  COMPONENT: CHART
+               ============================================================= */
       .chart-card {
         display: flex;
         flex-direction: column;
         padding: clamp(12px, 1.5vh, 22px) clamp(14px, 1.8vw, 26px)
           clamp(10px, 1.2vh, 16px);
       }
+
       .chart-question {
         flex: 0 0 auto;
         text-align: center;
@@ -330,6 +351,7 @@
         line-height: 1.1;
         margin: 0 0 clamp(10px, 1.4vh, 18px);
       }
+
       .graph-wrapper {
         flex: 1 1 auto;
         min-height: 0;
@@ -339,6 +361,7 @@
         grid-template-rows: minmax(0, 1fr) clamp(50px, 6.5vh, 80px);
         overflow: visible;
       }
+
       .y-axis {
         grid-column: 1;
         grid-row: 1;
@@ -351,6 +374,7 @@
         font-weight: 800;
         text-align: right;
       }
+
       .plot {
         grid-column: 2;
         grid-row: 1;
@@ -369,6 +393,7 @@
         background-size: 100% 12.5%;
         overflow: visible;
       }
+
       .bars {
         position: absolute;
         inset: 0;
@@ -377,6 +402,7 @@
         justify-content: space-evenly;
         padding: 0 clamp(12px, 2vw, 40px);
       }
+
       .bar-group {
         position: relative;
         height: 100%;
@@ -386,6 +412,7 @@
         align-items: flex-end;
         justify-content: center;
       }
+
       .bar {
         position: relative;
         width: clamp(32px, 4.5vw, 64px);
@@ -399,6 +426,7 @@
           0 13px 20px rgba(60, 45, 80, 0.12);
         animation: barPop 0.75s cubic-bezier(0.2, 1.5, 0.4, 1) both;
       }
+
       @keyframes barPop {
         from {
           transform: scaleY(0);
@@ -409,6 +437,7 @@
           transform-origin: bottom;
         }
       }
+
       .bar::before {
         content: "";
         position: absolute;
@@ -419,7 +448,8 @@
         border-radius: 99px;
         background: rgba(255, 255, 255, 0.35);
       }
-      /* No bar-number — removed as requested */
+
+      /* bar colour themes */
       .strawberry {
         background: repeating-linear-gradient(
           -45deg,
@@ -456,6 +486,7 @@
           #39bec1 20px
         );
       }
+
       .x-labels {
         grid-column: 2;
         grid-row: 2;
@@ -464,6 +495,7 @@
         align-items: flex-start;
         padding: 6px clamp(10px, 2vw, 36px) 0;
       }
+
       .x-label {
         width: 19%;
         max-width: 100px;
@@ -473,6 +505,7 @@
         font-weight: 900;
         line-height: 1.05;
       }
+
       .x-label span {
         display: block;
         margin-bottom: 3px;
@@ -480,13 +513,14 @@
         line-height: 0.9;
         filter: drop-shadow(0 4px 2px rgba(60, 45, 80, 0.16));
       }
+
       .x-label {
         color: #403278 !important;
       }
 
-      /* =========================================================
-                   QUESTION PANEL
-                ========================================================= */
+      /* =============================================================
+               🎯  COMPONENT: QUESTION PANEL
+               ============================================================= */
       .question-panel {
         position: relative;
         padding: clamp(12px, 1.6vh, 22px) clamp(14px, 1.6vw, 24px);
@@ -496,6 +530,7 @@
         text-align: center;
         background: rgba(255, 253, 245, 0.99);
       }
+
       .voice-toggle-icon {
         position: absolute;
         top: clamp(8px, 1vh, 16px);
@@ -513,9 +548,11 @@
         width: auto;
         height: auto;
       }
+
       .voice-toggle-icon:hover {
         background: rgba(200, 180, 230, 0.3);
       }
+
       .voice-toggle-icon:active {
         transform: scale(0.92);
       }
@@ -530,106 +567,9 @@
         min-height: 0;
       }
 
-      /* =========================================================
-                   THINKING CLOCK (5-second timer)
-                ========================================================= */
-      .thinking-clock-wrap {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 0;
-        opacity: 0;
-        overflow: hidden;
-        transform: scale(0.85);
-        transition:
-          opacity 0.2s ease,
-          transform 0.2s ease;
-        margin-bottom: 0;
-        pointer-events: none;
-      }
-      .thinking-clock-wrap.active {
-        height: clamp(82px, 11vh, 120px);
-        min-height: clamp(82px, 11vh, 120px);
-        opacity: 1;
-        transform: scale(1);
-        margin-bottom: clamp(4px, 0.6vh, 8px);
-        overflow: visible;
-      }
-      .thinking-clock {
-        position: relative;
-        width: clamp(72px, 9vh, 104px);
-        height: clamp(72px, 9vh, 104px);
-        border: 7px solid #53368e;
-        border-radius: 50%;
-        background: radial-gradient(circle at 35% 30%, #fff, #fff5bd);
-        box-shadow:
-          0 7px 0 #3d286d,
-          0 12px 22px rgba(60, 40, 100, 0.18),
-          inset 0 0 0 5px #fff;
-      }
-      .thinking-clock::before {
-        content: "";
-        position: absolute;
-        inset: 9px;
-        border: 3px solid #eadff8;
-        border-radius: 50%;
-      }
-      .clock-mark {
-        position: absolute;
-        width: 5px;
-        height: 11px;
-        background: #4b3188;
-        border-radius: 2px;
-        left: calc(50% - 2.5px);
-        top: 4px;
-        transform-origin: 2.5px calc(clamp(36px, 4.5vh, 52px) - 4px);
-      }
-      .clock-mark.m1 {
-        transform: rotate(0deg);
-      }
-      .clock-mark.m2 {
-        transform: rotate(60deg);
-      }
-      .clock-mark.m3 {
-        transform: rotate(120deg);
-      }
-      .clock-mark.m4 {
-        transform: rotate(180deg);
-      }
-      .clock-mark.m5 {
-        transform: rotate(240deg);
-      }
-      .clock-mark.m6 {
-        transform: rotate(300deg);
-      }
-      .clock-hand {
-        position: absolute;
-        left: calc(50% - 3.5px);
-        bottom: 50%;
-        width: 7px;
-        height: 30%;
-        background: #ff6b6b;
-        border-radius: 8px;
-        transform-origin: 50% 100%;
-        transform: rotate(0deg);
-        transition: transform 0.15s linear;
-        z-index: 3;
-      }
-      .clock-centre {
-        position: absolute;
-        width: 14px;
-        height: 14px;
-        left: calc(50% - 7px);
-        top: calc(50% - 7px);
-        border-radius: 50%;
-        background: #ffb83f;
-        border: 3px solid #4b3188;
-        z-index: 4;
-      }
-
-      /* =========================================================
-                   BATTERY PROGRESS — like the first attachment
-                ========================================================= */
+      /* =============================================================
+               🎯  COMPONENT: BATTERY PROGRESS (question tracker)
+               ============================================================= */
       .battery-progress {
         flex: 0 0 auto;
         width: 100%;
@@ -638,12 +578,14 @@
         flex-direction: column;
         align-items: center;
       }
+
       .battery-row {
         display: flex;
         gap: clamp(4px, 0.5vw, 8px);
         justify-content: center;
         flex-wrap: wrap;
       }
+
       .battery-cell {
         width: clamp(14px, 1.8vw, 22px);
         height: clamp(18px, 2.2vh, 28px);
@@ -655,7 +597,8 @@
         flex-shrink: 0;
         box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.04);
       }
-      /* The little nub on top — like the first attachment */
+
+      /* battery nub */
       .battery-cell::after {
         content: "";
         position: absolute;
@@ -670,6 +613,7 @@
         background: rgba(240, 235, 250, 0.35);
         transition: all 0.35s ease;
       }
+
       .battery-cell.filled {
         background: linear-gradient(180deg, #fecb5e, #f0a348);
         border-color: #c9862e;
@@ -677,27 +621,33 @@
           0 2px 8px rgba(240, 163, 72, 0.3),
           inset 0 -2px 0 rgba(0, 0, 0, 0.08);
       }
+
       .battery-cell.filled::after {
         background: #f0a348;
         border-color: #c9862e;
       }
+
       .battery-cell.current {
         border-color: #ff6b6b;
         animation: batteryPulse 0.9s ease-in-out infinite;
         box-shadow: 0 0 14px rgba(255, 107, 107, 0.3);
       }
+
       .battery-cell.current::after {
         border-color: #ff6b6b;
         background: #ff6b6b;
       }
+
       .battery-cell.empty {
         border-color: #d4c8e8;
         background: rgba(240, 235, 250, 0.25);
       }
+
       .battery-cell.empty::after {
         border-color: #d4c8e8;
         background: rgba(240, 235, 250, 0.25);
       }
+
       @keyframes batteryPulse {
         0%,
         100% {
@@ -710,9 +660,9 @@
         }
       }
 
-      /* =========================================================
-                   LEVEL INDICATOR (with emoji + text like first design)
-                ========================================================= */
+      /* =============================================================
+               🎯  COMPONENT: LEVEL INDICATOR
+               ============================================================= */
       .level {
         flex: 0 0 auto;
         display: flex;
@@ -733,15 +683,20 @@
         font-weight: 900;
         text-shadow: 0 3px 0 rgba(43, 28, 83, 0.5);
       }
+
       .level-character {
         font-size: clamp(24px, 4vh, 44px);
         line-height: 1;
       }
+
       .level-word {
         font-size: clamp(14px, 2vh, 24px);
         line-height: 1;
       }
 
+      /* =============================================================
+               🎯  COMPONENT: QUESTION DISPLAY
+               ============================================================= */
       .question-box {
         width: 100%;
         background: linear-gradient(145deg, #f3e8ff, #e7d5ff);
@@ -754,6 +709,7 @@
           inset 0 3px 0 #fff,
           0 7px 0 #b695dd;
       }
+
       .question-panel h2 {
         margin: 0;
         color: #352265;
@@ -762,6 +718,7 @@
         line-height: 1.15;
         text-shadow: 0 2px 0 #fff;
       }
+
       .answers {
         width: 100%;
         flex: 0 0 auto;
@@ -769,6 +726,7 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: clamp(8px, 1vh, 14px);
       }
+
       .answer-button {
         min-width: 0;
         min-height: clamp(52px, 6.5vh, 72px);
@@ -792,13 +750,16 @@
         touch-action: manipulation;
         -webkit-touch-callout: none;
       }
+
       .answer-button:hover {
         transform: translateY(-4px) scale(1.02);
         background: #f3ebff;
       }
+
       .answer-button:active {
         transform: translateY(2px);
       }
+
       .answer-button.correct-answer {
         background: linear-gradient(145deg, #dfffe7, #bdf3cb);
         border-color: #43b85f;
@@ -807,6 +768,7 @@
           0 0 30px rgba(67, 201, 107, 0.55);
         animation: correctBounce 0.6s ease both;
       }
+
       @keyframes correctBounce {
         35% {
           transform: scale(1.1);
@@ -818,11 +780,13 @@
           transform: scale(1);
         }
       }
+
       .answer-button.wrong-answer {
         background: #ffe2e2;
         border-color: #dc8585;
         animation: shake 0.28s ease;
       }
+
       @keyframes shake {
         0%,
         100% {
@@ -835,6 +799,7 @@
           transform: translateX(5px);
         }
       }
+
       .answer-button:disabled {
         cursor: default;
       }
@@ -852,9 +817,9 @@
         justify-content: center;
       }
 
-      /* =========================================================
-                   COIN SUMMARY — dynamic height to avoid overlap
-                ========================================================= */
+      /* =============================================================
+               🎯  COMPONENT: COIN SUMMARY (level completion)
+               ============================================================= */
       .level-statistics {
         margin: 6px 0 4px;
         display: flex;
@@ -862,6 +827,7 @@
         align-items: center;
         gap: 6px;
       }
+
       .coin-summary-row {
         display: flex;
         align-items: center;
@@ -869,6 +835,7 @@
         gap: clamp(4px, 1vw, 12px);
         flex-wrap: wrap;
       }
+
       .coin-item {
         padding: 3px 10px;
         border-radius: 12px;
@@ -881,33 +848,39 @@
         align-items: center;
         gap: 2px;
       }
+
       .coin-item.correct {
         color: #2e9a4a;
         border-color: #66bd7a;
         background: #e6f7e6;
       }
+
       .coin-item.wrong {
         color: #c86666;
         border-color: #dc8585;
         background: #fce8e8;
       }
+
       .coin-operator {
         color: #40327d;
         font-size: clamp(18px, 2.6vh, 32px);
         font-weight: 900;
         line-height: 1;
       }
+
       .coin-stack-wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
         min-width: 50px;
       }
+
       .coin-stack-container {
         position: relative;
         width: 50px;
         overflow: visible;
       }
+
       .coin-stack-container .coin-standalone {
         position: absolute;
         left: 50%;
@@ -925,6 +898,7 @@
         pointer-events: none;
         transition: none;
       }
+
       .coin-stack-container .coin-standalone::after {
         content: "";
         position: absolute;
@@ -940,10 +914,12 @@
         border-radius: 50%;
         pointer-events: none;
       }
+
       .coin-stack-container .coin-standalone.dropping {
         animation: coinDropBounce 0.55s cubic-bezier(0.34, 1.4, 0.64, 1)
           forwards;
       }
+
       @keyframes coinDropBounce {
         0% {
           top: -40px;
@@ -966,6 +942,7 @@
           top: var(--final-top, 0px);
         }
       }
+
       .coin-sparkle {
         position: absolute;
         pointer-events: none;
@@ -973,6 +950,7 @@
         animation: sparkleFade 0.5s ease-out forwards;
         z-index: 2;
       }
+
       @keyframes sparkleFade {
         0% {
           opacity: 1;
@@ -983,6 +961,7 @@
           transform: scale(1.8) rotate(180deg) translateY(-20px);
         }
       }
+
       .coin-total {
         font-size: clamp(16px, 2.2vh, 26px);
         font-weight: 900;
@@ -995,9 +974,11 @@
         text-align: center;
         transition: all 0.2s;
       }
+
       .coin-total.pop {
         animation: totalPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
       }
+
       @keyframes totalPop {
         0% {
           transform: scale(1);
@@ -1010,20 +991,22 @@
           transform: scale(1);
         }
       }
+
       .bonus-info {
         font-size: clamp(12px, 1.6vh, 18px);
         font-weight: 800;
         color: #40327d;
         margin-top: 2px;
       }
+
       .bonus-info span {
         color: #d4a017;
         font-size: clamp(16px, 2.2vh, 24px);
       }
 
-      /* =========================================================
-                   STAR BURST
-                ========================================================= */
+      /* =============================================================
+               🎯  COMPONENT: STAR BURST (correct-answer celebration)
+               ============================================================= */
       .star-burst {
         position: fixed;
         top: 0;
@@ -1034,6 +1017,7 @@
         z-index: 999;
         overflow: visible;
       }
+
       .star-burst span {
         position: absolute;
         display: block;
@@ -1042,6 +1026,7 @@
         opacity: 0;
         text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
       }
+
       @keyframes starFlyBig {
         0% {
           opacity: 1;
@@ -1053,9 +1038,9 @@
         }
       }
 
-      /* =========================================================
-                   MEGA CELEBRATION (from first design)
-                ========================================================= */
+      /* =============================================================
+               🎯  COMPONENT: MEGA CELEBRATION (big correct-answer pop)
+               ============================================================= */
       .mega-celebration {
         position: fixed;
         inset: 0;
@@ -1066,6 +1051,7 @@
         justify-content: center;
         animation: celebrateFade 1.9s ease both;
       }
+
       .celebrate-badge {
         font-size: clamp(36px, 7vh, 80px);
         font-weight: 1000;
@@ -1080,11 +1066,13 @@
         text-shadow: 0 5px 0 rgba(60, 38, 90, 0.28);
         animation: celebratePop 0.75s cubic-bezier(0.15, 1.5, 0.3, 1) both;
       }
+
       .mega-confetti {
         position: absolute;
         inset: 0;
         overflow: hidden;
       }
+
       .mega-confetti i {
         position: absolute;
         width: 14px;
@@ -1092,6 +1080,7 @@
         border-radius: 4px;
         animation: confettiFly 1.6s ease-out forwards;
       }
+
       @keyframes celebratePop {
         0% {
           transform: scale(0.2) rotate(-8deg);
@@ -1105,6 +1094,7 @@
           transform: scale(1);
         }
       }
+
       @keyframes celebrateFade {
         0%,
         75% {
@@ -1114,6 +1104,7 @@
           opacity: 0;
         }
       }
+
       @keyframes confettiFly {
         0% {
           transform: translate(0, 0) rotate(0);
@@ -1128,9 +1119,9 @@
         }
       }
 
-      /* =========================================================
-                   LEVEL COMPLETE
-                ========================================================= */
+      /* =============================================================
+               🎯  COMPONENT: LEVEL COMPLETE OVERLAY
+               ============================================================= */
       #levelComplete {
         position: fixed;
         inset: 0;
@@ -1142,6 +1133,7 @@
         backdrop-filter: blur(3px);
         padding: 16px;
       }
+
       .level-complete-card {
         width: min(92vw, 500px);
         max-height: 90vh;
@@ -1153,17 +1145,20 @@
         text-align: center;
         box-shadow: 0 7px 0 #d99549;
       }
+
       .level-complete-card h2 {
         margin: 0 0 4px;
         color: #40327d;
         font-size: clamp(20px, 3vh, 36px);
       }
+
       .level-complete-card p {
         margin: 0 0 6px;
         color: #695479;
         font-size: clamp(11px, 1.4vh, 18px);
         font-weight: 700;
       }
+
       .summary-button {
         margin-top: 10px;
         border: none;
@@ -1179,14 +1174,15 @@
         width: 100%;
         max-width: 180px;
       }
+
       .summary-button:active {
         transform: translateY(3px);
         box-shadow: 0 1px 0 #dd9634;
       }
 
-      /* =========================================================
-                   FINAL SUMMARY
-                ========================================================= */
+      /* =============================================================
+               🎯  COMPONENT: FINAL SUMMARY (end of all levels)
+               ============================================================= */
       #finalSummary {
         position: fixed;
         inset: 0;
@@ -1198,6 +1194,7 @@
         backdrop-filter: blur(4px);
         padding: 16px;
       }
+
       .final-summary-card {
         width: min(92vw, 480px);
         max-height: 92vh;
@@ -1209,17 +1206,20 @@
         text-align: center;
         box-shadow: 0 8px 0 #d99549;
       }
+
       .final-summary-card h2 {
         margin: 0 0 6px;
         color: #40327d;
         font-size: clamp(22px, 3.5vh, 42px);
       }
+
       .final-summary-card .summary-intro {
         margin: 0 0 12px;
         color: #695479;
         font-size: clamp(11px, 1.4vh, 17px);
         font-weight: 700;
       }
+
       .final-statistics {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1227,17 +1227,20 @@
         max-width: 300px;
         margin: 0 auto;
       }
+
       .final-stat {
         background: #ffffff;
         border: 2px solid #e5cda3;
         border-radius: 14px;
         padding: 8px;
       }
+
       .final-stat strong {
         display: block;
         color: #40327d;
         font-size: clamp(18px, 2.4vh, 28px);
       }
+
       .final-stat span {
         display: block;
         margin-top: 2px;
@@ -1245,6 +1248,7 @@
         font-size: clamp(9px, 1.1vh, 13px);
         font-weight: 800;
       }
+
       .restart-button {
         margin-top: 14px;
         border: none;
@@ -1260,14 +1264,15 @@
         width: 100%;
         max-width: 180px;
       }
+
       .restart-button:active {
         transform: translateY(3px);
         box-shadow: 0 1px 0 #dd9634;
       }
 
-      /* =========================================================
-                   GAME SCREEN — uses dvh for real mobile
-                ========================================================= */
+      /* =============================================================
+               🎯  COMPONENT: GAME SCREEN (Rabbit Run)
+               ============================================================= */
       #gameScreen {
         position: fixed;
         top: 0;
@@ -1289,6 +1294,7 @@
           #bce7bc 100%
         );
       }
+
       .game-header {
         position: absolute;
         top: clamp(4px, 0.8vh, 14px);
@@ -1302,6 +1308,7 @@
         pointer-events: none;
         min-height: 48px;
       }
+
       .game-title,
       .game-stat,
       .game-skip {
@@ -1313,11 +1320,13 @@
         font-weight: 900;
         pointer-events: auto;
       }
+
       .game-title {
         color: #40327d;
         font-size: clamp(10px, 1.4vh, 18px);
         padding: 4px 10px;
       }
+
       .game-center-hud {
         display: flex;
         align-items: center;
@@ -1325,6 +1334,7 @@
         gap: 6px;
         pointer-events: auto;
       }
+
       .game-stat {
         color: #40327d;
         font-size: clamp(10px, 1.2vh, 16px);
@@ -1332,12 +1342,7 @@
         text-align: center;
         padding: 3px 8px;
       }
-      .game-timer {
-        color: #d85678;
-        font-size: clamp(14px, 2vh, 24px);
-        min-width: 32px;
-        font-weight: 900;
-      }
+
       .game-skip {
         color: #40327d;
         background: #ffb83f;
@@ -1349,10 +1354,12 @@
         white-space: nowrap;
         padding: 3px 10px;
       }
+
       .game-skip:active {
         transform: translateY(3px);
         box-shadow: 0 1px 0 #dd9634;
       }
+
       .game-instruction {
         position: absolute;
         top: clamp(44px, 5.5vh, 70px);
@@ -1378,6 +1385,7 @@
         width: 100%;
         height: 100%;
       }
+
       .world {
         position: absolute;
         left: 0;
@@ -1387,6 +1395,8 @@
         transform: translateX(0);
         will-change: transform;
       }
+
+      /* clouds */
       .cloud {
         position: absolute;
         background: rgba(255, 255, 255, 0.82);
@@ -1423,6 +1433,7 @@
         left: 5200px;
         top: 19%;
       }
+
       .ground {
         position: absolute;
         left: 0;
@@ -1438,6 +1449,7 @@
           #b9e1a8 40px
         );
       }
+
       .ground-decoration {
         position: absolute;
         bottom: 39%;
@@ -1463,9 +1475,9 @@
         left: 7200px;
       }
 
-      /* =========================================================
-                   RABBIT — always on ground using dvh, with smooth physics
-                ========================================================= */
+      /* =============================================================
+               🎯  COMPONENT: RABBIT PLAYER
+               ============================================================= */
       #player {
         position: fixed;
         left: clamp(40px, 10vw, 160px);
@@ -1482,14 +1494,18 @@
         will-change: bottom, transform;
         transition: none;
       }
+
       #player::after {
         content: "🐰";
       }
+
       #player.jumping::after {
         filter: drop-shadow(0 8px 3px rgba(70, 90, 70, 0.15));
       }
 
-      /* ----- obstacles ----- */
+      /* =============================================================
+               🎯  COMPONENT: OBSTACLES
+               ============================================================= */
       .obstacle {
         position: absolute;
         bottom: 42%;
@@ -1498,6 +1514,7 @@
         border-radius: 10px 10px 4px 4px;
         box-shadow: inset 0 -7px rgba(0, 0, 0, 0.08);
       }
+
       .obstacle.type-1 {
         background: #df745f;
       }
@@ -1513,6 +1530,7 @@
       .obstacle.type-5 {
         background: #4fc3f7;
       }
+
       .obstacle.small {
         width: 38px;
         height: 36px;
@@ -1520,6 +1538,7 @@
       .obstacle.tall {
         height: 65px;
       }
+
       .obstacle::before {
         content: "";
         position: absolute;
@@ -1531,6 +1550,7 @@
         left: 7px;
         box-shadow: 16px 6px rgba(255, 255, 255, 0.5);
       }
+
       .obstacle.ice {
         background: #efc65a;
         border-radius: 50% 50% 8px 8px;
@@ -1539,6 +1559,7 @@
         background: rgba(255, 255, 255, 0.7);
         box-shadow: 16px 6px rgba(255, 255, 255, 0.7);
       }
+
       .obstacle.cactus {
         background: #6db35a;
         border-radius: 30% 30% 6px 6px;
@@ -1565,6 +1586,7 @@
         right: -4px;
         transform: rotate(20deg);
       }
+
       .obstacle.rock {
         background: #b0a8a0;
         border-radius: 50% 50% 40% 40%;
@@ -1575,6 +1597,9 @@
         display: none;
       }
 
+      /* =============================================================
+               🎯  COMPONENT: GAME PARTICLES
+               ============================================================= */
       #gameParticles {
         position: absolute;
         inset: 0;
@@ -1582,12 +1607,14 @@
         z-index: 25;
         overflow: hidden;
       }
+
       .game-particle {
         position: absolute;
         font-size: 18px;
         animation: particleFly 0.9s ease-out forwards;
         pointer-events: none;
       }
+
       @keyframes particleFly {
         from {
           opacity: 1;
@@ -1599,6 +1626,9 @@
         }
       }
 
+      /* =============================================================
+               🎯  COMPONENT: JUMP BUTTON
+               ============================================================= */
       #jumpButton {
         position: absolute;
         right: 14px;
@@ -1617,11 +1647,15 @@
         touch-action: manipulation;
         -webkit-touch-callout: none;
       }
+
       #jumpButton:active {
         transform: translateY(4px);
         box-shadow: 0 1px 0 #dd9634;
       }
 
+      /* =============================================================
+               🎯  COMPONENT: GAME OVER OVERLAY
+               ============================================================= */
       #gameOver {
         position: absolute;
         inset: 0;
@@ -1633,6 +1667,7 @@
         backdrop-filter: blur(3px);
         padding: 16px;
       }
+
       .game-over-card {
         width: min(88vw, 460px);
         background: #fff4cc;
@@ -1642,39 +1677,46 @@
         text-align: center;
         box-shadow: 0 6px 0 #d99549;
       }
+
       .game-over-card h2 {
         margin: 0 0 6px;
         color: #40327d;
         font-size: clamp(18px, 2.8vh, 32px);
       }
+
       .game-over-card p {
         margin: 0 0 12px;
         color: #665477;
         font-size: clamp(10px, 1.2vh, 16px);
         font-weight: 700;
       }
+
       .game-over-stats {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 6px;
         margin-bottom: 12px;
       }
+
       .game-over-stat {
         background: white;
         border: 2px solid #ead4a6;
         border-radius: 12px;
         padding: 6px;
       }
+
       .game-over-stat strong {
         display: block;
         color: #40327d;
         font-size: 18px;
       }
+
       .game-over-stat span {
         color: #765b78;
         font-size: 9px;
         font-weight: 800;
       }
+
       .continue-button {
         border: none;
         border-radius: 12px;
@@ -1689,11 +1731,15 @@
         width: 100%;
         max-width: 160px;
       }
+
       .continue-button:active {
         transform: translateY(3px);
         box-shadow: 0 1px 0 #dd9634;
       }
 
+      /* =============================================================
+               🎯  COMPONENT: BONUS BANNER (extra seconds — no longer used but kept for safety)
+               ============================================================= */
       .bonus-banner {
         position: absolute;
         top: 50%;
@@ -1714,6 +1760,7 @@
           bonusBannerOut 0.6s ease-in 2s forwards;
         white-space: nowrap;
       }
+
       @keyframes bonusBannerIn {
         0% {
           transform: translate(-50%, -50%) scale(0.3) rotate(-5deg);
@@ -1728,6 +1775,7 @@
           opacity: 1;
         }
       }
+
       @keyframes bonusBannerOut {
         to {
           opacity: 0;
@@ -1735,58 +1783,71 @@
         }
       }
 
-      /* =========================================================
-                   MOBILE RESPONSIVE
-                ========================================================= */
+      /* =============================================================
+               📱  RESPONSIVE: Mobile-first tweaks
+               ============================================================= */
+
+      /* small screens */
       @media (max-width: 600px) {
         .year1-badge {
           display: none !important;
         }
+
         .main-content {
           grid-template-columns: 1fr;
           grid-template-rows: minmax(0, 0.75fr) minmax(0, 1fr);
           gap: 10px;
         }
+
         .chart-card {
           padding: 5px 7px 5px;
           max-height: 44vh;
           overflow: hidden;
         }
+
         .chart-question {
           font-size: clamp(14px, 1.9vh, 18px);
           line-height: 1.1;
           margin: 0 0 6px;
         }
+
         .graph-wrapper {
           grid-template-columns: clamp(25px, 7vw, 32px) minmax(0, 1fr);
           grid-template-rows: minmax(0, 1fr) clamp(46px, 6.2vh, 62px);
         }
+
         .y-axis {
           font-size: clamp(10px, 1.35vh, 14px);
           font-weight: 900;
           color: #30245f;
           padding-right: 5px;
         }
+
         .plot {
           border-left-width: 3px;
           border-bottom-width: 3px;
         }
+
         .bars {
           padding: 0 clamp(5px, 2vw, 18px);
         }
+
         .bar-group {
           width: 20%;
           max-width: 70px;
         }
+
         .bar {
           width: clamp(26px, 7vw, 38px);
           border-width: 2px;
           border-radius: 9px 9px 2px 2px;
         }
+
         .x-labels {
           padding: 5px clamp(5px, 2vw, 18px) 0;
           align-items: flex-start;
         }
+
         .x-label {
           width: 20%;
           max-width: 90px;
@@ -1796,6 +1857,7 @@
           line-height: 1.05;
           text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
         }
+
         .x-label span {
           margin-bottom: 3px;
           font-size: clamp(22px, 3.4vh, 32px);
@@ -1808,23 +1870,28 @@
           max-height: 56vh;
           overflow: hidden;
         }
+
         .question-content {
           padding-top: 10px !important;
           padding-bottom: 0 !important;
           justify-content: flex-start !important;
         }
+
         .battery-progress {
           padding: 2px 0 8px;
         }
+
         .battery-row {
-          gap: 6px;
+          gap: 8px;
         }
+
         .battery-cell {
           width: clamp(12px, 1.8vw, 17px);
           height: clamp(14px, 1.8vh, 20px);
           border-width: 1.5px;
           border-radius: 2px 2px 4px 4px;
         }
+
         .battery-cell::after {
           width: clamp(4px, 0.5vw, 6px);
           height: 3px;
@@ -1839,9 +1906,11 @@
           font-size: clamp(13px, 1.8vh, 18px);
           border-radius: 18px;
         }
+
         .level-character {
           font-size: clamp(20px, 3vh, 30px);
         }
+
         .level-word {
           font-size: clamp(11px, 1.4vh, 16px);
         }
@@ -1849,16 +1918,19 @@
         .question-box {
           padding: 8px 9px;
           border-radius: 18px;
-          margin-bottom: 20px !important;
+          margin-bottom: 25px !important;
           border-width: 3px;
         }
+
         .question-panel h2 {
           font-size: clamp(17px, 2.25vh, 22px);
           line-height: 1.18;
         }
+
         .answers {
           gap: 20px !important;
         }
+
         .answer-button {
           min-height: clamp(48px, 6vh, 58px) !important;
           padding: 7px 6px;
@@ -1867,45 +1939,18 @@
           font-size: clamp(18px, 1.75vh, 20px) !important;
           line-height: 2;
         }
+
         #feedback {
           font-size: clamp(10px, 1.2vh, 14px);
           min-height: 17px;
           margin-top: 20px;
         }
+
         .voice-toggle-icon {
           font-size: clamp(17px, 2.1vh, 23px);
           top: 4px;
           right: 5px;
           padding: 3px 5px;
-        }
-
-        .thinking-clock-wrap.active {
-          height: clamp(64px, 8vh, 80px);
-          min-height: clamp(64px, 8vh, 80px);
-        }
-        .thinking-clock {
-          width: clamp(56px, 7vh, 72px);
-          height: clamp(56px, 7vh, 72px);
-          border-width: 5px;
-        }
-        .thinking-clock::before {
-          inset: 6px;
-          border-width: 2px;
-        }
-        .clock-mark {
-          width: 3px;
-          height: 8px;
-          transform-origin: 1.5px calc(clamp(28px, 3.5vh, 36px) - 4px);
-        }
-        .clock-hand {
-          width: 5px;
-        }
-        .clock-centre {
-          width: 10px;
-          height: 10px;
-          left: calc(50% - 5px);
-          top: calc(50% - 5px);
-          border-width: 2px;
         }
 
         #jumpButton {
@@ -1916,34 +1961,36 @@
           bottom: 10px;
           border-width: 3px;
         }
+
         #player {
           width: 48px;
           height: 54px;
           font-size: 38px;
           left: clamp(24px, 6vw, 48px);
         }
+
         .game-title {
           font-size: clamp(8px, 1vh, 13px);
           padding: 2px 6px;
         }
+
         .game-stat {
           font-size: clamp(7px, 0.8vh, 12px);
           min-width: 30px;
           padding: 2px 5px;
         }
-        .game-timer {
-          font-size: clamp(10px, 1.4vh, 18px);
-          min-width: 26px;
-        }
+
         .game-skip {
           font-size: clamp(6px, 0.7vh, 11px);
           padding: 2px 6px;
         }
+
         .game-instruction {
           font-size: clamp(6px, 0.7vh, 10px);
           top: clamp(32px, 4vh, 48px);
           padding: 2px 8px;
         }
+
         .obstacle {
           width: 32px;
           height: 38px;
@@ -1959,6 +2006,7 @@
           width: 28px;
           height: 24px;
         }
+
         .obstacle::before {
           width: 6px;
           height: 6px;
@@ -1966,6 +2014,7 @@
           left: 5px;
           box-shadow: 11px 4px rgba(255, 255, 255, 0.5);
         }
+
         .obstacle.cactus::before {
           width: 8px;
           height: 12px;
@@ -1978,114 +2027,141 @@
           top: -5px;
           right: -3px;
         }
+
         .ground-decoration {
           font-size: 16px;
         }
+
         .intro-card {
           padding: 14px 12px;
           border-radius: 26px;
           border-width: 4px;
         }
+
         .intro-card .intro-image {
           max-height: 100px;
         }
+
         .start-button {
           padding: 10px 20px;
           font-size: clamp(16px, 2.2vh, 22px);
           max-width: 220px;
         }
+
         .level-complete-card,
         .final-summary-card,
         .game-over-card {
           padding: 14px 12px;
           border-width: 4px;
         }
+
         .coin-item {
           padding: 2px 6px;
           font-size: clamp(10px, 1.4vh, 16px);
           min-width: 28px;
         }
+
         .coin-operator {
           font-size: clamp(12px, 1.6vh, 20px);
         }
+
         .bonus-info {
           font-size: clamp(9px, 1vh, 13px);
         }
+
         .coin-stack-container {
           width: 40px;
         }
+
         .coin-stack-container .coin-standalone {
           width: 28px;
           height: 8px;
           border-radius: 2px;
         }
+
         .coin-total {
           font-size: clamp(12px, 1.4vh, 18px);
           min-width: 22px;
         }
+
         .coin-summary-row {
           gap: 3px;
         }
       }
 
+      /* extra-small phones */
       @media (max-width: 400px) {
         .main-content {
           gap: 4px;
         }
+
         .chart-card {
           padding: 4px 5px 4px;
           max-height: 40vh;
         }
+
         .question-panel {
           padding: 4px 6px 5px;
           max-height: 60vh;
         }
+
         .chart-question {
           font-size: 13px;
           margin-bottom: 5px;
         }
+
         .graph-wrapper {
           grid-template-columns: 25px minmax(0, 1fr);
           grid-template-rows: minmax(0, 1fr) 47px;
         }
+
         .y-axis {
           font-size: 9px;
           padding-right: 4px;
         }
+
         .x-label {
           font-size: 10px !important;
         }
         .x-label span {
           font-size: 20px;
         }
+
         .bar {
           width: clamp(23px, 7vw, 30px);
           border-width: 2px;
         }
+
         .level {
           min-height: 30px;
           padding: 2px 10px;
           font-size: 11px;
-          margin-bottom: 6px;
+          margin-bottom: 12px;
         }
+
         .level-character {
           font-size: 16px;
         }
+
         .level-word {
           font-size: 10px;
         }
+
         .question-box {
           padding: 7px 7px;
-          margin-bottom: 6px !important;
+          margin-bottom: 12px !important;
           border-radius: 14px;
         }
+
         .question-panel h2 {
           font-size: 16px;
           line-height: 1.16;
         }
+
         .answers {
           gap: 8px !important;
         }
+
         .answer-button {
           min-height: 46px !important;
           font-size: 13px !important;
@@ -2093,56 +2169,35 @@
           border-width: 2px;
           border-radius: 14px;
         }
+
         #feedback {
           font-size: 9px;
           min-height: 15px;
         }
+
         .battery-cell {
           width: 10px;
           height: 12px;
           border-width: 1px;
         }
+
         .battery-cell::after {
           width: 3px;
           height: 2px;
           top: -2px;
           border-width: 1px;
         }
+
         .battery-row {
           gap: 2px;
         }
+
         .voice-toggle-icon {
           font-size: 15px;
           top: 3px;
           right: 3px;
         }
-        .thinking-clock-wrap.active {
-          height: 54px;
-          min-height: 54px;
-        }
-        .thinking-clock {
-          width: 48px;
-          height: 48px;
-          border-width: 4px;
-        }
-        .thinking-clock::before {
-          inset: 4px;
-          border-width: 2px;
-        }
-        .clock-mark {
-          display: none;
-        }
-        .clock-hand {
-          width: 4px;
-          height: 26%;
-        }
-        .clock-centre {
-          width: 8px;
-          height: 8px;
-          left: calc(50% - 4px);
-          top: calc(50% - 4px);
-          border-width: 2px;
-        }
+
         #jumpButton {
           width: 54px;
           height: 54px;
@@ -2150,32 +2205,34 @@
           right: 8px;
           bottom: 8px;
         }
+
         #player {
           width: 38px;
           height: 42px;
           font-size: 30px;
           left: clamp(16px, 5vw, 32px);
         }
+
         .game-title {
           font-size: 7px;
           padding: 2px 4px;
         }
+
         .game-stat {
           font-size: 6px;
           min-width: 24px;
           padding: 1px 3px;
         }
-        .game-timer {
-          font-size: 8px;
-          min-width: 20px;
-        }
+
         .game-skip {
           font-size: 6px;
           padding: 1px 4px;
         }
+
         .game-instruction {
           display: none;
         }
+
         .obstacle {
           width: 24px;
           height: 28px;
@@ -2191,6 +2248,7 @@
           width: 22px;
           height: 18px;
         }
+
         .obstacle::before {
           display: none;
         }
@@ -2198,133 +2256,163 @@
         .obstacle.cactus::after {
           display: none;
         }
+
         .ground-decoration {
           font-size: 12px;
         }
+
         .intro-card .intro-image {
           max-height: 64px;
         }
+
         .intro-card h1 {
           font-size: 18px;
         }
+
         .intro-card .intro-sub {
           font-size: 10px;
         }
+
         .start-button {
           padding: 8px 14px;
           font-size: 14px;
           max-width: 160px;
         }
+
         .coin-item {
           padding: 1px 4px;
           font-size: 9px;
           min-width: 22px;
         }
+
         .coin-operator {
           font-size: 10px;
         }
+
         .coin-stack-container {
           width: 32px;
         }
+
         .coin-stack-container .coin-standalone {
           width: 22px;
           height: 6px;
         }
+
         .coin-total {
           font-size: 10px;
           min-width: 18px;
         }
+
         .coin-summary-row {
           gap: 2px;
         }
+
         .bonus-info {
           font-size: 8px;
         }
       }
 
-      /* =========================================================
-                   TABLET & DESKTOP — centre the question content vertically
-                ========================================================= */
+      /* tablets & desktop */
       @media (min-width: 601px) {
         .question-content {
           justify-content: center !important;
           padding-top: clamp(4px, 0.6vh, 12px);
           padding-bottom: clamp(4px, 0.6vh, 12px);
         }
+
         .year1-badge {
           display: flex !important;
         }
+
         .answer-button {
           min-height: clamp(46px, 5.5vh, 60px);
           font-size: clamp(13px, 1.6vh, 19px);
         }
+
         .chart-card {
           justify-content: center;
           padding: clamp(16px, 2.2vh, 28px) clamp(18px, 2vw, 32px);
         }
+
         .chart-question {
           margin-bottom: clamp(12px, 1.8vh, 22px);
         }
+
         .graph-wrapper {
           flex: 0 0 clamp(250px, 42vh, 430px);
           width: 100%;
           align-self: center;
         }
+
         .y-axis {
           font-size: clamp(11px, 1.45vh, 16px);
           font-weight: 900;
           padding-right: 8px;
         }
+
         .bars {
           padding: 0 clamp(12px, 2vw, 36px);
         }
+
         .bar-group {
           width: 20%;
         }
+
         .x-labels {
           padding: 9px clamp(12px, 2vw, 36px) 0;
         }
+
         .x-label {
           font-size: clamp(12px, 1.5vh, 17px) !important;
           line-height: 1.08;
         }
+
         .x-label span {
           margin-bottom: 5px;
           font-size: clamp(24px, 3.2vh, 38px);
         }
+
         .question-panel {
           padding: clamp(18px, 2.5vh, 30px) clamp(20px, 2vw, 34px);
         }
+
         .question-content {
           gap: 0;
           padding-top: clamp(10px, 1.5vh, 18px) !important;
           padding-bottom: clamp(10px, 1.5vh, 18px) !important;
         }
+
         .battery-progress {
           padding: 4px 0 8px;
         }
+
         .level {
           margin-top: 0;
           margin-bottom: 12px;
           min-height: 50px;
         }
+
         .question-box {
           padding: clamp(14px, 2vh, 22px) clamp(14px, 1.5vw, 24px);
           margin-bottom: clamp(12px, 1.8vh, 20px) !important;
         }
+
         .question-panel h2 {
           font-size: clamp(18px, 2.5vh, 30px);
           line-height: 1.22;
         }
+
         .answers {
           gap: clamp(10px, 1.1vw, 16px);
         }
+
         .answer-button {
           min-height: clamp(54px, 6.5vh, 68px);
           padding: 9px 8px;
           border-radius: 18px;
           font-size: clamp(14px, 1.7vh, 20px);
         }
+
         #feedback {
           margin-top: 8px;
         }
@@ -2335,62 +2423,62 @@
           font-size: clamp(9px, 1vh, 13px);
           padding: 3px 10px 3px 8px;
         }
+
         .year1-badge span {
           font-size: clamp(11px, 1.2vh, 16px);
         }
+
         .main-content {
           grid-template-columns: minmax(0, 1.4fr) minmax(220px, 0.9fr);
           gap: 10px;
         }
+
         .graph-wrapper {
           flex-basis: clamp(230px, 38vh, 340px);
         }
+
         .chart-card {
           padding-left: 16px;
           padding-right: 16px;
         }
+
         .x-labels {
           padding-left: clamp(18px, 2.5vw, 32px);
           padding-right: clamp(18px, 2.5vw, 32px);
         }
+
         .bars {
           padding-left: clamp(14px, 2vw, 28px);
           padding-right: clamp(14px, 2vw, 28px);
         }
+
         .bar {
           width: clamp(24px, 3.2vw, 42px);
         }
+
         .chart-question {
           font-size: clamp(15px, 2vh, 22px);
         }
-        .thinking-clock-wrap.active {
-          height: clamp(70px, 9vh, 90px);
-          min-height: clamp(70px, 9vh, 90px);
-        }
-        .thinking-clock {
-          width: clamp(62px, 8vh, 80px);
-          height: clamp(62px, 8vh, 80px);
-        }
+
         #jumpButton {
           width: 68px;
           height: 68px;
           font-size: 12px;
         }
+
         #player {
           width: 56px;
           height: 62px;
           font-size: 44px;
         }
+
         .game-title {
           font-size: clamp(9px, 1.1vh, 15px);
         }
+
         .game-stat {
           font-size: clamp(8px, 1vh, 14px);
           min-width: 34px;
-        }
-        .game-timer {
-          font-size: clamp(12px, 1.6vh, 20px);
-          min-width: 30px;
         }
       }
 
@@ -2398,17 +2486,21 @@
         .year1-badge {
           display: flex !important;
         }
+
         .answer-button {
           min-height: 54px;
           font-size: clamp(14px, 1.6vh, 20px);
         }
+
         .graph-wrapper {
           flex-basis: clamp(280px, 44vh, 470px);
         }
+
         .chart-card {
           padding-left: clamp(22px, 2.2vw, 36px);
           padding-right: clamp(22px, 2.2vw, 36px);
         }
+
         #player {
           bottom: calc(42% - 2px);
         }
@@ -2417,7 +2509,9 @@
   </head>
 
   <body>
-    <!-- DECORATIVE SKY -->
+    <!-- =============================================================
+    🎯  COMPONENT: DECORATIVE SKY
+    ============================================================= -->
     <div class="sky-star star-one">✦</div>
     <div class="sky-star star-two">✦</div>
     <div class="sky-star star-three">✦</div>
@@ -2426,7 +2520,9 @@
     <div class="sky-dot dot-two"></div>
     <div class="sky-dot dot-three"></div>
 
-    <!-- INTRO OVERLAY -->
+    <!-- =============================================================
+    🎯  COMPONENT: INTRO OVERLAY
+    ============================================================= -->
     <div id="introOverlay">
       <div class="intro-card">
         <img
@@ -2441,7 +2537,9 @@
       </div>
     </div>
 
-    <!-- LEARNING SCREEN -->
+    <!-- =============================================================
+    🎯  COMPONENT: LEARNING SCREEN (quiz + chart)
+    ============================================================= -->
     <div id="learningScreen">
       <div class="header">
         <h1 class="title">Chart Quest</h1>
@@ -2468,7 +2566,7 @@
           </div>
         </div>
 
-        <!-- QUESTIONS -->
+        <!-- QUESTION PANEL -->
         <div class="question-panel">
           <button
             class="voice-toggle-icon"
@@ -2478,34 +2576,20 @@
           >
             🔇
           </button>
-          <div class="question-content">
-            <!-- THINKING CLOCK -->
-            <div
-              class="thinking-clock-wrap"
-              id="thinkingClockWrap"
-              aria-hidden="true"
-            >
-              <div class="thinking-clock" id="thinkingClock">
-                <span class="clock-mark m1"></span>
-                <span class="clock-mark m2"></span>
-                <span class="clock-mark m3"></span>
-                <span class="clock-mark m4"></span>
-                <span class="clock-mark m5"></span>
-                <span class="clock-mark m6"></span>
-                <span class="clock-hand" id="clockHand"></span>
-                <span class="clock-centre"></span>
-              </div>
-            </div>
 
+          <div class="question-content">
+            <!-- BATTERY PROGRESS -->
             <div class="battery-progress" id="batteryProgress">
               <div class="battery-row" id="batteryRow"></div>
             </div>
 
+            <!-- LEVEL INDICATOR -->
             <div class="level" id="levelLabel">
               <span class="level-character">⭐</span>
               <span class="level-word">LEVEL 1</span>
             </div>
 
+            <!-- QUESTION + ANSWERS -->
             <div id="questionDisplay">
               <div class="question-box">
                 <h2 id="questionText">
@@ -2519,7 +2603,7 @@
         </div>
       </div>
 
-      <!-- LEVEL COMPLETE -->
+      <!-- LEVEL COMPLETE OVERLAY -->
       <div id="levelComplete">
         <div class="level-complete-card">
           <h2 id="levelCompleteTitle">🎉 Level Complete!</h2>
@@ -2532,12 +2616,13 @@
       </div>
     </div>
 
-    <!-- GAME SCREEN -->
+    <!-- =============================================================
+    🎯  COMPONENT: GAME SCREEN (Rabbit Run — no timer)
+    ============================================================= -->
     <div id="gameScreen">
       <div class="game-header">
         <div class="game-title">🐰 Rabbit Run!</div>
         <div class="game-center-hud">
-          <div class="game-stat game-timer" id="timer">30</div>
           <div class="game-stat" id="livesDisplay">❤️❤️❤️</div>
         </div>
         <button class="game-skip" id="skipGameButton" type="button">
@@ -2547,6 +2632,7 @@
       <div class="game-instruction">
         Press SPACEBAR to jump over the obstacles! 🐰
       </div>
+
       <div class="game-world">
         <div class="world" id="world">
           <div class="cloud one"></div>
@@ -2566,11 +2652,14 @@
         <div id="gameParticles"></div>
         <div id="player"></div>
       </div>
+
       <button id="jumpButton" type="button" aria-label="Jump">JUMP</button>
+
+      <!-- GAME OVER -->
       <div id="gameOver">
         <div class="game-over-card">
-          <h2 id="gameOverTitle">🎉 Time's Up!</h2>
-          <p id="gameOverText">Great running!</p>
+          <h2 id="gameOverTitle">💔 Game Over</h2>
+          <p id="gameOverText">You lost all your lives!</p>
           <div class="game-over-stats" id="gameOverStats"></div>
           <button class="continue-button" id="continueButton" type="button">
             Continue
@@ -2579,7 +2668,9 @@
       </div>
     </div>
 
-    <!-- FINAL SUMMARY -->
+    <!-- =============================================================
+    🎯  COMPONENT: FINAL SUMMARY
+    ============================================================= -->
     <div id="finalSummary">
       <div class="final-summary-card">
         <h2>🏆 Chart Quest Complete!</h2>
@@ -2593,10 +2684,13 @@
       </div>
     </div>
 
+    <!-- =============================================================
+    🎯  JAVASCRIPT — APPLICATION LOGIC
+    ============================================================= -->
     <script>
-      /* =========================================================
-                   LEVEL DATA — 5 levels, 10 questions each
-                ========================================================= */
+      /* =============================================================
+               📦  LEVEL DATA — 5 levels, 10 questions each
+               ============================================================= */
       const levels = [
         {
           name: "LEVEL 1 – Fruits",
@@ -2976,9 +3070,9 @@
         },
       ];
 
-      /* =========================================================
-                   APPLICATION STATE
-                ========================================================= */
+      /* =============================================================
+               📦  APPLICATION STATE
+               ============================================================= */
       let currentLevel = 0;
       let currentQuestion = 0;
       let totalWrongAttempts = 0;
@@ -2995,7 +3089,9 @@
         correctAnswers: 0,
       }));
 
-      /* DOM refs */
+      /* =============================================================
+               📦  DOM REFS
+               ============================================================= */
       const learningScreen = document.getElementById("learningScreen");
       const gameScreen = document.getElementById("gameScreen");
       const levelComplete = document.getElementById("levelComplete");
@@ -3005,9 +3101,11 @@
       const voiceToggle = document.getElementById("voiceToggle");
       const chartQuestion = document.getElementById("chartQuestion");
 
-      /* THINKING CLOCK */
-      let thinkingTimer = null;
-      let thinkingTickIndex = 0;
+      /* =============================================================
+               🔊  AUDIO / VOICE
+               ============================================================= */
+      let voiceEnabled = false;
+      let currentAudio = null;
       let audioContext = null;
 
       function getAudioContext() {
@@ -3019,66 +3117,6 @@
         if (audioContext.state === "suspended") audioContext.resume();
         return audioContext;
       }
-
-      function playThinkingTick() {
-        try {
-          const ctx = getAudioContext();
-          if (!ctx) return;
-          const oscillator = ctx.createOscillator();
-          const gain = ctx.createGain();
-          oscillator.frequency.value = thinkingTickIndex % 2 === 0 ? 850 : 650;
-          oscillator.type = "sine";
-          const now = ctx.currentTime;
-          gain.gain.setValueAtTime(0.0001, now);
-          gain.gain.exponentialRampToValueAtTime(0.07, now + 0.008);
-          gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.075);
-          oscillator.connect(gain);
-          gain.connect(ctx.destination);
-          oscillator.start(now);
-          oscillator.stop(now + 0.08);
-          thinkingTickIndex++;
-        } catch (e) {
-          /* silent */
-        }
-      }
-
-      function startThinkingClock() {
-        stopThinkingClock();
-        const wrap = document.getElementById("thinkingClockWrap");
-        const hand = document.getElementById("clockHand");
-        if (!wrap || !hand) return;
-        wrap.classList.add("active");
-        let secondsElapsed = 0;
-        thinkingTickIndex = 0;
-        hand.style.transform = "rotate(0deg)";
-        thinkingTimer = setInterval(() => {
-          secondsElapsed++;
-          hand.style.transform = `rotate(${secondsElapsed * 72}deg)`;
-          playThinkingTick();
-          if (secondsElapsed >= 5) {
-            clearInterval(thinkingTimer);
-            thinkingTimer = null;
-            setTimeout(() => {
-              if (!thinkingTimer) wrap.classList.remove("active");
-            }, 180);
-          }
-        }, 1000);
-      }
-
-      function stopThinkingClock() {
-        if (thinkingTimer) {
-          clearInterval(thinkingTimer);
-          thinkingTimer = null;
-        }
-        const wrap = document.getElementById("thinkingClockWrap");
-        const hand = document.getElementById("clockHand");
-        if (wrap) wrap.classList.remove("active");
-        if (hand) hand.style.transform = "rotate(0deg)";
-      }
-
-      /* AUDIO */
-      let voiceEnabled = false;
-      let currentAudio = null;
 
       function stopAudio() {
         if (currentAudio) {
@@ -3111,19 +3149,7 @@
         if (!voiceEnabled) return Promise.resolve(false);
         const levelNum = currentLevel + 1;
         const qNum = currentQuestion + 1;
-        return playAudioFile("l" + levelNum + "-q" + qNum + ".mp3").then(
-          (ok) => {
-            if (
-              ok &&
-              voiceEnabled &&
-              learningScreen.style.display !== "none" &&
-              levelComplete.style.display !== "flex"
-            ) {
-              startThinkingClock();
-            }
-            return ok;
-          },
-        );
+        return playAudioFile("l" + levelNum + "-q" + qNum + ".mp3");
       }
 
       function speakFeedback(type) {
@@ -3147,7 +3173,6 @@
         );
         if (!voiceEnabled) {
           stopAudio();
-          stopThinkingClock();
         } else {
           if (
             document.getElementById("questionDisplay").style.display !== "none"
@@ -3166,7 +3191,9 @@
         loadLevel();
       });
 
-      /* MUSICAL TONES */
+      /* =============================================================
+               🔊  SOUND EFFECTS (musical tones)
+               ============================================================= */
       function playCorrectSound() {
         const ctx = getAudioContext();
         const now = ctx.currentTime;
@@ -3220,50 +3247,11 @@
         osc.stop(now + 0.15);
       }
 
-      /* GAME MUSIC */
-      let musicEnabled = true;
-      let musicInterval = null;
-      let musicStep = 0;
-      const musicNotes = [
-        523, 587, 659, 784, 659, 587, 523, 659, 784, 880, 784, 659, 587, 523,
-        587, 659,
-      ];
+      /* =============================================================
+               🎨  RENDER FUNCTIONS
+               ============================================================= */
 
-      function playGameMusicNote() {
-        if (!gameRunning || !musicEnabled) return;
-        const ctx = getAudioContext();
-        const now = ctx.currentTime;
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = "triangle";
-        const note = musicNotes[musicStep % musicNotes.length];
-        osc.frequency.setValueAtTime(note, now);
-        gain.gain.setValueAtTime(0.0001, now);
-        gain.gain.exponentialRampToValueAtTime(0.055, now + 0.02);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.18);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(now);
-        osc.stop(now + 0.19);
-        musicStep++;
-      }
-
-      function startGameMusic() {
-        stopGameMusic();
-        musicStep = 0;
-        if (!musicEnabled) return;
-        playGameMusicNote();
-        musicInterval = setInterval(playGameMusicNote, 200);
-      }
-
-      function stopGameMusic() {
-        if (musicInterval) {
-          clearInterval(musicInterval);
-          musicInterval = null;
-        }
-      }
-
-      /* BATTERY PROGRESS */
+      /** Render the battery progress bar (question tracker) */
       function renderBattery() {
         const level = levels[currentLevel];
         const total = level.questions.length;
@@ -3291,7 +3279,7 @@
         }
       }
 
-      /* RENDER CHART */
+      /** Render the bar chart */
       function renderChart() {
         const level = levels[currentLevel];
         chartQuestion.textContent = level.chartTitle;
@@ -3307,7 +3295,6 @@
           const pct = (item.value / 8) * 100;
           bar.style.height = pct + "%";
           bar.style.animationDelay = index * 0.08 + "s";
-          // No bar-number element — removed as requested
           group.appendChild(bar);
           bars.appendChild(group);
           const label = document.createElement("div");
@@ -3318,10 +3305,9 @@
         });
       }
 
-      /* RENDER QUESTION */
+      /** Render the current question and answers */
       function renderQuestion() {
         stopAudio();
-        stopThinkingClock();
         const level = levels[currentLevel];
         const question = level.questions[currentQuestion];
         const levelLabel = document.getElementById("levelLabel");
@@ -3371,7 +3357,7 @@
         }
       }
 
-      /* LOAD LEVEL */
+      /** Load a level (reset to first question) */
       function loadLevel() {
         currentQuestion = 0;
         correctCoins = 0;
@@ -3385,7 +3371,11 @@
         document.getElementById("questionDisplay").style.display = "block";
       }
 
-      /* STAR BURST */
+      /* =============================================================
+               ✨  CELEBRATION EFFECTS
+               ============================================================= */
+
+      /** Star burst for correct answers */
       function createStarBurst() {
         const old = document.querySelector(".star-burst");
         if (old) old.remove();
@@ -3414,7 +3404,7 @@
         }, 1500);
       }
 
-      /* MEGA CELEBRATION */
+      /** Mega celebration for correct answers */
       function megaCelebrate() {
         const old = document.querySelector(".mega-celebration");
         if (old) old.remove();
@@ -3450,12 +3440,13 @@
         setTimeout(() => w.remove(), 2100);
       }
 
-      /* ANSWER CHECKING */
+      /* =============================================================
+               ✅  ANSWER CHECKING
+               ============================================================= */
       function checkAnswer(answer, clickedButton) {
         const question = levels[currentLevel].questions[currentQuestion];
         const feedback = document.getElementById("feedback");
         stopAudio();
-        stopThinkingClock();
 
         if (answer === question.correct) {
           totalCorrectAnswers++;
@@ -3478,11 +3469,7 @@
 
           const feedbackAudio = speakFeedback("correct");
           feedbackAudio.then((played) => {
-            if (played) {
-              setTimeout(nextQuestion, 350);
-            } else {
-              setTimeout(nextQuestion, 2000);
-            }
+            setTimeout(nextQuestion, played ? 350 : 2000);
           });
         } else {
           totalWrongAttempts++;
@@ -3509,7 +3496,9 @@
         }
       }
 
-      /* COMPLETE LEVEL with dynamic coin stack height */
+      /* =============================================================
+               🎯  LEVEL COMPLETE (with coin-stack animation)
+               ============================================================= */
       function completeLevel() {
         stopAudio();
         const correct = correctCoins;
@@ -3616,9 +3605,23 @@
         dropNextCoin();
       }
 
-      /* =========================================================
-                   OBSTACLE SYSTEM
-                ========================================================= */
+      /* =============================================================
+               🎮  RABBIT RUN GAME (no timer)
+               ============================================================= */
+
+      let gameRunning = false;
+      let gameAnimation = null;
+      let playerY = 0;
+      let velocityY = 0;
+      let jumping = false;
+      let worldX = 0;
+      let lastTime = 0;
+      let gameStartTime = 0;
+      let rabbitScale = 1;
+      const MIN_SCALE = 0.55;
+      let lastHitTime = 0;
+      const HIT_COOLDOWN = 800;
+
       let obstacles = [];
       let nextObstacleX = 0;
       const OBSTACLE_BASE_GAP = 480;
@@ -3626,6 +3629,15 @@
       const OBSTACLE_TYPES = ["type-1", "type-2", "type-3", "type-4", "type-5"];
       const OBSTACLE_VARIANTS = ["", "ice", "cactus", "rock"];
       const OBSTACLE_SIZES = ["", "small", "tall"];
+
+      const player = document.getElementById("player");
+      const world = document.getElementById("world");
+      const livesDisplay = document.getElementById("livesDisplay");
+      const gameOver = document.getElementById("gameOver");
+      const continueButton = document.getElementById("continueButton");
+      const skipGameButton = document.getElementById("skipGameButton");
+      const jumpButton = document.getElementById("jumpButton");
+      const gameParticles = document.getElementById("gameParticles");
 
       function getObstacleGap(speed) {
         return OBSTACLE_BASE_GAP + speed * OBSTACLE_GAP_PER_SPEED;
@@ -3707,74 +3719,9 @@
         nextObstacleX = 600;
       }
 
-      /* =========================================================
-                   GAME STATE
-                ========================================================= */
-      let gameRunning = false;
-      let gameAnimation = null;
-      let gameTimer = null;
-      let timeLeft = 30;
-      let playerY = 0;
-      let velocityY = 0;
-      let jumping = false;
-      let worldX = 0;
-      let lastTime = 0;
-      let gameStartTime = 0;
-      let rabbitScale = 1;
-      const MIN_SCALE = 0.55;
-      let lastHitTime = 0;
-      const HIT_COOLDOWN = 800;
-
-      const player = document.getElementById("player");
-      const world = document.getElementById("world");
-      const timer = document.getElementById("timer");
-      const livesDisplay = document.getElementById("livesDisplay");
-      const gameOver = document.getElementById("gameOver");
-      const continueButton = document.getElementById("continueButton");
-      const skipGameButton = document.getElementById("skipGameButton");
-      const jumpButton = document.getElementById("jumpButton");
-      const gameParticles = document.getElementById("gameParticles");
-
-      function resetGameState() {
-        gameRunning = false;
-        clearInterval(gameTimer);
-        gameTimer = null;
-        cancelAnimationFrame(gameAnimation);
-        gameAnimation = null;
-        stopGameMusic();
-        timeLeft = 30;
-        playerY = 0;
-        velocityY = 0;
-        jumping = false;
-        worldX = 0;
-        lastTime = 0;
-        gameStartTime = 0;
-        rabbitScale = 1;
-        lastHitTime = 0;
-        player.style.transform = "scale(1)";
-        player.style.opacity = "1";
-        player.style.filter = "none";
-        player.classList.remove("jumping");
-        player.style.bottom = "calc(42% - 2px)";
-        player.style.bottom = "calc(42dvh - 2px)";
-        world.style.transform = "translateX(0px)";
-        timer.textContent = "30";
-        updateLivesDisplay();
-        gameOver.style.display = "none";
-        gameParticles.innerHTML = "";
-        clearObstacles();
-        const oldBanner = document.querySelector(".bonus-banner");
-        if (oldBanner) oldBanner.remove();
-      }
-
       function updateLivesDisplay() {
         livesDisplay.textContent =
           "❤️".repeat(Math.max(0, globalLives)) || "♡♡♡";
-      }
-
-      function updateGameHUD() {
-        timer.textContent = timeLeft;
-        updateLivesDisplay();
       }
 
       function updateRabbitScale() {
@@ -3803,62 +3750,113 @@
         return 220 + progress * progress * 380;
       }
 
-      function startGame() {
-        resetGameState();
-        if (globalLives <= 0) {
-          globalLives = 3;
-          updateLivesDisplay();
-        }
-        learningScreen.style.display = "none";
-        gameScreen.style.display = "block";
-
-        const totalTime = 30 + bonusSeconds;
-        timeLeft = totalTime;
-        timer.textContent = timeLeft;
-
-        if (bonusSeconds > 0) {
-          const banner = document.createElement("div");
-          banner.className = "bonus-banner";
-          banner.textContent = "🎁 Bonus: +" + bonusSeconds + "s!";
-          document.getElementById("gameScreen").appendChild(banner);
-          setTimeout(() => {
-            if (banner.parentNode) banner.remove();
-          }, 2600);
-        }
-
-        gameRunning = true;
-        gameStartTime = performance.now();
-
-        const initialSpeed = getCurrentSpeed(0);
-        spawnObstacles(8, 600, initialSpeed);
-
-        updateRabbitScale();
-        updatePlayer();
-        updateGameHUD();
-        if (currentLevel < levels.length - 1) {
-          continueButton.textContent =
-            "Continue to Level " + (currentLevel + 2);
-        } else {
-          continueButton.textContent = "Finish";
-        }
-        lastTime = performance.now();
-        gameAnimation = requestAnimationFrame(gameLoop);
-        gameTimer = setInterval(updateGameTimer, 1000);
-        startGameMusic();
+      function resetGameState() {
+        gameRunning = false;
+        cancelAnimationFrame(gameAnimation);
+        gameAnimation = null;
+        playerY = 0;
+        velocityY = 0;
+        jumping = false;
+        worldX = 0;
+        lastTime = 0;
+        gameStartTime = 0;
+        rabbitScale = 1;
+        lastHitTime = 0;
+        player.style.transform = "scale(1)";
+        player.style.opacity = "1";
+        player.style.filter = "none";
+        player.classList.remove("jumping");
+        player.style.bottom = "calc(42% - 2px)";
+        player.style.bottom = "calc(42dvh - 2px)";
+        world.style.transform = "translateX(0px)";
+        updateLivesDisplay();
+        gameOver.style.display = "none";
+        gameParticles.innerHTML = "";
+        clearObstacles();
+        const oldBanner = document.querySelector(".bonus-banner");
+        if (oldBanner) oldBanner.remove();
       }
 
-      skipGameButton.addEventListener("click", function (event) {
-        event.stopPropagation();
-        if (!gameRunning) return;
-        endGame(true);
-      });
+      function updatePlayer() {
+        const baseBottom = "calc(42% - 2px)";
+        const baseBottomDvh = "calc(42dvh - 2px)";
+        player.style.bottom = baseBottom;
+        player.style.bottom = baseBottomDvh;
+        player.style.transform =
+          "translateY(" + -playerY + "px) scale(" + rabbitScale + ")";
+      }
 
-      function updateGameTimer() {
+      function jump() {
         if (!gameRunning) return;
-        timeLeft--;
-        updateGameHUD();
-        if (timeLeft <= 0) {
-          endGame(false);
+        if (!jumping) {
+          jumping = true;
+          velocityY = 700;
+          player.classList.add("jumping");
+          const rect = player.getBoundingClientRect();
+          createGameParticles(
+            rect.left + rect.width / 2,
+            rect.top + rect.height / 2,
+            "star",
+          );
+        }
+      }
+
+      function updatePlayerPhysics(delta) {
+        velocityY -= 1550 * delta;
+        playerY += velocityY * delta;
+        if (playerY <= 0) {
+          playerY = 0;
+          velocityY = 0;
+          jumping = false;
+          player.classList.remove("jumping");
+        }
+        updatePlayer();
+      }
+
+      function checkObstacles() {
+        const now = performance.now();
+        if (now - lastHitTime < HIT_COOLDOWN) return;
+        const rabbitRect = player.getBoundingClientRect();
+
+        for (const obs of obstacles) {
+          const obstacleScreenX = obs.x - worldX;
+          const obstacleLeft = obstacleScreenX;
+          const obstacleRight = obstacleScreenX + obs.el.offsetWidth;
+          const rabbitLeft = rabbitRect.left + 14;
+          const rabbitRight = rabbitRect.right - 14;
+          const horizontalHit =
+            rabbitRight > obstacleLeft && rabbitLeft < obstacleRight;
+          const obstacleHeight = obs.el.offsetHeight;
+          const verticalHit = playerY < obstacleHeight - 8;
+          if (horizontalHit && verticalHit) {
+            hitObstacle();
+            break;
+          }
+        }
+      }
+
+      function hitObstacle() {
+        lastHitTime = performance.now();
+        playWrongSound();
+        globalLives--;
+        updateLivesDisplay();
+        const rect = player.getBoundingClientRect();
+        createGameParticles(
+          rect.left + rect.width / 2,
+          rect.top + rect.height / 2,
+          "hit",
+        );
+        worldX = Math.max(0, worldX - 90);
+        playerY = 0;
+        velocityY = 0;
+        jumping = false;
+        rabbitScale = Math.max(MIN_SCALE, rabbitScale - 0.15);
+        updateRabbitScale();
+        updatePlayer();
+        if (globalLives <= 0) {
+          setTimeout(() => {
+            if (gameRunning) endGame(false);
+          }, 450);
         }
       }
 
@@ -3893,117 +3891,41 @@
         gameAnimation = requestAnimationFrame(gameLoop);
       }
 
-      function updatePlayerPhysics(delta) {
-        velocityY -= 1550 * delta;
-        playerY += velocityY * delta;
-        if (playerY <= 0) {
-          playerY = 0;
-          velocityY = 0;
-          jumping = false;
-          player.classList.remove("jumping");
+      function startGame() {
+        resetGameState();
+        if (globalLives <= 0) {
+          globalLives = 3;
+          updateLivesDisplay();
         }
-        updatePlayer();
-      }
+        learningScreen.style.display = "none";
+        gameScreen.style.display = "block";
 
-      function updatePlayer() {
-        const baseBottom = "calc(42% - 2px)";
-        const baseBottomDvh = "calc(42dvh - 2px)";
-        player.style.bottom = baseBottom;
-        player.style.bottom = baseBottomDvh;
-        player.style.transform =
-          "translateY(" + -playerY + "px) scale(" + rabbitScale + ")";
-      }
+        gameRunning = true;
+        gameStartTime = performance.now();
 
-      function jump() {
-        if (!gameRunning) return;
-        if (!jumping) {
-          jumping = true;
-          velocityY = 700;
-          player.classList.add("jumping");
-          const rect = player.getBoundingClientRect();
-          createGameParticles(
-            rect.left + rect.width / 2,
-            rect.top + rect.height / 2,
-            "star",
-          );
-        }
-      }
+        const initialSpeed = getCurrentSpeed(0);
+        spawnObstacles(8, 600, initialSpeed);
 
-      document.addEventListener("keydown", function (event) {
-        if (event.code === "Space") {
-          if (gameRunning) {
-            event.preventDefault();
-            if (!event.repeat) jump();
-          }
-        }
-      });
-
-      jumpButton.addEventListener("pointerdown", function (event) {
-        event.preventDefault();
-        if (gameRunning) jump();
-      });
-
-      gameScreen.addEventListener("pointerdown", function (event) {
-        if (!gameRunning) return;
-        if (event.target.closest("button")) return;
-        jump();
-      });
-
-      function checkObstacles() {
-        const now = performance.now();
-        if (now - lastHitTime < HIT_COOLDOWN) return;
-        const rabbitRect = player.getBoundingClientRect();
-
-        for (const obs of obstacles) {
-          const obstacleScreenX = obs.x - worldX;
-          const obstacleLeft = obstacleScreenX;
-          const obstacleRight = obstacleScreenX + obs.el.offsetWidth;
-          const rabbitLeft = rabbitRect.left + 14;
-          const rabbitRight = rabbitRect.right - 14;
-          const horizontalHit =
-            rabbitRight > obstacleLeft && rabbitLeft < obstacleRight;
-          const obstacleHeight = obs.el.offsetHeight;
-          const verticalHit = playerY < obstacleHeight - 8;
-          if (horizontalHit && verticalHit) {
-            hitObstacle();
-            break;
-          }
-        }
-      }
-
-      function hitObstacle() {
-        lastHitTime = performance.now();
-        playWrongSound();
-        globalLives--;
-        updateGameHUD();
-        const rect = player.getBoundingClientRect();
-        createGameParticles(
-          rect.left + rect.width / 2,
-          rect.top + rect.height / 2,
-          "hit",
-        );
-        worldX = Math.max(0, worldX - 90);
-        playerY = 0;
-        velocityY = 0;
-        jumping = false;
-        rabbitScale = Math.max(MIN_SCALE, rabbitScale - 0.15);
         updateRabbitScale();
         updatePlayer();
-        if (globalLives <= 0) {
-          setTimeout(() => {
-            if (gameRunning) endGame(false);
-          }, 450);
+        updateLivesDisplay();
+
+        if (currentLevel < levels.length - 1) {
+          continueButton.textContent =
+            "Continue to Level " + (currentLevel + 2);
+        } else {
+          continueButton.textContent = "Finish";
         }
+
+        lastTime = performance.now();
+        gameAnimation = requestAnimationFrame(gameLoop);
       }
 
       function endGame(skip) {
         if (!gameRunning) return;
         gameRunning = false;
-        clearInterval(gameTimer);
-        gameTimer = null;
         cancelAnimationFrame(gameAnimation);
         gameAnimation = null;
-        stopGameMusic();
 
         if (skip) {
           bonusSeconds = 0;
@@ -4019,8 +3941,8 @@
           text.textContent =
             "You lost all your lives. But you can try again with 3 lives!";
           stats.innerHTML = `
-                                <div class="game-over-stat"><strong>${globalLives}</strong><span>Lives Left</span></div>
-                            `;
+                            <div class="game-over-stat"><strong>${globalLives}</strong><span>Lives Left</span></div>
+                        `;
           continueButton.textContent = "Restart Level";
           continueButton.onclick = function () {
             globalLives = 3;
@@ -4035,11 +3957,11 @@
         const title = document.getElementById("gameOverTitle");
         const text = document.getElementById("gameOverText");
         const stats = document.getElementById("gameOverStats");
-        title.textContent = "🎉 Time's Up!";
-        text.textContent = "Great running! You kept your lives.";
+        title.textContent = "🎉 Great Running!";
+        text.textContent = "You kept your lives — well done!";
         stats.innerHTML = `
-                            <div class="game-over-stat"><strong>${globalLives}</strong><span>Lives Left</span></div>
-                        `;
+                        <div class="game-over-stat"><strong>${globalLives}</strong><span>Lives Left</span></div>
+                    `;
         continueButton.textContent =
           currentLevel < levels.length - 1
             ? "Continue to Level " + (currentLevel + 2)
@@ -4077,32 +3999,55 @@
           startGame();
         });
 
+      skipGameButton.addEventListener("click", function (event) {
+        event.stopPropagation();
+        if (!gameRunning) return;
+        endGame(true);
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.code === "Space") {
+          if (gameRunning) {
+            event.preventDefault();
+            if (!event.repeat) jump();
+          }
+        }
+      });
+
+      jumpButton.addEventListener("pointerdown", function (event) {
+        event.preventDefault();
+        if (gameRunning) jump();
+      });
+
+      gameScreen.addEventListener("pointerdown", function (event) {
+        if (!gameRunning) return;
+        if (event.target.closest("button")) return;
+        jump();
+      });
+
+      /* =============================================================
+               🏁  FINAL SUMMARY & RESTART
+               ============================================================= */
+
       function finishEntireTest() {
-        stopGameMusic();
         resetGameState();
-        bonusSeconds = 0;
         showFinalSummary();
       }
 
-      /* FINAL SUMMARY */
       function showFinalSummary() {
         document.getElementById("finalStatistics").innerHTML = `
-                            <div class="final-stat"><strong>${totalCorrectAnswers}</strong><span>Correct Answers</span></div>
-                            <div class="final-stat"><strong>${totalWrongAttempts}</strong><span>Wrong Attempts</span></div>
-                            <div class="final-stat"><strong>${totalQuestionsAnswered}</strong><span>Questions</span></div>
-                        `;
+                        <div class="final-stat"><strong>${totalCorrectAnswers}</strong><span>Correct Answers</span></div>
+                        <div class="final-stat"><strong>${totalWrongAttempts}</strong><span>Wrong Attempts</span></div>
+                        <div class="final-stat"><strong>${totalQuestionsAnswered}</strong><span>Questions</span></div>
+                    `;
         document.getElementById("finalSummaryIntro").textContent =
           "You completed all five chart levels. Well done!";
         finalSummary.style.display = "flex";
       }
 
-      /* RESET */
       function resetEntireTask() {
         stopAudio();
-        stopGameMusic();
         gameRunning = false;
-        clearInterval(gameTimer);
-        gameTimer = null;
         cancelAnimationFrame(gameAnimation);
         gameAnimation = null;
         currentLevel = 0;
@@ -4134,7 +4079,9 @@
           resetEntireTask();
         });
 
-      /* INIT */
+      /* =============================================================
+               🚀  INIT
+               ============================================================= */
       voiceToggle.textContent = "🔇";
       voiceToggle.setAttribute("aria-label", "Voice off");
       document.getElementById("questionDisplay").style.display = "block";
@@ -4142,9 +4089,7 @@
       const initialLevelLabel = document.getElementById("levelLabel");
       initialLevelLabel.innerHTML = `<span class="level-character">⭐</span><span class="level-word">LEVEL 1</span>`;
 
-      console.log(
-        "📊 Chart Quest updated with first-attachment design — fully responsive.",
-      );
+      console.log("📊 Chart Quest loaded — timers removed, ready to play!");
     </script>
   </body>
 </html>
