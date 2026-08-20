@@ -419,7 +419,29 @@
         border-radius: 99px;
         background: rgba(255, 255, 255, 0.35);
       }
-      /* No bar-number — removed as requested */
+      .bar-number {
+        position: absolute;
+        left: 50%;
+        top: -43px;
+        transform: translateX(-50%);
+        min-width: 44px;
+        min-height: 44px;
+        padding: 4px 9px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 16px;
+        background: #fff;
+        border: 4px solid #4b3188;
+        color: #34225f;
+        font-size: clamp(20px, 3vh, 34px);
+        font-weight: 900;
+        box-shadow:
+          0 5px 0 rgba(67, 46, 103, 0.18),
+          0 8px 16px rgba(50, 40, 80, 0.12);
+        z-index: 2;
+        white-space: nowrap;
+      }
       .strawberry {
         background: repeating-linear-gradient(
           -45deg,
@@ -628,7 +650,7 @@
       }
 
       /* =========================================================
-                   BATTERY PROGRESS — like the first attachment
+                   BATTERY PROGRESS
                 ========================================================= */
       .battery-progress {
         flex: 0 0 auto;
@@ -645,30 +667,15 @@
         flex-wrap: wrap;
       }
       .battery-cell {
-        width: clamp(14px, 1.8vw, 22px);
-        height: clamp(18px, 2.2vh, 28px);
-        border-radius: 3px 3px 6px 6px;
+        width: clamp(12px, 1.4vw, 20px);
+        height: clamp(10px, 1.4vh, 16px);
+        border-radius: 99px;
         border: 2px solid #d4c0e8;
         background: rgba(240, 235, 250, 0.35);
         position: relative;
         transition: all 0.35s ease;
         flex-shrink: 0;
         box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.04);
-      }
-      /* The little nub on top — like the first attachment */
-      .battery-cell::after {
-        content: "";
-        position: absolute;
-        top: -4px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: clamp(5px, 0.6vw, 8px);
-        height: 4px;
-        border-radius: 2px 2px 0 0;
-        border: 2px solid #d4c0e8;
-        border-bottom: none;
-        background: rgba(240, 235, 250, 0.35);
-        transition: all 0.35s ease;
       }
       .battery-cell.filled {
         background: linear-gradient(180deg, #fecb5e, #f0a348);
@@ -677,24 +684,12 @@
           0 2px 8px rgba(240, 163, 72, 0.3),
           inset 0 -2px 0 rgba(0, 0, 0, 0.08);
       }
-      .battery-cell.filled::after {
-        background: #f0a348;
-        border-color: #c9862e;
-      }
       .battery-cell.current {
         border-color: #ff6b6b;
         animation: batteryPulse 0.9s ease-in-out infinite;
         box-shadow: 0 0 14px rgba(255, 107, 107, 0.3);
       }
-      .battery-cell.current::after {
-        border-color: #ff6b6b;
-        background: #ff6b6b;
-      }
       .battery-cell.empty {
-        border-color: #d4c8e8;
-        background: rgba(240, 235, 250, 0.25);
-      }
-      .battery-cell.empty::after {
         border-color: #d4c8e8;
         background: rgba(240, 235, 250, 0.25);
       }
@@ -1745,7 +1740,7 @@
         .main-content {
           grid-template-columns: 1fr;
           grid-template-rows: minmax(0, 0.75fr) minmax(0, 1fr);
-          gap: 10px;
+          gap: 5px;
         }
         .chart-card {
           padding: 5px 7px 5px;
@@ -1783,6 +1778,15 @@
           border-width: 2px;
           border-radius: 9px 9px 2px 2px;
         }
+        .bar-number {
+          top: -32px;
+          min-width: 32px;
+          min-height: 32px;
+          padding: 2px 6px;
+          font-size: clamp(14px, 2vh, 20px);
+          border-width: 3px;
+          border-radius: 12px;
+        }
         .x-labels {
           padding: 5px clamp(5px, 2vw, 18px) 0;
           align-items: flex-start;
@@ -1809,33 +1813,30 @@
           overflow: hidden;
         }
         .question-content {
-          padding-top: 10px !important;
+          padding-top: 0 !important;
           padding-bottom: 0 !important;
           justify-content: flex-start !important;
         }
         .battery-progress {
-          padding: 2px 0 8px;
+          padding: 2px 0 4px;
         }
         .battery-row {
-          gap: 6px;
+          gap: 3px;
         }
         .battery-cell {
           width: clamp(12px, 1.8vw, 17px);
-          height: clamp(14px, 1.8vh, 20px);
+          height: clamp(13px, 1.8vh, 21px);
           border-width: 1.5px;
-          border-radius: 2px 2px 4px 4px;
+          border-radius: 99px;
         }
         .battery-cell::after {
-          width: clamp(4px, 0.5vw, 6px);
-          height: 3px;
-          top: -3px;
-          border-width: 1.5px;
+          display: none;
         }
 
         .level {
           min-height: 36px;
           padding: 3px 12px;
-          margin-bottom: 18px;
+          margin-bottom: 8px;
           font-size: clamp(13px, 1.8vh, 18px);
           border-radius: 18px;
         }
@@ -1849,7 +1850,7 @@
         .question-box {
           padding: 8px 9px;
           border-radius: 18px;
-          margin-bottom: 20px !important;
+          margin-bottom: 8px !important;
           border-width: 3px;
         }
         .question-panel h2 {
@@ -1857,20 +1858,20 @@
           line-height: 1.18;
         }
         .answers {
-          gap: 20px !important;
+          gap: 10px !important;
         }
         .answer-button {
           min-height: clamp(48px, 6vh, 58px) !important;
           padding: 7px 6px;
           border-radius: 16px;
           border-width: 3px;
-          font-size: clamp(18px, 1.75vh, 20px) !important;
-          line-height: 2;
+          font-size: clamp(14px, 1.75vh, 18px) !important;
+          line-height: 1.08;
         }
         #feedback {
           font-size: clamp(10px, 1.2vh, 14px);
           min-height: 17px;
-          margin-top: 20px;
+          margin-top: 4px;
         }
         .voice-toggle-icon {
           font-size: clamp(17px, 2.1vh, 23px);
@@ -2062,6 +2063,15 @@
           width: clamp(23px, 7vw, 30px);
           border-width: 2px;
         }
+        .bar-number {
+          top: -26px;
+          min-width: 26px;
+          min-height: 26px;
+          font-size: 12px;
+          border-width: 2px;
+          padding: 1px 4px;
+          border-radius: 10px;
+        }
         .level {
           min-height: 30px;
           padding: 2px 10px;
@@ -2098,14 +2108,8 @@
           min-height: 15px;
         }
         .battery-cell {
-          width: 10px;
-          height: 12px;
-          border-width: 1px;
-        }
-        .battery-cell::after {
-          width: 3px;
-          height: 2px;
-          top: -2px;
+          width: 9px;
+          height: 11px;
           border-width: 1px;
         }
         .battery-row {
@@ -2359,6 +2363,14 @@
         }
         .bar {
           width: clamp(24px, 3.2vw, 42px);
+        }
+        .bar-number {
+          min-width: 36px;
+          min-height: 36px;
+          font-size: clamp(16px, 2.4vh, 26px);
+          top: -36px;
+          border-width: 3px;
+          border-radius: 14px;
         }
         .chart-question {
           font-size: clamp(15px, 2vh, 22px);
@@ -3307,7 +3319,11 @@
           const pct = (item.value / 8) * 100;
           bar.style.height = pct + "%";
           bar.style.animationDelay = index * 0.08 + "s";
-          // No bar-number element — removed as requested
+          // Bar number
+          const number = document.createElement("div");
+          number.className = "bar-number";
+          number.textContent = item.value;
+          bar.appendChild(number);
           group.appendChild(bar);
           bars.appendChild(group);
           const label = document.createElement("div");
